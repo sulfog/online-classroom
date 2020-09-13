@@ -1,0 +1,4416 @@
+[/usr/share/applications/kde4/mintbackup.desktop]
+Name=Ferramenta para cópia de segurança
+Comment=Faça uma cópia de segurança da sua pasta pessoal
+GenericName=Faça uma cópia de segurança da sua pasta pessoal
+Exec=mintBackup
+Icon=mintbackup
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Qt;KDE;System;
+X-KDE-StartupNotify=false
+OnlyShowIn=KDE;
+
+[/usr/share/applications/kde4/mintdrivers.desktop]
+Name=Gerenciador de Drivers
+Comment=Gerencie os drives dos seus dispositivos
+GenericName=Gerencie os drives dos seus dispositivos
+Exec=pkexec driver-manager
+Icon=mintdrivers
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Qt;KDE;System;
+X-KDE-StartupNotify=false
+OnlyShowIn=KDE;
+
+[/usr/share/applications/kde4/mintreport.desktop]
+Name=Relatórios do Sistema
+Comment=Solução de problemas
+GenericName=Ferramenta de Solução de Problemas
+Exec=mintreport
+Icon=mintreport
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Qt;KDE;Settings;
+X-KDE-StartupNotify=false
+OnlyShowIn=KDE;
+
+[/usr/share/applications/kde4/mintwelcome.desktop]
+Exec=mintwelcome
+Icon=mintwelcome
+Terminal=false
+Type=Application
+Encoding=UTF-8
+OnlyShowIn=KDE;
+Categories=System;
+StartupNotify=false
+Name=Tela de Boas Vindas
+Comment=Introdução ao Linux Mint
+GenericName=Tela de Boas Vindas
+
+[/usr/share/applications/screensavers/abstractile.desktop]
+Name=Abstractile
+Exec=/usr/lib/xscreensaver/abstractile -root
+TryExec=/usr/lib/xscreensaver/abstractile
+Comment=Generates mosaic patterns of interlocking tiles. Written by Steve Sundstrom.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/anemone.desktop]
+Name=Anemone
+Exec=/usr/lib/xscreensaver/anemone -root
+TryExec=/usr/lib/xscreensaver/anemone
+Comment=Wiggling tentacles. Written by Gabriel Finch.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/anemotaxis.desktop]
+Name=Anemotaxis
+Exec=/usr/lib/xscreensaver/anemotaxis -root
+TryExec=/usr/lib/xscreensaver/anemotaxis
+Comment=Anemotaxis demonstrates a search algorithm designed for locating a source of odor in turbulent atmosphere. The searcher is able to sense the odor and determine local instantaneous wind direction. The goal is to find the source in the shortest mean time. http://en.wikipedia.org/wiki/Anemotaxis Written by Eugene Balkovsky.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/antinspect.desktop]
+Name=AntInspect
+Exec=/usr/lib/xscreensaver/antinspect -root
+TryExec=/usr/lib/xscreensaver/antinspect
+Comment=Draws a trio of ants moving their spheres around a circle. Written by Blair Tennessy.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/antmaze.desktop]
+Name=AntMaze
+Exec=/usr/lib/xscreensaver/antmaze -root
+TryExec=/usr/lib/xscreensaver/antmaze
+Comment=Draws a few views of a few ants walking around in a simple maze. Written by Blair Tennessy.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/antspotlight.desktop]
+Name=AntSpotlight
+Exec=/usr/lib/xscreensaver/antspotlight -root
+TryExec=/usr/lib/xscreensaver/antspotlight
+Comment=Draws an ant (with a headlight) who walks on top of an image of your desktop or other image. Written by Blair Tennessy.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/apollonian.desktop]
+Name=Apollonian
+Exec=/usr/lib/xscreensaver/apollonian -root
+TryExec=/usr/lib/xscreensaver/apollonian
+Comment=Draws an Apollonian gasket: a fractal packing of circles with smaller circles, demonstrating Descartes's theorem. http://en.wikipedia.org/wiki/Apollonian_gasket http://en.wikipedia.org/wiki/Descartes%27_theorem Written by Allan R. Wilks and David Bagley.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/apple2.desktop]
+Name=Apple2
+Exec=/usr/lib/xscreensaver/apple2 -root
+TryExec=/usr/lib/xscreensaver/apple2
+Comment=Simulates an original Apple ][ Plus computer in all its 1979 glory. It also reproduces the appearance of display on a color television set of the period. In "Basic Programming Mode", a simulated user types in a BASIC program and runs it. In "Text Mode", it displays the output of a program, or the contents of a file or URL. In "Slideshow Mode", it chooses random images and displays them within the limitations of the Apple ][ display hardware. (Six available colors in hi-res mode!) On X11 systems, This program is also a fully-functional VT100 emulator. http://en.wikipedia.org/wiki/Apple_II_series Written by Trevor Blackwell.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/atlantis.desktop]
+Name=Atlantis
+Exec=/usr/lib/xscreensaver/atlantis -root
+TryExec=/usr/lib/xscreensaver/atlantis
+Comment=A 3D animation of a number of sharks, dolphins, and whales. Written by Mark Kilgard.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/attraction.desktop]
+Name=Attraction
+Exec=/usr/lib/xscreensaver/attraction -root
+TryExec=/usr/lib/xscreensaver/attraction
+Comment=Uses a simple simple motion model to generate many different display modes. The control points attract each other up to a certain distance, and then begin to repel each other. The attraction/repulsion is proportional to the distance between any two particles, similar to the strong and weak nuclear forces. Written by Jamie Zawinski and John Pezaris.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/atunnel.desktop]
+Name=Atunnel
+Exec=/usr/lib/xscreensaver/atunnel -root
+TryExec=/usr/lib/xscreensaver/atunnel
+Comment=Draws an animation of a textured tunnel in GL. Written by Eric Lassauge and Roman Podobedov.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/barcode.desktop]
+Name=Barcode
+Exec=/usr/lib/xscreensaver/barcode -root
+TryExec=/usr/lib/xscreensaver/barcode
+Comment=Draws a random sequence of colorful barcodes scrolling across your screen. CONSUME! The barcodes follow the UPC-A, UPC-E, EAN-8 or EAN-13 standards. http://en.wikipedia.org/wiki/Universal_Product_Code http://en.wikipedia.org/wiki/European_Article_Number Written by Dan Bornstein.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/binaryring.desktop]
+Name=BinaryRing
+Exec=/usr/lib/xscreensaver/binaryring -root
+TryExec=/usr/lib/xscreensaver/binaryring
+Comment=A system of path tracing particles evolves continuously from an initial creation, alternating dark and light colors. Written by J. Tarbell and Emilio Del Tessandoro.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/blaster.desktop]
+Name=Blaster
+Exec=/usr/lib/xscreensaver/blaster -root
+TryExec=/usr/lib/xscreensaver/blaster
+Comment=Draws a simulation of flying space-combat robots (cleverly disguised as colored circles) doing battle in front of a moving star field. Written by Jonathan Lin.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/blinkbox.desktop]
+Name=BlinkBox
+Exec=/usr/lib/xscreensaver/blinkbox -root
+TryExec=/usr/lib/xscreensaver/blinkbox
+Comment=Shows a ball contained inside of a bounding box. Colored blocks blink in when the ball hits the sides. Written by Jeremy English.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/blitspin.desktop]
+Name=BlitSpin
+Exec=/usr/lib/xscreensaver/blitspin -root
+TryExec=/usr/lib/xscreensaver/blitspin
+Comment=Repeatedly rotates a bitmap by 90 degrees by using logical operations: the bitmap is divided into quadrants, and the quadrants are shifted clockwise. Then the same thing is done again with progressively smaller quadrants, except that all sub-quadrants of a given size are rotated in parallel. As you watch it, the image appears to dissolve into static and then reconstitute itself, but rotated. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/blocktube.desktop]
+Name=BlockTube
+Exec=/usr/lib/xscreensaver/blocktube -root
+TryExec=/usr/lib/xscreensaver/blocktube
+Comment=Draws a swirling, falling tunnel of reflective slabs. They fade from hue to hue. Written by Lars R. Damerow.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/boing.desktop]
+Name=Boing
+Exec=/usr/lib/xscreensaver/boing -root
+TryExec=/usr/lib/xscreensaver/boing
+Comment=This bouncing ball is a clone of the first graphics demo for the Amiga 1000, which was written by Dale Luck and RJ Mical during a break at the 1984 Consumer Electronics Show (or so the legend goes.) This looks like the original Amiga demo if you turn off "smoothing" and "lighting" and turn on "scanlines", and is somewhat more modern otherwise. http://en.wikipedia.org/wiki/Amiga#Boing_Ball Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/bouboule.desktop]
+Name=Bouboule
+Exec=/usr/lib/xscreensaver/bouboule -root
+TryExec=/usr/lib/xscreensaver/bouboule
+Comment=This draws what looks like a spinning, deforming balloon with varying-sized spots painted on its invisible surface. Written by Jeremie Petit.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/bouncingcow.desktop]
+Name=BouncingCow
+Exec=/usr/lib/xscreensaver/bouncingcow -root
+TryExec=/usr/lib/xscreensaver/bouncingcow
+Comment=A Cow. A Trampoline. Together, they fight crime. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/boxed.desktop]
+Name=Boxed
+Exec=/usr/lib/xscreensaver/boxed -root
+TryExec=/usr/lib/xscreensaver/boxed
+Comment=Draws a box full of 3D bouncing balls that explode. Written by Sander van Grieken.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/boxfit.desktop]
+Name=BoxFit
+Exec=/usr/lib/xscreensaver/boxfit -root
+TryExec=/usr/lib/xscreensaver/boxfit
+Comment=Packs the screen with growing squares or circles, colored according to a horizontal or vertical gradient, or according to the colors of the desktop or a loaded image file. The objects grow until they touch, then stop. When the screen is full, they shrink away and the process restarts. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/braid.desktop]
+Name=Braid
+Exec=/usr/lib/xscreensaver/braid -root
+TryExec=/usr/lib/xscreensaver/braid
+Comment=Draws random color-cycling inter-braided concentric circles. Written by John Neil.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/bubble3d.desktop]
+Name=Bubble3D
+Exec=/usr/lib/xscreensaver/bubble3d -root
+TryExec=/usr/lib/xscreensaver/bubble3d
+Comment=Draws a stream of rising, undulating 3D bubbles, rising toward the top of the screen, with transparency and specular reflections. Written by Richard Jones.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/bumps.desktop]
+Name=Bumps
+Exec=/usr/lib/xscreensaver/bumps -root
+TryExec=/usr/lib/xscreensaver/bumps
+Comment=A spotlight roams across an embossed version of your desktop or other picture. Written by Shane Smit.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cage.desktop]
+Name=Cage
+Exec=/usr/lib/xscreensaver/cage -root
+TryExec=/usr/lib/xscreensaver/cage
+Comment=This draws Escher's "Impossible Cage", a 3d analog of a moebius strip, and rotates it in three dimensions. http://en.wikipedia.org/wiki/Maurits_Cornelis_Escher Written by Marcelo Vianna.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/carousel.desktop]
+Name=Carousel
+Exec=/usr/lib/xscreensaver/carousel -root
+TryExec=/usr/lib/xscreensaver/carousel
+Comment=Loads several random images, and displays them flying in a circular formation. The formation changes speed and direction randomly, and images periodically drop out to be replaced by new ones. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/ccurve.desktop]
+Name=CCurve
+Exec=/usr/lib/xscreensaver/ccurve -root
+TryExec=/usr/lib/xscreensaver/ccurve
+Comment=Generates self-similar linear fractals, including the classic "C Curve". http://en.wikipedia.org/wiki/Levy_C_curve Written by Rick Campbell.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/celtic.desktop]
+Name=Celtic
+Exec=/usr/lib/xscreensaver/celtic -root
+TryExec=/usr/lib/xscreensaver/celtic
+Comment=Repeatedly draws random Celtic cross-stitch patterns. http://en.wikipedia.org/wiki/Celtic_knot Written by Max Froumentin.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/circuit.desktop]
+Name=Circuit
+Exec=/usr/lib/xscreensaver/circuit -root
+TryExec=/usr/lib/xscreensaver/circuit
+Comment=Animates a number of 3D electronic components. Written by Ben Buxton.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cityflow.desktop]
+Name=Cityflow
+Exec=/usr/lib/xscreensaver/cityflow -root
+TryExec=/usr/lib/xscreensaver/cityflow
+Comment=Waves move across a sea of boxes. The city swells. The walls are closing in. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cloudlife.desktop]
+Name=CloudLife
+Exec=/usr/lib/xscreensaver/cloudlife -root
+TryExec=/usr/lib/xscreensaver/cloudlife
+Comment=Generates cloud-like formations based on a variant of Conway's Life. The difference is that cells have a maximum age, after which they count as 3 for populating the next generation. This makes long-lived formations explode instead of just sitting there. http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life Written by Don Marti.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/companioncube.desktop]
+Name=CompanionCube
+Exec=/usr/lib/xscreensaver/companioncube -root
+TryExec=/usr/lib/xscreensaver/companioncube
+Comment=The symptoms most commonly produced by Enrichment Center testing are superstition, perceiving inanimate objects as alive, and hallucinations. The Enrichment Center reminds you that the weighted companion cube will never threaten to stab you and, in fact, cannot speak. In the event that the Weighted Companion Cube does speak, the Enrichment Center urges you to disregard its advice. http://en.wikipedia.org/wiki/Portal_%28video_game%29 Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/compass.desktop]
+Name=Compass
+Exec=/usr/lib/xscreensaver/compass -root
+TryExec=/usr/lib/xscreensaver/compass
+Comment=This draws a compass, with all elements spinning about randomly, for that "lost and nauseous" feeling. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/coral.desktop]
+Name=Coral
+Exec=/usr/lib/xscreensaver/coral -root
+TryExec=/usr/lib/xscreensaver/coral
+Comment=Simulates coral growth, albeit somewhat slowly. Written by Frederick Roeber.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cosmos-slideshow.desktop]
+Name=Cosmos
+Comment=Mostra uma apresentação de slides de fotos do cosmo
+Exec=/usr/lib/mate-screensaver/mate-screensaver/slideshow --location=/usr/share/backgrounds/cosmos
+TryExec=/usr/lib/mate-screensaver/mate-screensaver/slideshow
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/crackberg.desktop]
+Name=Crackberg
+Exec=/usr/lib/xscreensaver/crackberg -root
+TryExec=/usr/lib/xscreensaver/crackberg
+Comment=Flies through height maps, optionally animating the creation and destruction of generated tiles; tiles `grow' into place. Written by Matus Telgarsky.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/crystal.desktop]
+Name=Crystal
+Exec=/usr/lib/xscreensaver/crystal -root
+TryExec=/usr/lib/xscreensaver/crystal
+Comment=Moving polygons, similar to a kaleidoscope. See also the "Kaleidescope" and "GLeidescope" screen savers. http://en.wikipedia.org/wiki/Kaleidoscope Written by Jouk Jansen.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cube21.desktop]
+Name=Cube21
+Exec=/usr/lib/xscreensaver/cube21 -root
+TryExec=/usr/lib/xscreensaver/cube21
+Comment=Animates a Rubik-like puzzle known as Cube 21 or Square-1. The rotations are chosen randomly. See also the "Rubik" and "GLSnake" screen savers. http://en.wikipedia.org/wiki/Square_One_%28puzzle%29 Written by Vasek Potocek.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cubenetic.desktop]
+Name=Cubenetic
+Exec=/usr/lib/xscreensaver/cubenetic -root
+TryExec=/usr/lib/xscreensaver/cubenetic
+Comment=Draws a pulsating set of overlapping boxes with ever-chaning blobby patterns undulating across their surfaces. It's sort of a cubist Lavalite. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cubestack.desktop]
+Name=CubeStack
+Exec=/usr/lib/xscreensaver/cubestack -root
+TryExec=/usr/lib/xscreensaver/cubestack
+Comment=An endless stack of unfolding, translucent cubes. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cubestorm.desktop]
+Name=CubeStorm
+Exec=/usr/lib/xscreensaver/cubestorm -root
+TryExec=/usr/lib/xscreensaver/cubestorm
+Comment=Draws a series of rotating 3D boxes that intersect each other and eventually fill space. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cubetwist.desktop]
+Name=CubeTwist
+Exec=/usr/lib/xscreensaver/cubetwist -root
+TryExec=/usr/lib/xscreensaver/cubetwist
+Comment=A series of nested cubes rotate and slide recursively. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cubicgrid.desktop]
+Name=CubicGrid
+Exec=/usr/lib/xscreensaver/cubicgrid -root
+TryExec=/usr/lib/xscreensaver/cubicgrid
+Comment=Draws the view of an observer located inside a rotating 3D lattice of colored points. Written by Vasek Potocek.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cwaves.desktop]
+Name=CWaves
+Exec=/usr/lib/xscreensaver/cwaves -root
+TryExec=/usr/lib/xscreensaver/cwaves
+Comment=This generates a languidly-scrolling vertical field of sinusoidal colors. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/cynosure.desktop]
+Name=Cynosure
+Exec=/usr/lib/xscreensaver/cynosure -root
+TryExec=/usr/lib/xscreensaver/cynosure
+Comment=Random dropshadowed rectangles pop onto the screen in lockstep. Written by Ozymandias G. Desiderata, Jamie Zawinski, and Stephen Linhart.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/dangerball.desktop]
+Name=DangerBall
+Exec=/usr/lib/xscreensaver/dangerball -root
+TryExec=/usr/lib/xscreensaver/dangerball
+Comment=Draws a ball that periodically extrudes many random spikes. Ouch! Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/decayscreen.desktop]
+Name=DecayScreen
+Exec=/usr/lib/xscreensaver/decayscreen -root
+TryExec=/usr/lib/xscreensaver/decayscreen
+Comment=This takes an image and makes it melt. You've no doubt seen this effect before, but no screensaver would really be complete without it. It works best if there's something colorful visible. Warning, if the effect continues after the screen saver is off, seek medical attention. Written by David Wald, Vivek Khera, Jamie Zawinski, and Vince Levey.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/deco.desktop]
+Name=Deco
+Exec=/usr/lib/xscreensaver/deco -root
+TryExec=/usr/lib/xscreensaver/deco
+Comment=Subdivides and colors rectangles randomly. It looks kind of like Brady-Bunch-era rec-room wall paneling. http://en.wikipedia.org/wiki/Piet_Mondrian#Paris_1919.E2.80.931938 Written by Jamie Zawinski and Michael Bayne.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/deluxe.desktop]
+Name=Deluxe
+Exec=/usr/lib/xscreensaver/deluxe -root
+TryExec=/usr/lib/xscreensaver/deluxe
+Comment=Draws a pulsing sequence of transparent stars, circles, and lines. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/demon.desktop]
+Name=Demon
+Exec=/usr/lib/xscreensaver/demon -root
+TryExec=/usr/lib/xscreensaver/demon
+Comment=A cellular automaton that starts with a random field, and organizes it into stripes and spirals. http://en.wikipedia.org/wiki/Maxwell%27s_demon Written by David Bagley.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/discoball.desktop]
+Name=Discoball
+Exec=/usr/lib/xscreensaver/discoball -root
+TryExec=/usr/lib/xscreensaver/discoball
+Comment=A dusty, dented disco ball. Woop woop. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/discrete.desktop]
+Name=Discrete
+Exec=/usr/lib/xscreensaver/discrete -root
+TryExec=/usr/lib/xscreensaver/discrete
+Comment=More "discrete map" systems, including new variants of Hopalong and Julia, and a few others. Written by Tim Auckland.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/distort.desktop]
+Name=Distort
+Exec=/usr/lib/xscreensaver/distort -root
+TryExec=/usr/lib/xscreensaver/distort
+Comment=Grabs an image of the screen, and then lets a transparent lens wander around the screen, magnifying whatever is underneath. Written by Jonas Munsin.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/drift.desktop]
+Name=Drift
+Exec=/usr/lib/xscreensaver/drift -root
+TryExec=/usr/lib/xscreensaver/drift
+Comment=Drifting recursive fractal cosmic flames. Written by Scott Draves.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/dymaxionmap.desktop]
+Name=DymaxionMap
+Exec=/usr/lib/xscreensaver/dymaxionmap -root
+TryExec=/usr/lib/xscreensaver/dymaxionmap
+Comment=Buckminster Fuller's map of the Earth projected onto the surface of an unfolded icosahedron. It depicts the Earth's continents as one island, or nearly contiguous land masses. https://en.wikipedia.org/wiki/Dymaxion_map https://en.wikipedia.org/wiki/Buckminster_Fuller Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/endgame.desktop]
+Name=Endgame
+Exec=/usr/lib/xscreensaver/endgame -root
+TryExec=/usr/lib/xscreensaver/endgame
+Comment=Black slips out of three mating nets, but the fourth one holds him tight! A brilliant composition! See also the "Queens" screen saver. http://en.wikipedia.org/wiki/Chess_endgame Written by Blair Tennessy.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/energystream.desktop]
+Name=EnergyStream
+Exec=/usr/lib/xscreensaver/energystream -root
+TryExec=/usr/lib/xscreensaver/energystream
+Comment=A flow of particles which form an energy stream. Written by Eugene Sandulenko and Konrad "Yoghurt" Zagorowicz.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/engine.desktop]
+Name=Engine
+Exec=/usr/lib/xscreensaver/engine -root
+TryExec=/usr/lib/xscreensaver/engine
+Comment=Draws a simple model of an engine that floats around the screen. http://en.wikipedia.org/wiki/Internal_combustion_engine#Operation Written by Ben Buxton and Ed Beroset.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/epicycle.desktop]
+Name=Epicycle
+Exec=/usr/lib/xscreensaver/epicycle -root
+TryExec=/usr/lib/xscreensaver/epicycle
+Comment=This draws the path traced out by a point on the edge of a circle. That circle rotates around a point on the rim of another circle, and so on, several times. These were the basis for the pre-heliocentric model of planetary motion. http://en.wikipedia.org/wiki/Deferent_and_epicycle Written by James Youngman.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/eruption.desktop]
+Name=Eruption
+Exec=/usr/lib/xscreensaver/eruption -root
+TryExec=/usr/lib/xscreensaver/eruption
+Comment=Exploding fireworks. See also the "Fireworkx", "XFlame" and "Pyro" screen savers. Written by W.P. van Paassen.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/euler2d.desktop]
+Name=Euler2D
+Exec=/usr/lib/xscreensaver/euler2d -root
+TryExec=/usr/lib/xscreensaver/euler2d
+Comment=Simulates two dimensional incompressible inviscid fluid flow. http://en.wikipedia.org/wiki/Euler_equations_%28fluid_dynamics%29 http://en.wikipedia.org/wiki/Inviscid_flow Written by Stephen Montgomery-Smith.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/extrusion.desktop]
+Name=Extrusion
+Exec=/usr/lib/xscreensaver/extrusion -root
+TryExec=/usr/lib/xscreensaver/extrusion
+Comment=Draws various rotating extruded shapes that twist around, lengthen, and turn inside out. Written by Linas Vepstas, David Konerding, and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/fadeplot.desktop]
+Name=FadePlot
+Exec=/usr/lib/xscreensaver/fadeplot -root
+TryExec=/usr/lib/xscreensaver/fadeplot
+Comment=Draws what looks like a waving ribbon following a sinusoidal path. Written by Bas van Gaalen and Charles Vidal.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/fiberlamp.desktop]
+Name=Fiberlamp
+Exec=/usr/lib/xscreensaver/fiberlamp -root
+TryExec=/usr/lib/xscreensaver/fiberlamp
+Comment=Draws a groovy rotating fiber optic lamp. Written by Tim Auckland.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/fireworkx.desktop]
+Name=Fireworkx
+Exec=/usr/lib/xscreensaver/fireworkx -root
+TryExec=/usr/lib/xscreensaver/fireworkx
+Comment=Exploding fireworks. See also the "Eruption", "XFlame" and "Pyro" screen savers. Written by Rony B Chandran.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/flame.desktop]
+Name=Flame
+Exec=/usr/lib/xscreensaver/flame -root
+TryExec=/usr/lib/xscreensaver/flame
+Comment=Iterative fractals. Written by Scott Draves.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/flipflop.desktop]
+Name=FlipFlop
+Exec=/usr/lib/xscreensaver/flipflop -root
+TryExec=/usr/lib/xscreensaver/flipflop
+Comment=Draws a grid of 3D colored tiles that change positions with each other. Written by Kevin Ogden and Sergio Gutierrez.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/flipscreen3d.desktop]
+Name=FlipScreen3D
+Exec=/usr/lib/xscreensaver/flipscreen3d -root
+TryExec=/usr/lib/xscreensaver/flipscreen3d
+Comment=Grabs an image of the desktop, turns it into a GL texture map, and spins it around and deforms it in various ways. Written by Ben Buxton and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/fliptext.desktop]
+Name=FlipText
+Exec=/usr/lib/xscreensaver/fliptext -root
+TryExec=/usr/lib/xscreensaver/fliptext
+Comment=Draws successive pages of text. The lines flip in and out in a soothing 3D pattern. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/flow.desktop]
+Name=Flow
+Exec=/usr/lib/xscreensaver/flow -root
+TryExec=/usr/lib/xscreensaver/flow
+Comment=Strange attractors formed of flows in a 3D differential equation phase space. Features the popular attractors described by Lorentz, Roessler, Birkhoff and Duffing, and can discover entirely new attractors by itself. http://en.wikipedia.org/wiki/Attractor#Strange_attractor Written by Tim Auckland.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/fluidballs.desktop]
+Name=FluidBalls
+Exec=/usr/lib/xscreensaver/fluidballs -root
+TryExec=/usr/lib/xscreensaver/fluidballs
+Comment=Models the physics of bouncing balls, or of particles in a gas or fluid, depending on the settings. If "Shake Box" is selected, then every now and then, the box will be rotated, changing which direction is down (in order to keep the settled balls in motion.) Written by Peter Birtles and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/flurry.desktop]
+Name=Flurry
+Exec=/usr/lib/xscreensaver/flurry -root
+TryExec=/usr/lib/xscreensaver/flurry
+Comment=This X11 port of the OSX screensaver of the same name draws a colourful star(fish)like flurry of particles. Original Mac version: http://homepage.mac.com/calumr Written by Calum Robinson and Tobias Sargeant.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/flyingtoasters.desktop]
+Name=FlyingToasters
+Exec=/usr/lib/xscreensaver/flyingtoasters -root
+TryExec=/usr/lib/xscreensaver/flyingtoasters
+Comment=A fleet of 3d space-age jet-powered flying toasters (and toast!) Inspired by the ancient Berkeley Systems After Dark flying toasters. http://en.wikipedia.org/wiki/After_Dark_%28software%29#Flying_Toasters Written by Jamie Zawinski and Devon Dossett.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/fontglide.desktop]
+Name=FontGlide
+Exec=/usr/lib/xscreensaver/fontglide -root
+TryExec=/usr/lib/xscreensaver/fontglide
+Comment=Puts text on the screen using large characters that glide in from the edges, assemble, then disperse. Alternately, it can simply scroll whole sentences from right to left. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/footlogo-floaters.desktop]
+Name=MATE Flutuante
+Comment=Borbulha o logotipo MATE ao redor da tela
+Exec=/usr/lib/mate-screensaver/mate-screensaver/floaters /usr/share/pixmaps/mate-logo-white.svg
+TryExec=/usr/lib/mate-screensaver/mate-screensaver/floaters
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/fuzzyflakes.desktop]
+Name=FuzzyFlakes
+Exec=/usr/lib/xscreensaver/fuzzyflakes -root
+TryExec=/usr/lib/xscreensaver/fuzzyflakes
+Comment=Falling colored snowflake/flower shapes. Written by Barry Dmytro.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/galaxy.desktop]
+Name=Galaxy
+Exec=/usr/lib/xscreensaver/galaxy -root
+TryExec=/usr/lib/xscreensaver/galaxy
+Comment=This draws spinning galaxies, which then collide and scatter their stars to the, uh, four winds or something. Written by Uli Siegmund, Harald Backert, and Hubert Feyrer.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/gears.desktop]
+Name=Gears
+Exec=/usr/lib/xscreensaver/gears -root
+TryExec=/usr/lib/xscreensaver/gears
+Comment=This draws sets of turning, interlocking gears, rotating in three dimensions. See also the "Pinion" and "MoebiusGears" screen savers. http://en.wikipedia.org/wiki/Involute_gear http://en.wikipedia.org/wiki/Epicyclic_gearing Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/geodesic.desktop]
+Name=Geodesic
+Exec=/usr/lib/xscreensaver/geodesic -root
+TryExec=/usr/lib/xscreensaver/geodesic
+Comment=Animates a mesh geodesic sphere of increasing and decreasing complexity. A geodesic sphere is an icosohedron whose equilateral faces are sub-divided into non-equilateral triangles to more closely approximate a sphere. The animation shows the equilateral triangles subdivided into four coplanar equilateral triangles; and then inflated outward, causing the sub-triangles to no longer be equilateral, but to more closely approximate the surface of a sphere. http://en.wikipedia.org/wiki/Geodesic_dome http://en.wikipedia.org/wiki/Buckminster_Fuller Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/geodesicgears.desktop]
+Name=GeodesicGears
+Exec=/usr/lib/xscreensaver/geodesicgears -root
+TryExec=/usr/lib/xscreensaver/geodesicgears
+Comment=A set of meshed gears arranged on the surface of a sphere. http://en.wikipedia.org/wiki/Geodesic_dome http://en.wikipedia.org/wiki/Involute_gear Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/gflux.desktop]
+Name=GFlux
+Exec=/usr/lib/xscreensaver/gflux -root
+TryExec=/usr/lib/xscreensaver/gflux
+Comment=Draws a rippling waves on a rotating wireframe grid. Written by Josiah Pease.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glblur.desktop]
+Name=GLBlur
+Exec=/usr/lib/xscreensaver/glblur -root
+TryExec=/usr/lib/xscreensaver/glblur
+Comment=This draws a box and a few line segments, and generates a radial blur outward from it. This creates flowing field effects. This is done by rendering the scene into a small texture, then repeatedly rendering increasingly-enlarged and increasingly-transparent versions of that texture onto the frame buffer. As such, it's quite GPU-intensive: if you don't have a very good graphics card, it will hurt your machine bad. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glcells.desktop]
+Name=GLCells
+Exec=/usr/lib/xscreensaver/glcells -root
+TryExec=/usr/lib/xscreensaver/glcells
+Comment=Cells growing, dividing and dying on your screen. Written by Matthias Toussaint.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/gleidescope.desktop]
+Name=Gleidescope
+Exec=/usr/lib/xscreensaver/gleidescope -root
+TryExec=/usr/lib/xscreensaver/gleidescope
+Comment=A kaleidoscope that operates on your desktop image, or on image files loaded from disk. http://en.wikipedia.org/wiki/Kaleidoscope Written by Andrew Dean.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glhanoi.desktop]
+Name=GLHanoi
+Exec=/usr/lib/xscreensaver/glhanoi -root
+TryExec=/usr/lib/xscreensaver/glhanoi
+Comment=Solves the Towers of Hanoi puzzle. Move N disks from one pole to another, one disk at a time, with no disk ever resting on a disk smaller than itself. http://en.wikipedia.org/wiki/Tower_of_Hanoi Written by Dave Atkinson; 2005. 	
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glknots.desktop]
+Name=GLKnots
+Exec=/usr/lib/xscreensaver/glknots -root
+TryExec=/usr/lib/xscreensaver/glknots
+Comment=Generates some twisting 3d knot patterns. Spins 'em around. http://en.wikipedia.org/wiki/Knot_theory Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glmatrix.desktop]
+Name=GLMatrix
+Exec=/usr/lib/xscreensaver/glmatrix -root
+TryExec=/usr/lib/xscreensaver/glmatrix
+Comment=Draws 3D dropping characters similar to what is seen in the title sequence of "The Matrix". See also "xmatrix" for a 2D rendering of the similar effect that appeared on the computer monitors actually *in* the movie. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glplanet.desktop]
+Name=GLPlanet
+Exec=/usr/lib/xscreensaver/glplanet -root
+TryExec=/usr/lib/xscreensaver/glplanet
+Comment=Draws a planet bouncing around in space. The built-in image is a map of the earth (extracted from `xearth'), but you can wrap any texture around the sphere, e.g., the planetary textures that come with `ssystem'. Written by David Konerding.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glschool.desktop]
+Name=GLSchool
+Exec=/usr/lib/xscreensaver/glschool -root
+TryExec=/usr/lib/xscreensaver/glschool
+Comment=Uses Craig Reynolds' Boids algorithm to simulate a school of fish. http://en.wikipedia.org/wiki/Boids Written by David C. Lambert.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glslideshow.desktop]
+Name=GLSlideshow
+Exec=/usr/lib/xscreensaver/glslideshow -root
+TryExec=/usr/lib/xscreensaver/glslideshow
+Comment=Loads a random sequence of images and smoothly scans and zooms around in each, fading from pan to pan. Written by Jamie Zawinski and Mike Oliphant.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/glsnake.desktop]
+Name=GLSnake
+Exec=/usr/lib/xscreensaver/glsnake -root
+TryExec=/usr/lib/xscreensaver/glsnake
+Comment=Draws a simulation of the Rubik's Snake puzzle. See also the "Rubik" and "Cube21" screen savers. http://en.wikipedia.org/wiki/Rubik%27s_Snake Written by Jamie Wilkinson, Andrew Bennetts, and Peter Aylett.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/gltext.desktop]
+Name=GLText
+Exec=/usr/lib/xscreensaver/gltext -root
+TryExec=/usr/lib/xscreensaver/gltext
+Comment=Displays a few lines of text spinning around in a solid 3D font. The text can use strftime() escape codes to display the current date and time. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/gnomelogo-floaters.desktop]
+Name=GNOME Flutuante
+Comment=Borbulha o logotipo GNOME ao redor da tela
+Exec=/usr/lib/mate-screensaver/mate-screensaver/floaters /usr/share/pixmaps/gnome-logo-white.svg
+TryExec=/usr/lib/mate-screensaver/mate-screensaver/floaters
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/goop.desktop]
+Name=Goop
+Exec=/usr/lib/xscreensaver/goop -root
+TryExec=/usr/lib/xscreensaver/goop
+Comment=This draws set of animating, transparent, amoeba-like blobs. The blobs change shape as they wander around the screen, and they are translucent, so you can see the lower blobs through the higher ones, and when one passes over another, their colors merge. I got the idea for this from a mouse pad I had once, which achieved the same kind of effect in real life by having several layers of plastic with colored oil between them. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/grav.desktop]
+Name=Grav
+Exec=/usr/lib/xscreensaver/grav -root
+TryExec=/usr/lib/xscreensaver/grav
+Comment=This draws a simple orbital simulation. With trails enabled, it looks kind of like a cloud-chamber photograph. Written by Greg Bowering.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/greynetic.desktop]
+Name=Greynetic
+Exec=/usr/lib/xscreensaver/greynetic -root
+TryExec=/usr/lib/xscreensaver/greynetic
+Comment=Draws random colored, stippled and transparent rectangles. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/halftone.desktop]
+Name=Halftone
+Exec=/usr/lib/xscreensaver/halftone -root
+TryExec=/usr/lib/xscreensaver/halftone
+Comment=Draws the gravity force in each point on the screen seen through a halftone dot pattern. The gravity force is calculated from a set of moving mass points. View it from a distance for best effect. http://en.wikipedia.org/wiki/Halftone Written by Peter Jaric.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/halo.desktop]
+Name=Halo
+Exec=/usr/lib/xscreensaver/halo -root
+TryExec=/usr/lib/xscreensaver/halo
+Comment=Draws trippy psychedelic circular patterns that hurt to look at. http://en.wikipedia.org/wiki/Moire_pattern Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/helix.desktop]
+Name=Helix
+Exec=/usr/lib/xscreensaver/helix -root
+TryExec=/usr/lib/xscreensaver/helix
+Comment=Spirally string-art-ish patterns. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/hexadrop.desktop]
+Name=Hexadrop
+Exec=/usr/lib/xscreensaver/hexadrop -root
+TryExec=/usr/lib/xscreensaver/hexadrop
+Comment=Draws a grid of hexagons or other shapes and drops them out. http://en.wikipedia.org/wiki/Tiling_by_regular_polygons Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/hexstrut.desktop]
+Name=Hexstrut
+Exec=/usr/lib/xscreensaver/hexstrut -root
+TryExec=/usr/lib/xscreensaver/hexstrut
+Comment=A grid of hexagons composed of rotating Y-shaped struts. Waves of rotation and color changes randomly propagate across the plane. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/hilbert.desktop]
+Name=Hilbert
+Exec=/usr/lib/xscreensaver/hilbert -root
+TryExec=/usr/lib/xscreensaver/hilbert
+Comment=This draws the recursive Hilbert space-filling curve, in both 2D and 3D variants. It incrementally animates the growth and recursion to the maximum depth, then unwinds it back. The Hilbert path is a single contiguous line that can fill a volume without crossing itself. As a data structure, Hilbert paths are useful because ordering along the curve preserves locality: points that close together along the curve are also close together in space. The converse is often, but not always, true. The coloration reflects this. http://en.wikipedia.org/wiki/Hilbert_curve Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/hopalong.desktop]
+Name=Hopalong
+Exec=/usr/lib/xscreensaver/hopalong -root
+TryExec=/usr/lib/xscreensaver/hopalong
+Comment=This draws lacy fractal patterns based on iteration in the imaginary plane, from a 1986 Scientific American article. See also the "Discrete" screen saver. Written by Patrick Naughton.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/hydrostat.desktop]
+Name=Hydrostat
+Exec=/usr/lib/xscreensaver/hydrostat -root
+TryExec=/usr/lib/xscreensaver/hydrostat
+Comment=Wiggly squid or jellyfish with many tentacles. A muscular hydrostat is a biological structure used to move its host about, consisting of muscles with no skeletal support. It performs its hydraulic movement without fluid in a separate compartment, as in a hydrostatic skeleton. https://en.wikipedia.org/wiki/Muscular_hydrostat Written by Justin Windle and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/hypertorus.desktop]
+Name=Hypertorus
+Exec=/usr/lib/xscreensaver/hypertorus -root
+TryExec=/usr/lib/xscreensaver/hypertorus
+Comment=This shows a rotating Clifford Torus: a torus lying on the "surface" of a 4D hypersphere. Inspired by Thomas Banchoff's book "Beyond the Third Dimension: Geometry, Computer Graphics, and Higher Dimensions", Scientific American Library, 1990. http://en.wikipedia.org/wiki/N-sphere http://en.wikipedia.org/wiki/Clifford_torus http://en.wikipedia.org/wiki/Regular_polytope Written by Carsten Steger.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/hypnowheel.desktop]
+Name=Hypnowheel
+Exec=/usr/lib/xscreensaver/hypnowheel -root
+TryExec=/usr/lib/xscreensaver/hypnowheel
+Comment=Draws a series of overlapping, translucent spiral patterns. The tightness of their spirals fluctuates in and out. http://en.wikipedia.org/wiki/Moire_pattern Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/ifs.desktop]
+Name=IFS
+Exec=/usr/lib/xscreensaver/ifs -root
+TryExec=/usr/lib/xscreensaver/ifs
+Comment=This one draws spinning, colliding iterated-function-system images. Note that the "Detail" parameter is exponential. Number of points drawn is functions^detail. http://en.wikipedia.org/wiki/Iterated_function_system Written by Chris Le Sueur and Robby Griffin.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/imsmap.desktop]
+Name=IMSMap
+Exec=/usr/lib/xscreensaver/imsmap -root
+TryExec=/usr/lib/xscreensaver/imsmap
+Comment=This generates random cloud-like patterns. The idea is to take four points on the edge of the image, and assign each a random "elevation". Then find the point between them, and give it a value which is the average of the other four, plus some small random offset. Coloration is done based on elevation. Written by Juergen Nickelsen and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/interaggregate.desktop]
+Name=Interaggregate
+Exec=/usr/lib/xscreensaver/interaggregate -root
+TryExec=/usr/lib/xscreensaver/interaggregate
+Comment=A surface is filled with a hundred medium to small sized circles. Each circle has a different size and direction, but moves at the same slow rate. Displays the instantaneous intersections of the circles as well as the aggregate intersections of the circles. Though actually it doesn't look like circles at all! Written by Casey Reas, William Ngan, Robert Hodgin, and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/interference.desktop]
+Name=Interference
+Exec=/usr/lib/xscreensaver/interference -root
+TryExec=/usr/lib/xscreensaver/interference
+Comment=Color field based on computing decaying sinusoidal waves. Written by Hannu Mallat.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/intermomentary.desktop]
+Name=Intermomentary
+Exec=/usr/lib/xscreensaver/intermomentary -root
+TryExec=/usr/lib/xscreensaver/intermomentary
+Comment=A surface is filled with a hundred medium to small sized circles. Each circle has a different size and direction, but moves at the same slow rate. Displays the instantaneous intersections of the circles as well as the aggregate intersections of the circles. The circles begin with a radius of 1 pixel and slowly increase to some arbitrary size. Circles are drawn with small moving points along the perimeter. The intersections are rendered as glowing orbs. Glowing orbs are rendered only when a perimeter point moves past the intersection point. Written by Casey Reas, William Ngan, Robert Hodgin, and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/jigglypuff.desktop]
+Name=JigglyPuff
+Exec=/usr/lib/xscreensaver/jigglypuff -root
+TryExec=/usr/lib/xscreensaver/jigglypuff
+Comment=This does bad things with quasi-spherical objects. You have a tetrahedron with tesselated faces. The vertices on these faces have forces on them: one proportional to the distance from the surface of a sphere; and one proportional to the distance from the neighbors. They also have inertia. The resulting effect can range from a shape that does nothing, to a frenetic polygon storm. Somewhere in between there it usually manifests as a blob that jiggles in a kind of disturbing manner. Written by Keith Macleod.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/jigsaw.desktop]
+Name=Jigsaw
+Exec=/usr/lib/xscreensaver/jigsaw -root
+TryExec=/usr/lib/xscreensaver/jigsaw
+Comment=This grabs a screen image, carves it up into a jigsaw puzzle, shuffles it, and then solves the puzzle. This works especially well when you feed it an external video signal instead of letting it grab the screen image (actually, I guess this is generally true...) When it is grabbing a video image, it is sometimes pretty hard to guess what the image is going to look like once the puzzle is solved. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/juggler3d.desktop]
+Name=Juggler3D
+Exec=/usr/lib/xscreensaver/juggler3d -root
+TryExec=/usr/lib/xscreensaver/juggler3d
+Comment=3D simulation of a juggler performing with balls, clubs and rings. http://en.wikipedia.org/wiki/Siteswap Written by Brian Apps.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/julia.desktop]
+Name=Julia
+Exec=/usr/lib/xscreensaver/julia -root
+TryExec=/usr/lib/xscreensaver/julia
+Comment=Animates the Julia set (a close relative of the Mandelbrot set). The small moving dot indicates the control point from which the rest of the image was generated. See also the "Discrete" screen saver. http://en.wikipedia.org/wiki/Julia_set Written by Sean McCullough.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/kaleidescope.desktop]
+Name=Kaleidescope
+Exec=/usr/lib/xscreensaver/kaleidescope -root
+TryExec=/usr/lib/xscreensaver/kaleidescope
+Comment=A simple kaleidoscope. See also "GLeidescope". http://en.wikipedia.org/wiki/Kaleidoscope Written by Ron Tapia.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/kaleidocycle.desktop]
+Name=Kaleidocycle
+Exec=/usr/lib/xscreensaver/kaleidocycle -root
+TryExec=/usr/lib/xscreensaver/kaleidocycle
+Comment=Draw a ring composed of tetrahedra connected at the edges that twists and rotates toroidally. When a series of tetrahedra are joined at the edges in a loop, it is possible for them to rotate continously through the center without deforming. This only works with an even number of tetrahedra, and there must be eight or more, or they don't fit. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/klein.desktop]
+Name=Klein
+Exec=/usr/lib/xscreensaver/klein -root
+TryExec=/usr/lib/xscreensaver/klein
+Comment=This draws a visualization of a Klein bottle or some other interesting parametric surfaces. http://en.wikipedia.org/wiki/Klein_bottle Written by Andrey Mirtchovski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/kumppa.desktop]
+Name=Kumppa
+Exec=/usr/lib/xscreensaver/kumppa -root
+TryExec=/usr/lib/xscreensaver/kumppa
+Comment=Spiraling, spinning, and very, very fast splashes of color rush toward the screen. Written by Teemu Suutari.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/lament.desktop]
+Name=Lament
+Exec=/usr/lib/xscreensaver/lament -root
+TryExec=/usr/lib/xscreensaver/lament
+Comment=Animates a simulation of Lemarchand's Box, the Lament Configuration, repeatedly solving itself. Warning: occasionally opens doors. http://en.wikipedia.org/wiki/Lemarchand%27s_box Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/lavalite.desktop]
+Name=Lavalite
+Exec=/usr/lib/xscreensaver/lavalite -root
+TryExec=/usr/lib/xscreensaver/lavalite
+Comment=Draws a 3D Simulation a Lava Lite(r). Odd-shaped blobs of a mysterious substance are heated, slowly rise to the top of the bottle, and then drop back down as they cool. This simulation requires a fairly fast machine (both CPU and 3D performance.) "LAVA LITE(r) and the configuration of the LAVA(r) brand motion lamp are registered trademarks of Haggerty Enterprises, Inc. The configuration of the globe and base of the motion lamp are registered trademarks of Haggerty Enterprises, Inc. in the U.S.A. and in other countries around the world." http://en.wikipedia.org/wiki/Lava_lamp http://en.wikipedia.org/wiki/Metaballs Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/lcdscrub.desktop]
+Name=LCDscrub
+Exec=/usr/lib/xscreensaver/lcdscrub -root
+TryExec=/usr/lib/xscreensaver/lcdscrub
+Comment=This screen saver is not meant to look pretty, but rather, to repair burn-in on LCD monitors. Believe it or not, screen burn is not a thing of the past. It can happen to LCD screens pretty easily, even in this modern age. However, leaving the screen on and displaying high contrast images can often repair the damage. That's what this screen saver does. See also: http://docs.info.apple.com/article.html?artnum=88343 http://toastycode.com/blog/2008/02/05/lcd-scrub/ Inspired by the like-named program by Daniel Sandler. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/lockward.desktop]
+Name=Lockward
+Exec=/usr/lib/xscreensaver/lockward -root
+TryExec=/usr/lib/xscreensaver/lockward
+Comment=A translucent spinning, blinking thing. Sort of a cross between the wards in an old combination lock and those old backlit information displays that animated and changed color via polarized light. Written by Leo L. Schwab.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/loop.desktop]
+Name=Loop
+Exec=/usr/lib/xscreensaver/loop -root
+TryExec=/usr/lib/xscreensaver/loop
+Comment=Generates loop-shaped colonies that spawn, age, and eventually die. http://en.wikipedia.org/wiki/Langton%27s_loops Written by David Bagley.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/m6502.desktop]
+Name=m6502
+Exec=/usr/lib/xscreensaver/m6502 -root
+TryExec=/usr/lib/xscreensaver/m6502
+Comment=This emulates a 6502 microprocessor. The family of 6502 chips were used throughout the 70's and 80's in machines such as the Atari 2600, Commodore PET, VIC20 and C64, Apple ][, and the NES. Some example programs are included, and it can also read in an assembly file as input. Original JavaScript Version by Stian Soreng: http://www.6502asm.com/. Ported to XScreenSaver by Jeremy English. Written by Stian Soreng and Jeremy English.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/maze.desktop]
+Name=Maze
+Exec=/usr/lib/xscreensaver/maze -root
+TryExec=/usr/lib/xscreensaver/maze
+Comment=This generates random mazes (with various different algorithms), and then solves them. Backtracking and look-ahead paths are displayed in different colors. Written by Jim Randell and many others.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/memscroller.desktop]
+Name=MemScroller
+Exec=/usr/lib/xscreensaver/memscroller -root
+TryExec=/usr/lib/xscreensaver/memscroller
+Comment=This draws a dump of its own process memory scrolling across the screen in three windows at three different rates. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/menger.desktop]
+Name=Menger
+Exec=/usr/lib/xscreensaver/menger -root
+TryExec=/usr/lib/xscreensaver/menger
+Comment=This draws the three-dimensional variant of the recursive Menger Gasket, a cube-based fractal object analagous to the Sierpinski Tetrahedron. http://en.wikipedia.org/wiki/Menger_sponge http://en.wikipedia.org/wiki/Sierpinski_carpet Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/metaballs.desktop]
+Name=MetaBalls
+Exec=/usr/lib/xscreensaver/metaballs -root
+TryExec=/usr/lib/xscreensaver/metaballs
+Comment=Draws two dimensional metaballs: overlapping and merging balls with fuzzy edges. http://en.wikipedia.org/wiki/Metaballs Written by W.P. van Paassen.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/mirrorblob.desktop]
+Name=MirrorBlob
+Exec=/usr/lib/xscreensaver/mirrorblob -root
+TryExec=/usr/lib/xscreensaver/mirrorblob
+Comment=Draws a wobbly blob that distorts the image behind it. Written by Jon Dowdall.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/moebius.desktop]
+Name=Moebius
+Exec=/usr/lib/xscreensaver/moebius -root
+TryExec=/usr/lib/xscreensaver/moebius
+Comment=This animates a 3D rendition M.C. Escher's "Moebius Strip II", an image of ants walking along the surface of a moebius strip. http://en.wikipedia.org/wiki/Moebius_strip http://en.wikipedia.org/wiki/Maurits_Cornelis_Escher Written by Marcelo F. Vianna.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/moebiusgears.desktop]
+Name=MoebiusGears
+Exec=/usr/lib/xscreensaver/moebiusgears -root
+TryExec=/usr/lib/xscreensaver/moebiusgears
+Comment=Draws a closed, interlinked chain of rotating gears. The layout of the gears follows the path of a moebius strip. See also the "Pinion" and "Gears" screen savers. http://en.wikipedia.org/wiki/Involute_gear http://en.wikipedia.org/wiki/Moebius_strip Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/moire.desktop]
+Name=Moire
+Exec=/usr/lib/xscreensaver/moire -root
+TryExec=/usr/lib/xscreensaver/moire
+Comment=When the lines on the screen Make more lines in between, That's a moire'! http://en.wikipedia.org/wiki/Moire_pattern Written by Jamie Zawinski and Michael Bayne.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/moire2.desktop]
+Name=Moire2
+Exec=/usr/lib/xscreensaver/moire2 -root
+TryExec=/usr/lib/xscreensaver/moire2
+Comment=Generates fields of concentric circles or ovals, and combines the planes with various operations. The planes are moving independently of one another, causing the interference lines to spray. http://en.wikipedia.org/wiki/Moire_pattern Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/molecule.desktop]
+Name=Molecule
+Exec=/usr/lib/xscreensaver/molecule -root
+TryExec=/usr/lib/xscreensaver/molecule
+Comment=Draws several different representations of molecules. Some common molecules are built in, and it can also read PDB (Protein Data Bank) files as input. http://en.wikipedia.org/wiki/Protein_Data_Bank_%28file_format%29 Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/morph3d.desktop]
+Name=Morph3D
+Exec=/usr/lib/xscreensaver/morph3d -root
+TryExec=/usr/lib/xscreensaver/morph3d
+Comment=Platonic solids that turn inside out and get spikey. http://en.wikipedia.org/wiki/Platonic_solid Written by Marcelo Vianna.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/mountain.desktop]
+Name=Mountain
+Exec=/usr/lib/xscreensaver/mountain -root
+TryExec=/usr/lib/xscreensaver/mountain
+Comment=Generates random 3D plots that look vaguely mountainous. Written by Pascal Pensa.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/munch.desktop]
+Name=Munch
+Exec=/usr/lib/xscreensaver/munch -root
+TryExec=/usr/lib/xscreensaver/munch
+Comment=DATAI 2 ADDB 1,2 ROTC 2,-22 XOR 1,2 JRST .-4 As reported by HAKMEM, in 1962, Jackson Wright wrote the above PDP-1 code. That code still lives on here, some 46 years later. The number of lines of enclosing code has increased substantially, however. http://en.wikipedia.org/wiki/HAKMEM http://en.wikipedia.org/wiki/Munching_square Written by Jackson Wright and Tim Showalter.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/nerverot.desktop]
+Name=NerveRot
+Exec=/usr/lib/xscreensaver/nerverot -root
+TryExec=/usr/lib/xscreensaver/nerverot
+Comment=Draws different shapes composed of nervously vibrating squiggles, as if seen through a camera operated by a monkey on crack. Written by Dan Bornstein.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/noof.desktop]
+Name=Noof
+Exec=/usr/lib/xscreensaver/noof -root
+TryExec=/usr/lib/xscreensaver/noof
+Comment=Draws some rotatey patterns, using OpenGL. Written by Bill Torzewski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/noseguy.desktop]
+Name=NoseGuy
+Exec=/usr/lib/xscreensaver/noseguy -root
+TryExec=/usr/lib/xscreensaver/noseguy
+Comment=A little man with a big nose wanders around your screen saying things. Written by Dan Heller and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/pacman.desktop]
+Name=Pacman
+Exec=/usr/lib/xscreensaver/pacman -root
+TryExec=/usr/lib/xscreensaver/pacman
+Comment=Simulates a game of Pac-Man on a randomly-created level. http://en.wikipedia.org/wiki/Pac-Man Written by Edwin de Jong.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/pedal.desktop]
+Name=Pedal
+Exec=/usr/lib/xscreensaver/pedal -root
+TryExec=/usr/lib/xscreensaver/pedal
+Comment=This is sort of a combination spirograph/string-art. It generates a large, complex polygon, and renders it by filling using an even/odd winding rule. Written by Dale Moore.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/penetrate.desktop]
+Name=Penetrate
+Exec=/usr/lib/xscreensaver/penetrate -root
+TryExec=/usr/lib/xscreensaver/penetrate
+Comment=Simulates (something like) the classic arcade game Missile Command. http://en.wikipedia.org/wiki/Missile_Command Written by Adam Miller.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/penrose.desktop]
+Name=Penrose
+Exec=/usr/lib/xscreensaver/penrose -root
+TryExec=/usr/lib/xscreensaver/penrose
+Comment=Draws quasiperiodic tilings; think of the implications on modern formica technology. In April 1997, Sir Roger Penrose, a British math professor who has worked with Stephen Hawking on such topics as relativity, black holes, and whether time has a beginning, filed a copyright-infringement lawsuit against the Kimberly-Clark Corporation, which Penrose said copied a pattern he created (a pattern demonstrating that "a nonrepeating pattern could exist in nature") for its Kleenex quilted toilet paper. Penrose said he doesn't like litigation but, "When it comes to the population of Great Britain being invited by a multinational to wipe their bottoms on what appears to be the work of a Knight of the Realm, then a last stand must be taken." As reported by News of the Weird #491, 4-Jul-1997. http://en.wikipedia.org/wiki/Penrose_tiling Written by Timo Korvola.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/personal-slideshow.desktop]
+Name=Pasta de Imagens
+Comment=Exibe uma apresentação de slides com as figuras da sua pasta de imagens
+Exec=/usr/lib/mate-screensaver/mate-screensaver/slideshow
+TryExec=/usr/lib/mate-screensaver/mate-screensaver/slideshow
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/petri.desktop]
+Name=Petri
+Exec=/usr/lib/xscreensaver/petri -root
+TryExec=/usr/lib/xscreensaver/petri
+Comment=This simulates colonies of mold growing in a petri dish. Growing colored circles overlap and leave spiral interference in their wake. Written by Dan Bornstein.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/phosphor.desktop]
+Name=Phosphor
+Exec=/usr/lib/xscreensaver/phosphor -root
+TryExec=/usr/lib/xscreensaver/phosphor
+Comment=Draws a simulation of an old terminal, with large pixels and long-sustain phosphor. On X11 systems, This program is also a fully-functional VT100 emulator! Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/photopile.desktop]
+Name=Photopile
+Exec=/usr/lib/xscreensaver/photopile -root
+TryExec=/usr/lib/xscreensaver/photopile
+Comment=Loads several random images, and displays them as if lying in a random pile. The pile is periodically reshuffled, with new images coming in and old ones being thrown out. Written by Jens Kilian.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/piecewise.desktop]
+Name=Piecewise
+Exec=/usr/lib/xscreensaver/piecewise -root
+TryExec=/usr/lib/xscreensaver/piecewise
+Comment=This draws a bunch of moving circles which switch from visibility to invisibility at intersection points. Written by Geoffrey Irving.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/pinion.desktop]
+Name=Pinion
+Exec=/usr/lib/xscreensaver/pinion -root
+TryExec=/usr/lib/xscreensaver/pinion
+Comment=Draws an interconnected set of gears moving across the screen. See also the "Gears" and "MoebiusGears" screen savers. http://en.wikipedia.org/wiki/Involute_gear Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/pipes.desktop]
+Name=Pipes
+Exec=/usr/lib/xscreensaver/pipes -root
+TryExec=/usr/lib/xscreensaver/pipes
+Comment=A growing plumbing system, with bolts and valves. Written by Marcelo Vianna.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/polyhedra.desktop]
+Name=Polyhedra
+Exec=/usr/lib/xscreensaver/polyhedra -root
+TryExec=/usr/lib/xscreensaver/polyhedra
+Comment=Displays different 3D solids and some information about each. A new solid is chosen every few seconds. There are 75 uniform polyhedra, plus 5 infinite sets of prisms and antiprisms; including their duals brings the total to 160. http://en.wikipedia.org/wiki/Uniform_polyhedra Written by Dr. Zvi Har'El and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/polyominoes.desktop]
+Name=Polyominoes
+Exec=/usr/lib/xscreensaver/polyominoes -root
+TryExec=/usr/lib/xscreensaver/polyominoes
+Comment=Repeatedly attempts to completely fill a rectangle with irregularly-shaped puzzle pieces. http://en.wikipedia.org/wiki/Polyomino Written by Stephen Montgomery-Smith.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/polytopes.desktop]
+Name=Polytopes
+Exec=/usr/lib/xscreensaver/polytopes -root
+TryExec=/usr/lib/xscreensaver/polytopes
+Comment=This shows one of the six regular 4D polytopes rotating in 4D. Inspired by H.S.M Coxeter's book "Regular Polytopes", 3rd Edition, Dover Publications, Inc., 1973, and Thomas Banchoff's book "Beyond the Third Dimension: Geometry, Computer Graphics, and Higher Dimensions", Scientific American Library, 1990. http://en.wikipedia.org/wiki/Hypercube http://en.wikipedia.org/wiki/Regular_polytope Written by Carsten Steger.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/pong.desktop]
+Name=Pong
+Exec=/usr/lib/xscreensaver/pong -root
+TryExec=/usr/lib/xscreensaver/pong
+Comment=This simulates the 1971 Pong home video game, as well as various artifacts from displaying it on a color TV set. In clock mode, the score keeps track of the current time. http://en.wikipedia.org/wiki/Pong Written by Jeremy English and Trevor Blackwell.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/popsquares.desktop]
+Name=Quadrados pop
+Comment=Uma grade de arte pop de cores pulsantes.
+Exec=/usr/lib/mate-screensaver/mate-screensaver/popsquares
+TryExec=/usr/lib/mate-screensaver/mate-screensaver/popsquares
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/projectiveplane.desktop]
+Name=ProjectivePlane
+Exec=/usr/lib/xscreensaver/projectiveplane -root
+TryExec=/usr/lib/xscreensaver/projectiveplane
+Comment=This animates a 4D embedding of the real projective plane. You can walk on the surface of the real projective plane or rotate it in 4D or walk on it while it rotates in 4D. Inspired by Thomas Banchoff's book "Beyond the Third Dimension: Geometry, Computer Graphics, and Higher Dimensions", Scientific American Library, 1990. http://en.wikipedia.org/wiki/Real_projective_plane http://en.wikipedia.org/wiki/Roman_surface http://en.wikipedia.org/wiki/Cross_cap http://en.wikipedia.org/wiki/Moebius_strip http://mathworld.wolfram.com/RealProjectivePlane.html http://mathworld.wolfram.com/RomanSurface.html http://mathworld.wolfram.com/Cross-Cap.html http://mathworld.wolfram.com/MoebiusStrip.html Written by Carsten Steger.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/providence.desktop]
+Name=Providence
+Exec=/usr/lib/xscreensaver/providence -root
+TryExec=/usr/lib/xscreensaver/providence
+Comment="A pyramid unfinished. In the zenith an eye in a triangle, surrounded by a glory, proper." http://en.wikipedia.org/wiki/Eye_of_Providence Written by Blair Tennessy.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/pulsar.desktop]
+Name=Pulsar
+Exec=/usr/lib/xscreensaver/pulsar -root
+TryExec=/usr/lib/xscreensaver/pulsar
+Comment=Draws some intersecting planes, making use of alpha blending, fog, textures, and mipmaps. Written by David Konerding.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/pyro.desktop]
+Name=Pyro
+Exec=/usr/lib/xscreensaver/pyro -root
+TryExec=/usr/lib/xscreensaver/pyro
+Comment=Exploding fireworks. See also the "Fireworkx", "Eruption", and "XFlame" screen savers. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/qix.desktop]
+Name=Qix
+Exec=/usr/lib/xscreensaver/qix -root
+TryExec=/usr/lib/xscreensaver/qix
+Comment=Bounces a series of line segments around the screen, and uses variations on this basic motion pattern to produce all sorts of different presentations: line segments, filled polygons, and overlapping translucent areas. http://en.wikipedia.org/wiki/Qix Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/quasicrystal.desktop]
+Name=QuasiCrystal
+Exec=/usr/lib/xscreensaver/quasicrystal -root
+TryExec=/usr/lib/xscreensaver/quasicrystal
+Comment=A quasicrystal is a structure that is ordered but aperiodic. Two-dimensional quasicrystals can be generated by adding a set of planes where x is the sine of y. Different complex aperiodic plane tilings are produced depending on the period, position, and rotation of the component planes, and whether the rotation of the planes is evenly distributed around the circle (the "symmetry" option, above) or random. See also the "RD-Bomb", "CWaves" and "Penrose" screen savers. http://en.wikipedia.org/wiki/Quasicrystal Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/queens.desktop]
+Name=Queens
+Exec=/usr/lib/xscreensaver/queens -root
+TryExec=/usr/lib/xscreensaver/queens
+Comment=Solves the N-Queens problem (where N is between 5 and 10 queens). The problem is: how may one place N queens on an NxN chessboard such that no queen can attack a sister? See also the "Endgame" screen saver. http://en.wikipedia.org/wiki/Eight_queens_puzzle Written by Blair Tennessy.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/raverhoop.desktop]
+Name=RaverHoop
+Exec=/usr/lib/xscreensaver/raverhoop -root
+TryExec=/usr/lib/xscreensaver/raverhoop
+Comment=Simulates an LED hula hoop in a dark room. Oontz oontz oontz. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/rd-bomb.desktop]
+Name=RDbomb
+Exec=/usr/lib/xscreensaver/rd-bomb -root
+TryExec=/usr/lib/xscreensaver/rd-bomb
+Comment=Draws a grid of growing square-like shapes that, once they overtake each other, react in unpredictable ways. "RD" stands for reaction-diffusion. Written by Scott Draves.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/ripples.desktop]
+Name=Ripples
+Exec=/usr/lib/xscreensaver/ripples -root
+TryExec=/usr/lib/xscreensaver/ripples
+Comment=This draws rippling interference patterns like splashing water. With the -water option, it manipulates your desktop image to look like something is dripping into it. Written by Tom Hammersley.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/rocks.desktop]
+Name=Rocks
+Exec=/usr/lib/xscreensaver/rocks -root
+TryExec=/usr/lib/xscreensaver/rocks
+Comment=This draws an animation of flight through an asteroid field, with changes in rotation and direction. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/romanboy.desktop]
+Name=RomanBoy
+Exec=/usr/lib/xscreensaver/romanboy -root
+TryExec=/usr/lib/xscreensaver/romanboy
+Comment=A 3D immersion of the real projective plane that smoothly deforms between the Roman surface and the Boy surface. You can walk on the surface of the real projective plane or rotate it in 3D. Furthermore, it is possible to smoothly deform the real projective plane between the Roman surface and the Boy surface while turning it or walking on it. Inspired by François Apéry's book "Models of the Real Projective Plane", Vieweg, 1987. https://en.wikipedia.org/wiki/Boy%27s_surface https://en.wikipedia.org/wiki/Roman_surface http://mathworld.wolfram.com/BoySurface.html http://mathworld.wolfram.com/RomanSurface.html Written by Carsten Steger.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/rorschach.desktop]
+Name=Rorschach
+Exec=/usr/lib/xscreensaver/rorschach -root
+TryExec=/usr/lib/xscreensaver/rorschach
+Comment=This generates random inkblot patterns via a reflected random walk. Any deep-seated neurotic tendencies which this program reveals are your own problem. http://en.wikipedia.org/wiki/Rorschach_inkblot_test http://en.wikipedia.org/wiki/Random_walk Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/rotzoomer.desktop]
+Name=RotZoomer
+Exec=/usr/lib/xscreensaver/rotzoomer -root
+TryExec=/usr/lib/xscreensaver/rotzoomer
+Comment=Creates a collage of rotated and scaled portions of the screen. Written by Claudio Matsuoka.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/rubik.desktop]
+Name=Rubik
+Exec=/usr/lib/xscreensaver/rubik -root
+TryExec=/usr/lib/xscreensaver/rubik
+Comment=Draws a Rubik's Cube that rotates in three dimensions and repeatedly shuffles and solves itself. See also the "GLSnake" and "Cube21" screen savers. http://en.wikipedia.org/wiki/Rubik%27s_Cube Written by Marcelo Vianna.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/rubikblocks.desktop]
+Name=RubikBlocks
+Exec=/usr/lib/xscreensaver/rubikblocks -root
+TryExec=/usr/lib/xscreensaver/rubikblocks
+Comment=Animates the Rubik's Mirror Blocks puzzle. See also the "Rubik", "Cube21", and "GLSnake" screen savers. http://en.wikipedia.org/wiki/Combination_puzzles#Irregular_Cuboids Written by Vasek Potocek.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/sballs.desktop]
+Name=SBalls
+Exec=/usr/lib/xscreensaver/sballs -root
+TryExec=/usr/lib/xscreensaver/sballs
+Comment=Draws an animation of textured balls spinning like crazy. Written by Eric Lassauge.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/shadebobs.desktop]
+Name=ShadeBobs
+Exec=/usr/lib/xscreensaver/shadebobs -root
+TryExec=/usr/lib/xscreensaver/shadebobs
+Comment=This draws smoothly-shaded oscillating oval patterns that look something like vapor trails or neon tubes. Written by Shane Smit.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/sierpinski.desktop]
+Name=Sierpinski
+Exec=/usr/lib/xscreensaver/sierpinski -root
+TryExec=/usr/lib/xscreensaver/sierpinski
+Comment=This draws the two-dimensional variant of the recursive Sierpinski triangle fractal. See also the "Sierpinski3D" screen saver. http://en.wikipedia.org/wiki/Sierpinski_triangle Written by Desmond Daignault.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/sierpinski3d.desktop]
+Name=Sierpinski3D
+Exec=/usr/lib/xscreensaver/sierpinski3d -root
+TryExec=/usr/lib/xscreensaver/sierpinski3d
+Comment=This draws the Sierpinski tetrahedron fractal, the three-dimensional variant of the recursive Sierpinski triangle. http://en.wikipedia.org/wiki/Sierpinski_triangle#Analogs_in_higher_dimension Written by Tim Robinson and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/skytentacles.desktop]
+Name=SkyTentacles
+Exec=/usr/lib/xscreensaver/skytentacles -root
+TryExec=/usr/lib/xscreensaver/skytentacles
+Comment=There is a tentacled abomination in the sky. From above you it devours. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/slidescreen.desktop]
+Name=SlideScreen
+Exec=/usr/lib/xscreensaver/slidescreen -root
+TryExec=/usr/lib/xscreensaver/slidescreen
+Comment=This takes an image, divides it into a grid, and then randomly shuffles the squares around as if it was one of those "fifteen-puzzle" games where there is a grid of squares, one of which is missing. http://en.wikipedia.org/wiki/Fifteen_puzzle Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/slip.desktop]
+Name=Slip
+Exec=/usr/lib/xscreensaver/slip -root
+TryExec=/usr/lib/xscreensaver/slip
+Comment=This throws some random bits on the screen, then sucks them through a jet engine and spews them out the other side. To avoid turning the image completely to mush, every now and then it will it interject some splashes of color into the scene, or go into a spin cycle, or stretch the image like taffy. Written by Scott Draves and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/sonar.desktop]
+Name=Sonar
+Exec=/usr/lib/xscreensaver/sonar -root
+TryExec=/usr/lib/xscreensaver/sonar
+Comment=This draws a sonar screen that pings (get it?) the hosts on your local network, and plots their distance (response time) from you. The three rings represent ping times of approximately 2.5, 70 and 2,000 milliseconds respectively. Alternately, it can run a simulation that doesn't involve hosts. (If pinging doesn't work, you may need to make the executable be setuid.) http://en.wikipedia.org/wiki/Ping#History Written by Stephen Martin and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/speedmine.desktop]
+Name=SpeedMine
+Exec=/usr/lib/xscreensaver/speedmine -root
+TryExec=/usr/lib/xscreensaver/speedmine
+Comment=Simulates speeding down a rocky mineshaft, or a funky dancing worm. Written by Conrad Parker.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/spheremonics.desktop]
+Name=Spheremonics
+Exec=/usr/lib/xscreensaver/spheremonics -root
+TryExec=/usr/lib/xscreensaver/spheremonics
+Comment=These closed objects are commonly called spherical harmonics, although they are only remotely related to the mathematical definition found in the solution to certain wave functions, most notably the eigenfunctions of angular momentum operators. http://en.wikipedia.org/wiki/Spherical_harmonics#Visualization_of_the_spherical_harmonics Written by Paul Bourke and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/splitflap.desktop]
+Name=SplitFlap
+Exec=/usr/lib/xscreensaver/splitflap -root
+TryExec=/usr/lib/xscreensaver/splitflap
+Comment=Simulates a split-flap display, an old style of electromechanical sign as seen in airports and train stations, and commonly used in alarm clocks in the 1960s and 1970s. https://en.wikipedia.org/wiki/Split-flap_display https://en.wikipedia.org/wiki/Flip_clock Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/splodesic.desktop]
+Name=Splodesic
+Exec=/usr/lib/xscreensaver/splodesic -root
+TryExec=/usr/lib/xscreensaver/splodesic
+Comment=A geodesic sphere experiences a series of eruptions. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/spotlight.desktop]
+Name=Spotlight
+Exec=/usr/lib/xscreensaver/spotlight -root
+TryExec=/usr/lib/xscreensaver/spotlight
+Comment=Draws a spotlight scanning across a black screen, illuminating the underlying desktop (or a picture) when it passes. Written by Rick Schultz and Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/sproingies.desktop]
+Name=Sproingies
+Exec=/usr/lib/xscreensaver/sproingies -root
+TryExec=/usr/lib/xscreensaver/sproingies
+Comment=Slinky-like creatures walk down an infinite staircase and occasionally explode! http://en.wikipedia.org/wiki/Slinky http://en.wikipedia.org/wiki/Q%2Abert http://en.wikipedia.org/wiki/Marble_Madness Written by Ed Mackey.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/squiral.desktop]
+Name=Squiral
+Exec=/usr/lib/xscreensaver/squiral -root
+TryExec=/usr/lib/xscreensaver/squiral
+Comment=Draws a set of interacting, square-spiral-producing automata. The spirals grow outward until they hit something, then they go around it. Written by Jeff Epler.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/stairs.desktop]
+Name=Stairs
+Exec=/usr/lib/xscreensaver/stairs -root
+TryExec=/usr/lib/xscreensaver/stairs
+Comment=Escher's infinite staircase. http://en.wikipedia.org/wiki/Maurits_Cornelis_Escher Written by Marcelo Vianna.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/starfish.desktop]
+Name=Starfish
+Exec=/usr/lib/xscreensaver/starfish -root
+TryExec=/usr/lib/xscreensaver/starfish
+Comment=This generates a sequence of undulating, throbbing, star-like patterns which pulsate, rotate, and turn inside out. Another display mode uses these shapes to lay down a field of colors, which are then cycled. The motion is very organic. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/starwars.desktop]
+Name=StarWars
+Exec=/usr/lib/xscreensaver/starwars -root
+TryExec=/usr/lib/xscreensaver/starwars
+Comment=Draws a stream of text slowly scrolling into the distance at an angle, over a star field, like at the beginning of the movie of the same name. http://en.wikipedia.org/wiki/Star_Wars_opening_crawl Written by Jamie Zawinski and Claudio Matauoka.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/stonerview.desktop]
+Name=StonerView
+Exec=/usr/lib/xscreensaver/stonerview -root
+TryExec=/usr/lib/xscreensaver/stonerview
+Comment=Chains of colorful squares dance around each other in complex spiral patterns. Inspired by David Tristram's `electropaint' screen saver, originally written for SGI computers in the late 1980s or early 1990s. Written by Andrew Plotkin.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/strange.desktop]
+Name=Strange
+Exec=/usr/lib/xscreensaver/strange -root
+TryExec=/usr/lib/xscreensaver/strange
+Comment=This draws iterations to strange attractors: it's a colorful, unpredictably-animating swarm of dots that swoops and twists around. http://en.wikipedia.org/wiki/Attractor#Strange_attractor Written by Massimino Pascal.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/substrate.desktop]
+Name=Substrate
+Exec=/usr/lib/xscreensaver/substrate -root
+TryExec=/usr/lib/xscreensaver/substrate
+Comment=Crystalline lines grow on a computational substrate. A simple perpendicular growth rule creates intricate city-like structures. Written by J. Tarbell and Mike Kershaw.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/superquadrics.desktop]
+Name=Superquadrics
+Exec=/usr/lib/xscreensaver/superquadrics -root
+TryExec=/usr/lib/xscreensaver/superquadrics
+Comment=Morphing 3D shapes. Written by Ed Mackey.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/surfaces.desktop]
+Name=Surfaces
+Exec=/usr/lib/xscreensaver/surfaces -root
+TryExec=/usr/lib/xscreensaver/surfaces
+Comment=This draws a visualization of several interesting parametric surfaces. http://mathworld.wolfram.com/DinisSurface.html http://en.wikipedia.org/wiki/Enneper_surface http://mathworld.wolfram.com/EnnepersMinimalSurface.html http://mathworld.wolfram.com/KuenSurface.html http://en.wikipedia.org/wiki/Moebius_strip http://mathworld.wolfram.com/Seashell.html http://mathworld.wolfram.com/SwallowtailCatastrophe.html http://mathworld.wolfram.com/BohemianDome.html http://en.wikipedia.org/wiki/Whitney_umbrella http://mathworld.wolfram.com/PlueckersConoid.html http://mathworld.wolfram.com/HennebergsMinimalSurface.html http://mathworld.wolfram.com/CatalansSurface.html http://mathworld.wolfram.com/CorkscrewSurface.html Written by Andrey Mirtchovski and Carsten Steger.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/swirl.desktop]
+Name=Swirl
+Exec=/usr/lib/xscreensaver/swirl -root
+TryExec=/usr/lib/xscreensaver/swirl
+Comment=Flowing, swirly patterns. Written by M. Dobie and R. Taylor.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/tangram.desktop]
+Name=Tangram
+Exec=/usr/lib/xscreensaver/tangram -root
+TryExec=/usr/lib/xscreensaver/tangram
+Comment=Solves tangram puzzles. http://en.wikipedia.org/wiki/Tangram Written by Jeremy English.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/tessellimage.desktop]
+Name=Tessellimage
+Exec=/usr/lib/xscreensaver/tessellimage -root
+TryExec=/usr/lib/xscreensaver/tessellimage
+Comment=Converts an image to triangles using Delaunay tessellation, and animates the result at various depths. More triangles are allocated to visually complex parts of the image. This is accomplished by first computing the first derivative of the image: the distance between each pixel and its neighbors (which is essentially edge detection or embossing). Then the Delaunay control points are chosen by selecting those pixels whose distance value is above a certain threshold: those are the pixels that have the largest change in color/brightness. http://en.wikipedia.org/wiki/Delaunay_triangulation Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/thornbird.desktop]
+Name=Thornbird
+Exec=/usr/lib/xscreensaver/thornbird -root
+TryExec=/usr/lib/xscreensaver/thornbird
+Comment=Displays a view of the "Bird in a Thornbush" fractal. Written by Tim Auckland.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/timetunnel.desktop]
+Name=TimeTunnel
+Exec=/usr/lib/xscreensaver/timetunnel -root
+TryExec=/usr/lib/xscreensaver/timetunnel
+Comment=Draws an animation similar to the opening and closing effects on the Dr. Who TV show. Written by Sean P. Brennan.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/topblock.desktop]
+Name=TopBlock
+Exec=/usr/lib/xscreensaver/topblock -root
+TryExec=/usr/lib/xscreensaver/topblock
+Comment=Creates a 3D world with dropping blocks that build up and up. Written by rednuht.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/triangle.desktop]
+Name=Triangle
+Exec=/usr/lib/xscreensaver/triangle -root
+TryExec=/usr/lib/xscreensaver/triangle
+Comment=Generates random mountain ranges using iterative subdivision of triangles. Written by Tobias Gloth.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/tronbit.desktop]
+Name=TronBit
+Exec=/usr/lib/xscreensaver/tronbit -root
+TryExec=/usr/lib/xscreensaver/tronbit
+Comment=Draws an animation of the character "Bit" from the film, "Tron". The "yes" state is a tetrahedron; the "no" state is the second stellation of an icosahedron; and the idle state oscillates between a small triambic icosahedron and the compound of an icosahedron and a dodecahedron. http://en.wikipedia.org/wiki/List_of_Tron_characters#Bit http://en.wikipedia.org/wiki/Uniform_polyhedra http://en.wikipedia.org/wiki/Stellation Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/truchet.desktop]
+Name=Truchet
+Exec=/usr/lib/xscreensaver/truchet -root
+TryExec=/usr/lib/xscreensaver/truchet
+Comment=This draws line- and arc-based truchet patterns that tile the screen. http://en.wikipedia.org/wiki/Tessellation Written by Adrian Likins.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/twang.desktop]
+Name=Twang
+Exec=/usr/lib/xscreensaver/twang -root
+TryExec=/usr/lib/xscreensaver/twang
+Comment=Divides the screen into a grid, and plucks them. Written by Dan Bornstein.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/unicrud.desktop]
+Name=Unicrud
+Exec=/usr/lib/xscreensaver/unicrud -root
+TryExec=/usr/lib/xscreensaver/unicrud
+Comment=Chooses a random Unicode character and displays it full screen, along with some information about it. https://en.wikipedia.org/wiki/Unicode Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/unknownpleasures.desktop]
+Name=UnknownPleasures
+Exec=/usr/lib/xscreensaver/unknownpleasures -root
+TryExec=/usr/lib/xscreensaver/unknownpleasures
+Comment=PSR B1919+21 (AKA CP 1919) was the first pulsar ever discovered: a spinning neutron star emitting a periodic lighthouse-like beacon. An illustration of the signal received from it was published in Scientific American in 1971, and later in The Cambridge Encyclopedia of Astronomy in 1977, where it was seen by Stephen Morris, the drummer of Joy Division, and was consequently appropriated by Peter Saville for the cover of the band's album "Unknown Pleasures". http://en.wikipedia.org/wiki/Pulsar http://en.wikipedia.org/wiki/PSR_B1919%2B21 http://en.wikipedia.org/wiki/Unknown_Pleasures http://en.wikipedia.org/wiki/Peter_Saville_%28graphic_designer%29 http://en.wikipedia.org/wiki/Joy_Division Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/vermiculate.desktop]
+Name=Vermiculate
+Exec=/usr/lib/xscreensaver/vermiculate -root
+TryExec=/usr/lib/xscreensaver/vermiculate
+Comment=Draws squiggly worm-like paths. Written by Tyler Pierce.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/vidwhacker.desktop]
+Name=VidWhacker
+Exec=/usr/lib/xscreensaver/vidwhacker -root
+TryExec=/usr/lib/xscreensaver/vidwhacker
+Comment=This is a shell script that grabs a frame of video from the system's video input, and then uses some PBM filters (chosen at random) to manipulate and recombine the video frame in various ways (edge detection, subtracting the image from a rotated version of itself, etc.) Then it displays that image for a few seconds, and does it again. This works really well if you just feed broadcast television into it. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/voronoi.desktop]
+Name=Voronoi
+Exec=/usr/lib/xscreensaver/voronoi -root
+TryExec=/usr/lib/xscreensaver/voronoi
+Comment=Draws a randomly-colored Voronoi tessellation, and periodically zooms in and adds new points. The existing points also wander around. There are a set of control points on the plane, each at the center of a colored cell. Every pixel within that cell is closer to that cell's control point than to any other control point. That is what determines the cell's shapes. http://en.wikipedia.org/wiki/Voronoi_diagram Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/wander.desktop]
+Name=Wander
+Exec=/usr/lib/xscreensaver/wander -root
+TryExec=/usr/lib/xscreensaver/wander
+Comment=Draws a colorful random-walk, in various forms. http://en.wikipedia.org/wiki/Random_walk Written by Rick Campbell.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/whirlwindwarp.desktop]
+Name=WhirlWindWarp
+Exec=/usr/lib/xscreensaver/whirlwindwarp -root
+TryExec=/usr/lib/xscreensaver/whirlwindwarp
+Comment=Floating stars are acted upon by a mixture of simple 2D forcefields. The strength of each forcefield changes continuously, and it is also switched on and off at random. Written by Paul 'Joey' Clark.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/winduprobot.desktop]
+Name=WindupRobot
+Exec=/usr/lib/xscreensaver/winduprobot -root
+TryExec=/usr/lib/xscreensaver/winduprobot
+Comment=A swarm of wind-up toy robots wander around the table-top, bumping into each other. Each robot contains a mechanically accurate gear system inside, which you can see when the robot's shell occasionally fades to transparency. Also, sometimes a cartoony word bubble pops up above a robot, full of random text. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/wormhole.desktop]
+Name=Wormhole
+Exec=/usr/lib/xscreensaver/wormhole -root
+TryExec=/usr/lib/xscreensaver/wormhole
+Comment=Flying through a colored wormhole in space. Written by Jon Rafkind.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/xanalogtv.desktop]
+Name=XAnalogTV
+Exec=/usr/lib/xscreensaver/xanalogtv -root
+TryExec=/usr/lib/xscreensaver/xanalogtv
+Comment=XAnalogTV shows a detailed simulation of an old TV set showing various test patterns, with various picture artifacts like snow, bloom, distortion, ghosting, and hash noise. It also simulates the TV warming up. It will cycle through 12 channels, some with images you give it, and some with color bars or nothing but static. Written by Trevor Blackwell.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/xflame.desktop]
+Name=XFlame
+Exec=/usr/lib/xscreensaver/xflame -root
+TryExec=/usr/lib/xscreensaver/xflame
+Comment=Draws a simulation of pulsing fire. It can also take an arbitrary image and set it on fire too. Written by Carsten Haitzler and many others.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/xjack.desktop]
+Name=XJack
+Exec=/usr/lib/xscreensaver/xjack -root
+TryExec=/usr/lib/xscreensaver/xjack
+Comment=This behaves schizophrenically and makes a lot of typos. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/xlyap.desktop]
+Name=XLyap
+Exec=/usr/lib/xscreensaver/xlyap -root
+TryExec=/usr/lib/xscreensaver/xlyap
+Comment=This generates pretty fractal pictures via the Lyapunov exponent. http://en.wikipedia.org/wiki/Lyapunov_exponent Written by Ron Record.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/xmatrix.desktop]
+Name=XMatrix
+Exec=/usr/lib/xscreensaver/xmatrix -root
+TryExec=/usr/lib/xscreensaver/xmatrix
+Comment=Draws dropping characters similar to what is seen on the computer monitors in "The Matrix". See also "GLMatrix" for a 3D rendering of the similar effect that appeared in the movie's title sequence. Written by Jamie Zawinski.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/xrayswarm.desktop]
+Name=XRaySwarm
+Exec=/usr/lib/xscreensaver/xrayswarm -root
+TryExec=/usr/lib/xscreensaver/xrayswarm
+Comment=Draws a few swarms of critters flying around the screen, with faded color trails behind them. Written by Chris Leger.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/xspirograph.desktop]
+Name=XSpirograph
+Exec=/usr/lib/xscreensaver/xspirograph -root
+TryExec=/usr/lib/xscreensaver/xspirograph
+Comment=Simulates that pen-in-nested-plastic-gears toy from your childhood. http://en.wikipedia.org/wiki/Spirograph Written by Rohit Singh.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/screensavers/zoom.desktop]
+Name=Zoom
+Exec=/usr/lib/xscreensaver/zoom -root
+TryExec=/usr/lib/xscreensaver/zoom
+Comment=Zooms in on a part of the screen and then moves around. With the "Lenses" option, the result is like looking through many overlapping lenses rather than just a simple zoom. Written by James Macnicol.
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=MATE;
+
+[/var/lib/flatpak/exports/share/applications/com.visualstudio.code.desktop]
+Name=Visual Studio Code (Flatpak)
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=code --file-forwarding com.visualstudio.code --reuse-window @@ %F @@
+Icon=com.visualstudio.code
+Type=Application
+StartupNotify=true
+StartupWMClass=Code
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=vscode;
+X-Flatpak-Tags=proprietary;
+X-Flatpak=com.visualstudio.code
+
+[/usr/share/applications/apturl.desktop]
+Name=AptURL
+Exec=apturl %u
+Type=Application
+NoDisplay=true
+Categories=System;
+MimeType=x-scheme-handler/apt;
+
+[/usr/share/applications/blueberry.desktop]
+Name=Bluetooth
+Comment=Definir configurações de bluetooth
+Icon=bluetooth
+Exec=blueberry
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Settings;HardwareSettings;X-XFCE-SettingsDialog;X-XFCE-HardwareSettings;
+StartupNotify=true
+NotShowIn=GNOME;KDE;Unity;
+
+[/usr/share/applications/bluetooth-sendto.desktop]
+Name=Bluetooth Transfer
+Comment=Send files via Bluetooth
+Icon=bluetooth
+Exec=bluetooth-sendto
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Utility;FileTools;
+StartupNotify=true
+NoDisplay=true
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-bluetooth
+X-GNOME-Bugzilla-Component=sendto
+X-GNOME-Bugzilla-Version=3.28.0
+X-Ubuntu-Gettext-Domain=gnome-bluetooth2
+
+[/usr/share/applications/caja-autorun-software.desktop]
+Name=Pergunta de execução automática
+TryExec=caja-autorun-software
+Exec=caja-autorun-software %u
+Icon=application-x-executable
+NoDisplay=true
+Terminal=false
+StartupNotify=true
+Type=Application
+MimeType=x-content/software;
+
+[/usr/share/applications/caja-browser.desktop]
+TryExec=caja
+Exec=caja --no-desktop --browser %U
+Icon=system-file-manager
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=GTK;System;Utility;Core;
+Keywords=files;browser;manager;MATE;
+OnlyShowIn=MATE;
+Name=Navegador de Arquivos
+Comment=Navegue no sistema de arquivos com o gerenciador de arquivos
+
+[/usr/share/applications/caja-computer.desktop]
+Name=Computador
+Comment=Navegar em todos os discos e pastas, locais e remotos, acessíveis a partir deste computador
+TryExec=caja
+Exec=caja --no-desktop computer:
+Icon=computer
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=GTK;System;Core;
+Keywords=browse;disks;folders;local;remote;computer;MATE;
+OnlyShowIn=MATE;
+NoDisplay=true
+
+[/usr/share/applications/caja-file-management-properties.desktop]
+Name=Gerenciamento de arquivos
+Comment=Altere o comportamento e aparência das janelas do gerenciador de arquivos
+Exec=caja-file-management-properties
+Icon=system-file-manager
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;X-MATE-PersonalSettings;
+Keywords=file;manager;change;properties;behaviour;appearance;windows;MATE;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/caja-folder-handler.desktop]
+Name=Caja
+GenericName=Abrir pasta
+TryExec=caja
+Exec=caja --no-desktop %U
+NoDisplay=true
+Terminal=false
+Icon=folder-open
+StartupNotify=false
+Type=Application
+MimeType=inode/directory;application/x-mate-saved-search;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/caja-home.desktop]
+Name=Pasta pessoal
+Comment=Abrir sua pasta pessoal
+TryExec=caja
+Exec=caja --no-desktop
+Icon=user-home
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=GTK;System;Core;
+Keywords=home;personal;folder;open;MATE;
+OnlyShowIn=MATE;
+NoDisplay=true
+
+[/usr/share/applications/caja.desktop]
+Name=Caja
+GenericName=Gerenciador de Arquivos
+Exec=caja
+Icon=system-file-manager
+Terminal=false
+Type=Application
+StartupNotify=false
+NoDisplay=true
+OnlyShowIn=MATE;
+X-MATE-Autostart-Phase=Desktop
+X-MATE-Autostart-Notify=true
+X-MATE-AutoRestart=true
+X-MATE-Provides=filemanager
+
+[/usr/share/applications/ccsm.desktop]
+Name=CompizConfig Settings Manager
+Comment=Configure Compiz with CompizConfig
+Icon=ccsm
+Exec=ccsm
+Terminal=false
+Type=Application
+Categories=Settings;DesktopSettings;
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=compiz
+
+[/usr/share/applications/code-url-handler.desktop]
+Name=Visual Studio Code - URL Handler
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=/usr/share/code/code --no-sandbox --open-url %U
+Icon=com.visualstudio.code
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/vscode;
+Keywords=vscode;
+
+[/usr/share/applications/code.desktop]
+Name=Visual Studio Code
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=/usr/share/code/code --no-sandbox --unity-launch %F
+Icon=com.visualstudio.code
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=vscode;
+
+[/usr/share/applications/compiz.desktop]
+Type=Application
+Name=Compiz
+Exec=compiz
+NoDisplay=true
+X-GNOME-WMSettingsModule=compiz
+X-GNOME-Autostart-Phase=WindowManager
+X-GNOME-Provides=windowmanager
+X-GNOME-WMName=compiz
+X-GnomeWMSettingsLibrary=compiz
+X-Ubuntu-Gettext-Domain=compiz
+
+[/usr/share/applications/compton.desktop]
+Version=1.0
+Type=Application
+Name=compton
+GenericName=X compositor
+Comment=A X compositor
+Categories=Utility;
+TryExec=compton
+Exec=compton
+Icon=compton
+Keywords=x;x11;compositor;
+NoDisplay=true
+
+[/usr/share/applications/docky.desktop]
+Name=Docky
+Type=Application
+Exec=docky
+Terminal=false
+Icon=docky
+Comment=O melhor dock que dinheiro algum pode comprar.
+NoDisplay=false
+Categories=Utility;
+
+[/usr/share/applications/engrampa.desktop]
+TryExec=engrampa
+Exec=engrampa %U
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=engrampa
+Categories=GTK;Utility;Archiving;Compression;
+MimeType=application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-ar;application/x-arj;application/x-brotli;application/x-brotli-compressed-tar;application/x-bzip;application/x-bzip-compressed-tar;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/x-cbr;application/x-cbz;application/x-cd-image;application/x-compress;application/x-compressed-tar;application/x-cpio;application/x-deb;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/x-gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lhz;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lzop-compressed-tar;application/x-ms-wim;application/x-rar;application/x-rar-compressed;application/x-rpm;application/x-rzip;application/x-tar;application/x-tarz;application/x-stuffit;application/x-war;application/x-xz;application/x-xz-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zoo;application/zip;application/x-archive;application/vnd.ms-cab-compressed;
+Keywords=MATE;archive;manager;compression;
+X-MATE-DocPath=engrampa/engrampa.xml
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=engrampa
+X-MATE-Bugzilla-Component=general
+X-MATE-Bugzilla-Version=1.22.2
+Name=Gerenciador de pacotes
+Comment=Crie e modifique um pacote
+
+[/usr/share/applications/firefox.desktop]
+Version=1.0
+Name=Navegador Web Firefox
+Comment=Navegue na Internet
+GenericName=Navegador Web
+Keywords=Internet;WWW;Browser;Web;Explorador;Navegador
+Exec=firefox %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=firefox
+Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
+StartupNotify=true
+Actions=new-window;new-private-window;
+
+[/usr/share/applications/gcr-prompter.desktop]
+Name=Access Prompt
+Comment=Unlock access to passwords and other secrets
+Icon=security-medium
+Exec=/usr/lib/gcr/gcr-prompter
+Terminal=false
+Type=Application
+NoDisplay=true
+X-Ubuntu-Gettext-Domain=gcr
+
+[/usr/share/applications/gcr-viewer.desktop]
+Name=View file
+MimeType=application/pkcs12;application/pkcs12+pem;application/pkcs7-mime;application/pkcs7-mime+pem;application/pkcs8;application/pkcs8+pem;application/pkix-cert;application/pkix-cert+pem;application/pkix-crl;application/pkix-crl+pem;application/x-pem-file;application/x-pem-key;application/x-pkcs12;application/x-pkcs7-certificates;application/x-x509-ca-cert;application/x-x509-user-cert;application/pkcs10;application/pkcs10+pem;application/x-spkac;application/x-spkac+base64;
+Exec=/usr/bin/gcr-viewer
+Type=Application
+Terminal=false
+NoDisplay=true
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-keyring
+X-GNOME-Bugzilla-Component=gcrX-Ubuntu-Gettext-Domain=gcr
+
+[/usr/share/applications/gdebi.desktop]
+Name=Instalador de pacotes GDebi
+GenericName=Instalador de Pacotes
+Comment=Instalar e visualizar pacotes de programa
+Exec=gdebi-gtk %f
+Icon=package
+Terminal=false
+Type=Application
+Categories=System;
+MimeType=application/vnd.debian.binary-package;
+NoDisplay=true
+X-Ubuntu-Gettext-Domain=gdebi
+StartupNotify=true
+Keywords=package;apt;dpkg;install
+
+[/usr/share/applications/geoclue-where-am-i.desktop]
+Name=Where am I?
+GenericName=Demo geolocation application
+Comment=Find your current location
+Keywords=geolocation;
+Exec=/usr/lib/geoclue-2.0/demos/where-am-i
+Icon=mark-location-symbolic
+NoDisplay=true
+Terminal=true
+Type=Application
+X-Geoclue-Reason=Allows your current location to be shown on terminal.
+
+[/usr/share/applications/gimp.desktop]
+Version=1.0
+Type=Application
+Name=GNU Image Manipulation Program
+GenericName=Image Editor
+Comment=Create images and edit photographs
+Exec=gimp-2.8 %U
+TryExec=gimp-2.8
+Icon=gimp
+Terminal=false
+Categories=Graphics;2DGraphics;RasterGraphics;GTK;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=GIMP
+X-GNOME-Bugzilla-Component=General
+X-GNOME-Bugzilla-Version=2.8.22
+X-GNOME-Bugzilla-OtherBinaries=gimp-2.8
+StartupNotify=true
+MimeType=image/bmp;image/g3fax;image/gif;image/x-fits;image/x-pcx;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-psd;image/x-sgi;image/x-tga;image/x-xbitmap;image/x-xwindowdump;image/x-xcf;image/x-compressed-xcf;image/x-gimp-gbr;image/x-gimp-pat;image/x-gimp-gih;image/tiff;image/jpeg;image/x-psp;application/postscript;image/png;image/x-icon;image/x-xpixmap;image/svg+xml;application/pdf;image/x-wmf;image/x-xcursor;
+X-Ubuntu-Gettext-Domain=gimp20
+
+[/usr/share/applications/gkbd-keyboard-display.desktop]
+Name=Keyboard Layout
+Comment=Preview keyboard layouts
+Icon=preferences-desktop-keyboard
+Exec=gkbd-keyboard-display
+Terminal=false
+Type=Application
+StartupNotify=true
+NoDisplay=true
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=libgnomekbd
+X-GNOME-Bugzilla-Component=Drawing
+X-GNOME-Bugzilla-Version=3.26.0
+Categories=GNOME;GTK;Core;System;
+OnlyShowIn=GNOME;
+X-Ubuntu-Gettext-Domain=libgnomekbd
+
+[/usr/share/applications/gnome-disk-image-mounter.desktop]
+Name=Disk Image Mounter
+Comment=Mount Disk Images
+Exec=gnome-disk-image-mounter %U
+Icon=drive-removable-media
+MimeType=application/x-cd-image;application/x-raw-disk-image;
+Terminal=false
+StartupNotify=false
+Type=Application
+NoDisplay=true
+X-Ubuntu-Gettext-Domain=gnome-disk-utility
+
+[/usr/share/applications/gnome-disk-image-writer.desktop]
+Name=Disk Image Writer
+Comment=Write Disk Images to Devices
+Exec=gnome-disks --restore-disk-image %U
+Icon=drive-removable-media
+MimeType=application/x-cd-image;application/x-raw-disk-image;application/x-raw-disk-image-xz-compressed;
+Terminal=false
+StartupNotify=false
+Type=Application
+NoDisplay=true
+X-Ubuntu-Gettext-Domain=gnome-disk-utility
+
+[/usr/share/applications/gucharmap.desktop]
+Name=Character Map
+Comment=Insert special characters into documents
+Keywords=font;unicode;
+Exec=gucharmap
+Icon=accessories-character-map
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gucharmap
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-Version=10.0.4
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=gucharmap
+
+[/usr/share/applications/gufw.desktop]
+Version=1.0
+Name=Firewall Configuration
+Comment=An easy way to configure your firewall
+Categories=GNOME;GTK;Settings;Security;X-GNOME-Settings-Panel;X-GNOME-SystemSettings;X-Unity-Settings-Panel;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+Exec=gufw
+Icon=gufw
+Terminal=false
+Type=Application
+X-GNOME-Settings-Panel=gufw
+X-Unity-Settings-Panel=gufw
+X-Ubuntu-Gettext-Domain=gufw
+
+[/usr/share/applications/hplj1020.desktop]
+Name=Reactivate HP LaserJet 1018/1020 after reloading paper
+Comment=Click the button in this program when your printer ran out of paper and you have refilled the paper
+# zExec=usb_printerid /dev/usb/lp0
+Exec=/usr/share/foo2zjs/hplj10xx_gui.tcl
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/hplj1020_icon.png
+StartupNotify=true
+Categories=System;
+X-Desktop-File-Install-Version=0.10
+NoDisplay=true
+
+[/usr/share/applications/im-config.desktop]
+Name=Input Method
+Comment=Set Keyboard Input Method
+Type=Application
+Keywords=keyboard;input
+Exec=im-config
+Terminal=false
+Icon=input-keyboard
+Categories=Settings
+OnlyShowIn=KDE;GNOME;
+NoDisplay=true
+
+[/usr/share/applications/io.github.Hexchat.desktop]
+Name=HexChat
+GenericName=Cliente IRC
+Comment=Converse com outras pessoas na rede
+Keywords=IM;Chat;
+Exec=hexchat --existing %U
+Icon=hexchat
+Terminal=false
+Type=Application
+Categories=GTK;Network;IRCClient;
+StartupNotify=true
+StartupWMClass=Hexchat
+X-GNOME-UsesNotifications=true
+MimeType=x-scheme-handler/irc;x-scheme-handler/ircs;
+Actions=SafeMode;
+
+[/usr/share/applications/libreoffice-base.desktop]
+Version=1.0
+Terminal=false
+Icon=libreoffice-base
+Type=Application
+Categories=Office;Database;
+Exec=libreoffice --base %U
+MimeType=application/vnd.oasis.opendocument.database;application/vnd.sun.xml.base;
+Name=LibreOffice Base
+GenericName=Desenvolvimento de banco de dados
+Comment=Gerencie bancos de dados, crie consultas e relatórios para rastrear e gerenciar suas informações por meio do Base.
+StartupNotify=true
+X-GIO-NoFuse=true
+Keywords=Data;SQL;
+InitialPreference=5
+StartupWMClass=libreoffice-base
+X-KDE-Protocols=file,http,ftp,webdav
+Actions=NewDocument;
+
+[/usr/share/applications/libreoffice-calc.desktop]
+Version=1.0
+Terminal=false
+Icon=libreoffice-calc
+Type=Application
+Categories=Office;Spreadsheet;
+Exec=libreoffice --calc %U
+MimeType=application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.spreadsheet-template;application/vnd.sun.xml.calc;application/vnd.sun.xml.calc.template;application/msexcel;application/vnd.ms-excel;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.ms-excel.sheet.macroEnabled.12;application/vnd.openxmlformats-officedocument.spreadsheetml.template;application/vnd.ms-excel.template.macroEnabled.12;application/vnd.ms-excel.sheet.binary.macroEnabled.12;text/csv;application/x-dbf;text/spreadsheet;application/csv;application/excel;application/tab-separated-values;application/vnd.lotus-1-2-3;application/vnd.oasis.opendocument.chart;application/vnd.oasis.opendocument.chart-template;application/x-dbase;application/x-dos_ms_excel;application/x-excel;application/x-msexcel;application/x-ms-excel;application/x-quattropro;application/x-123;text/comma-separated-values;text/tab-separated-values;text/x-comma-separated-values;text/x-csv;application/vnd.oasis.opendocument.spreadsheet-flat-xml;application/vnd.ms-works;application/clarisworks;application/x-iwork-numbers-sffnumbers;application/x-starcalc;
+Name=LibreOffice Calc
+GenericName=Planilha
+Comment=Efetue cálculos, analise informações e gerencie listas em planilhas utilizando o Calc.
+StartupNotify=true
+X-GIO-NoFuse=true
+Keywords=Accounting;Stats;OpenDocument Spreadsheet;Chart;Microsoft Excel;Microsoft Works;OpenOffice Calc;ods;xls;xlsx;
+InitialPreference=5
+StartupWMClass=libreoffice-calc
+X-KDE-Protocols=file,http,ftp,webdav
+Actions=NewDocument;
+
+[/usr/share/applications/libreoffice-draw.desktop]
+Version=1.0
+Terminal=false
+Icon=libreoffice-draw
+Type=Application
+Categories=Office;
+Exec=libreoffice --draw %U
+MimeType=application/vnd.oasis.opendocument.graphics;application/vnd.oasis.opendocument.graphics-flat-xml;application/vnd.oasis.opendocument.graphics-template;application/vnd.sun.xml.draw;application/vnd.sun.xml.draw.template;application/vnd.visio;application/x-wpg;application/vnd.corel-draw;application/vnd.ms-publisher;image/x-freehand;application/clarisworks;application/x-pagemaker;application/pdf;application/x-stardraw;
+Name=LibreOffice Draw
+GenericName=Programa de desenho
+Comment=Crie e edite desenhos, fluxogramas e logotipos por meio do Draw.
+StartupNotify=true
+X-GIO-NoFuse=true
+Keywords=Vector;Schema;Diagram;Layout;OpenDocument Graphics;Microsoft Publisher;Microsoft Visio;Corel Draw;cdr;odg;svg;pdf;vsd;
+InitialPreference=5
+StartupWMClass=libreoffice-draw
+X-KDE-Protocols=file,http,ftp,webdav
+Actions=NewDocument;
+
+[/usr/share/applications/libreoffice-impress.desktop]
+Version=1.0
+Terminal=false
+Icon=libreoffice-impress
+Type=Application
+Categories=Office;Presentation;
+Exec=libreoffice --impress %U
+MimeType=application/vnd.oasis.opendocument.presentation;application/vnd.oasis.opendocument.presentation-template;application/vnd.sun.xml.impress;application/vnd.sun.xml.impress.template;application/mspowerpoint;application/vnd.ms-powerpoint;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.ms-powerpoint.presentation.macroEnabled.12;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.ms-powerpoint.template.macroEnabled.12;application/vnd.openxmlformats-officedocument.presentationml.slide;application/vnd.openxmlformats-officedocument.presentationml.slideshow;application/vnd.ms-powerpoint.slideshow.macroEnabled.12;application/vnd.oasis.opendocument.presentation-flat-xml;application/x-iwork-keynote-sffkey;
+Name=LibreOffice Impress
+GenericName=Apresentação
+Comment=Crie e edite apresentações para slides, reuniões e páginas da Web por meio do Impress.
+StartupNotify=true
+X-GIO-NoFuse=true
+Keywords=Slideshow;Slides;OpenDocument Presentation;Microsoft PowerPoint;Microsoft Works;OpenOffice Impress;odp;ppt;pptx;
+InitialPreference=5
+StartupWMClass=libreoffice-impress
+X-KDE-Protocols=file,http,ftp,webdav
+Actions=NewDocument;
+
+[/usr/share/applications/libreoffice-math.desktop]
+Version=1.0
+Terminal=false
+NoDisplay=false
+Icon=libreoffice-math
+Type=Application
+Categories=Office;Spreadsheet;
+Exec=libreoffice --math %U
+MimeType=application/vnd.oasis.opendocument.formula;application/vnd.sun.xml.math;application/vnd.oasis.opendocument.formula-template;text/mathml;application/mathml+xml;
+Name=LibreOffice Math
+GenericName=Editor de fórmulas
+Comment=Crie e edite fórmulas científicas e equações por meio do Math.
+StartupNotify=true
+X-GIO-NoFuse=true
+Keywords=Equation;OpenDocument Formula;Formula;odf;MathML;
+InitialPreference=5
+StartupWMClass=libreoffice-math
+X-KDE-Protocols=file,http,ftp,webdav
+NotShowIn=GNOME;
+Actions=NewDocument;
+
+[/usr/share/applications/libreoffice-startcenter.desktop]
+Version=1.0
+Terminal=false
+NoDisplay=false
+Icon=libreoffice-startcenter
+Type=Application
+Categories=Office;X-Red-Hat-Base;X-SuSE-Core-Office;X-MandrivaLinux-Office-Other;
+Exec=libreoffice %U
+MimeType=application/vnd.openofficeorg.extension;x-scheme-handler/vnd.libreoffice.cmis;
+Name=LibreOffice
+GenericName=Office
+Comment=A suite de produtividade de escritório compatível com o formato aberto e padronizado ODF. Com o apoio da The Document Foundation.
+StartupNotify=true
+X-GIO-NoFuse=true
+StartupWMClass=libreoffice-startcenter
+X-KDE-Protocols=file,http,ftp,webdav
+X-AppStream-Ignore=True
+NotShowIn=GNOME;
+Actions=Writer;Calc;Impress;Draw;Base;Math;
+
+[/usr/share/applications/libreoffice-writer.desktop]
+Version=1.0
+Terminal=false
+Icon=libreoffice-writer
+Type=Application
+Categories=Office;WordProcessor;
+Exec=libreoffice --writer %U
+MimeType=application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-template;application/vnd.oasis.opendocument.text-web;application/vnd.oasis.opendocument.text-master;application/vnd.oasis.opendocument.text-master-template;application/vnd.sun.xml.writer;application/vnd.sun.xml.writer.template;application/vnd.sun.xml.writer.global;application/msword;application/vnd.ms-word;application/x-doc;application/x-hwp;application/rtf;text/rtf;application/vnd.wordperfect;application/wordperfect;application/vnd.lotus-wordpro;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroEnabled.12;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.ms-word.template.macroEnabled.12;application/vnd.ms-works;application/vnd.stardivision.writer-global;application/x-extension-txt;application/x-t602;text/plain;application/vnd.oasis.opendocument.text-flat-xml;application/x-fictionbook+xml;application/macwriteii;application/x-aportisdoc;application/prs.plucker;application/vnd.palm;application/clarisworks;application/x-sony-bbeb;application/x-abiword;application/x-iwork-pages-sffpages;application/x-mswrite;application/x-starwriter;
+Name=LibreOffice Writer
+GenericName=Editor de texto
+Comment=Crie e edite textos e figuras em cartas, relatórios, documentos e páginas da Web por meio do Writer.
+StartupNotify=true
+X-GIO-NoFuse=true
+Keywords=Text;Letter;Fax;Document;OpenDocument Text;Microsoft Word;Microsoft Works;Lotus WordPro;OpenOffice Writer;CV;odt;doc;docx;rtf;
+InitialPreference=5
+StartupWMClass=libreoffice-writer
+X-KDE-Protocols=file,http,ftp,webdav
+Actions=NewDocument;
+
+[/usr/share/applications/libreoffice-xsltfilter.desktop]
+Version=1.0
+Terminal=false
+Type=Application
+Exec=libreoffice %U
+MimeType=application/vnd.oasis.opendocument.text-flat-xml;application/vnd.oasis.opendocument.spreadsheet-flat-xml;application/vnd.oasis.opendocument.graphics-flat-xml;application/vnd.oasis.opendocument.presentation-flat-xml;
+Name=LibreOffice XSLT based filters
+GenericName=Filtros baseados em XSLT
+NoDisplay=true
+StartupNotify=true
+X-GIO-NoFuse=true
+X-KDE-Protocols=file,http,ftp,webdav
+
+[/usr/share/applications/lightdm-settings.desktop]
+Encoding=UTF-8
+Name=Janela de Início de Sessão
+Comment=Configure a janela de início de sessão
+Exec=pkexec lightdm-settings
+Icon=lightdm-settings
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Settings;System;XFCE;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+X-KDE-SubstituteUID=true
+
+[/usr/share/applications/marco.desktop]
+Type=Application
+Name=Marco
+Exec=marco
+NoDisplay=true
+X-MATE-WMSettingsModule=marco
+X-MATE-WMName=Marco
+X-MateWMSettingsLibrary=marco
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=marco
+X-MATE-Bugzilla-Component=general
+X-MATE-Autostart-Phase=WindowManager
+X-MATE-Provides=windowmanager
+X-MATE-Autostart-Notify=true
+
+[/usr/share/applications/mate-about-me.desktop]
+Name=Sobre mim
+Comment=Definir suas informações pessoais
+Exec=mate-about-me
+Icon=user-info
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;X-MATE-PersonalSettings;
+Keywords=mate-control-center;MATE;personal;information;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-about.desktop]
+Name=Sobre o MATE
+Comment=Saiba mais sobre o MATE
+Exec=mate-about
+Icon=mate-desktop
+Terminal=false
+Type=Application
+Categories=GTK;Core;Utility;
+OnlyShowIn=MATE;
+StartupNotify=false
+NoDisplay=true
+
+[/usr/share/applications/mate-appearance-properties.desktop]
+Name=Aparência
+Comment=Personalizar a aparência da área de trabalho
+Exec=mate-appearance-properties %F
+Icon=preferences-desktop-theme
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;DesktopSettings;
+Keywords=mate-control-center;MATE;appearance;properties;desktop;customize;look;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-at-properties.desktop]
+Name=Tecnologias Assistivas
+Comment=Escolha quais recursos de acessibilidade habilitar ao fazer login
+Exec=mate-at-properties
+Icon=preferences-desktop-accessibility
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;Accessibility;
+Keywords=mate-control-center;MATE;accessibility;features;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-color-select.desktop]
+Exec=mate-color-select
+Icon=gtk-select-color
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;Viewer;
+Keywords=MATE;color;chooser;pick;palette;screen;selection;
+OnlyShowIn=MATE;
+StartupNotify=false
+Name=Caixa de diálogo de seleção de cores
+Comment=Escolha cores da paleta ou da tela
+
+[/usr/share/applications/mate-default-applications-properties.desktop]
+Name=Aplicativos Preferenciais
+Comment=Selecione seus aplicativos padrão
+Exec=mate-default-applications-properties
+Icon=preferences-desktop-default-applications
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;X-MATE-PersonalSettings;
+Keywords=mate-control-center;MATE;default;preferred;applications;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-dictionary.desktop]
+Exec=mate-dictionary
+Terminal=false
+Type=Application
+Icon=accessories-dictionary
+StartupNotify=true
+Categories=GNOME;GTK;Utility;Viewer;
+Keywords=MATE;dictionary;applet;thesaurus;spelling;definitions;online;
+OnlyShowIn=MATE;
+X-MATE-DocPath=mate-dictionary/mate-dictionary.xml
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-utils
+X-MATE-Bugzilla-Component=gdict
+X-MATE-Bugzilla-Version=1.22.2
+Name=Dicionário
+Comment=Consultar definições e ortografia de palavras em um dicionário on-line
+
+[/usr/share/applications/mate-disk-usage-analyzer.desktop]
+TryExec=mate-disk-usage-analyzer
+Exec=mate-disk-usage-analyzer
+Icon=mate-disk-usage-analyzer
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;System;Filesystem;
+Keywords=MATE;check;disk;usage;analyze;size;space;
+OnlyShowIn=MATE;
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-utils
+X-MATE-Bugzilla-Component=mate-disk-usage-analyzer
+X-MATE-Bugzilla-Version=1.22.2
+Name=Analisador de Uso do Disco
+Comment=Verifique o tamanho das pastas e o espaço disponível em disco
+
+[/usr/share/applications/mate-display-properties.desktop]
+Name=Monitores
+Comment=Altera a resolução e a posição de monitores e projetores
+Exec=mate-display-properties
+Icon=preferences-desktop-display
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;HardwareSettings;
+Keywords=mate-control-center;MATE;resolution;position;monitors;display;properties;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-font-viewer.desktop]
+Name=Visualizador de Fontes do MATE
+Comment=Ver as fontes no seu sistema
+Icon=preferences-desktop-font
+Exec=mate-font-viewer %u
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Utility;
+MimeType=application/x-font-ttf;application/x-font-pcf;application/x-font-type1;application/x-font-otf;
+Keywords=mate-control-center;MATE;font;viewer;preview;desktop;preferences;
+
+[/usr/share/applications/mate-keybinding.desktop]
+Name=Atalhos de teclado
+Comment=Atribuir teclas de atalho a comandos
+Exec=mate-keybinding-properties
+Icon=preferences-desktop-keyboard-shortcuts
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;HardwareSettings;
+Keywords=mate-control-center;MATE;assign;keyboard;shortcuts;keybindings;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-keyboard.desktop]
+Name=Teclado
+Comment=Definir suas preferências de teclado
+Exec=mate-keyboard-properties
+Icon=input-keyboard
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;HardwareSettings;
+Keywords=mate-control-center;MATE;keyboard;preferences;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-network-properties.desktop]
+Name=Proxy da rede
+Comment=Defina suas preferências do proxy de rede
+Exec=mate-network-properties
+Icon=network-server
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;X-MATE-NetworkSettings;
+Keywords=mate-control-center;MATE;network;http;socks;proxy;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-network-scheme.desktop]
+Name=Rede
+Comment=Navegar em favoritos e em locais da rede local
+TryExec=caja
+Exec=caja --no-desktop network:
+Terminal=false
+StartupNotify=true
+Type=Application
+Icon=network-workgroup
+Categories=GTK;System;Core;
+Keywords=bookmarks;browse;local;network;locations;MATE;
+OnlyShowIn=MATE;
+NoDisplay=true
+
+[/usr/share/applications/mate-notification-properties.desktop]
+Name=Notificações pop-up
+Comment=Defina as preferências de suas notificações pop-up
+Exec=mate-notification-properties
+Icon=mate-notification-properties
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;DesktopSettings;
+OnlyShowIn=MATE;
+Keywords=MATE;Notification;Theme;
+
+[/usr/share/applications/mate-panel.desktop]
+Type=Application
+Name=Painel
+Comment=Lança outras aplicações e fornece vários utilitários para gerenciar janelas, mostrar a hora, etc.
+Icon=mate-panel
+Exec=mate-panel
+StartupNotify=true
+Terminal=false
+Categories=GTK;System;Core;
+OnlyShowIn=MATE;
+NoDisplay=true
+X-MATE-AutoRestart=true
+X-MATE-Autostart-Phase=Panel
+X-MATE-Provides=panel
+X-MATE-Autostart-Notify=true
+
+[/usr/share/applications/mate-power-preferences.desktop]
+Name=Gerenciamento de energia
+Comment=Configurar gerenciamento de energia
+Icon=mate-power-manager
+Exec=mate-power-preferences
+Terminal=false
+Type=Application
+Categories=Settings;HardwareSettings;
+Keywords=MATE;power;management;preferences;settings;
+OnlyShowIn=MATE;
+StartupNotify=true
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-power-manager
+X-MATE-Bugzilla-Component=mate-power-preferences
+X-MATE-Bugzilla-Version=1.22.2
+
+[/usr/share/applications/mate-power-statistics.desktop]
+Name=Estatísticas de energia
+Comment=Observe o gerenciamento de energia
+Icon=mate-power-statistics
+Exec=mate-power-statistics
+Terminal=false
+Type=Application
+Categories=GTK;System;Monitor;
+OnlyShowIn=MATE;
+NoDisplay=false
+StartupNotify=true
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-power-manager
+X-MATE-Bugzilla-Component=mate-power-statistics
+X-MATE-Bugzilla-Version=1.22.2
+X-Desktop-File-Install-Version=0.10
+
+[/usr/share/applications/mate-screensaver-preferences.desktop]
+Name=Proteção de Tela
+Comment=Defina suas preferências de proteção de tela
+Icon=preferences-desktop-screensaver
+Exec=mate-screensaver-preferences
+Terminal=false
+Type=Application
+Categories=GTK;Settings;DesktopSettings;
+OnlyShowIn=MATE;
+StartupNotify=true
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-screensaver
+X-MATE-Bugzilla-Component=general
+
+[/usr/share/applications/mate-screenshot.desktop]
+Name=Capturar imagem da tela
+Comment=Salvar imagens da sua área de trabalho ou de janelas individuais
+Exec=mate-screenshot --interactive
+Terminal=false
+Type=Application
+Icon=applets-screenshooter
+StartupNotify=true
+Categories=GTK;Utility;
+Keywords=MATE;screenshot;snapshot;desktop;window;image;
+OnlyShowIn=MATE;
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-utils
+X-MATE-Bugzilla-Component=screenshot
+X-MATE-Bugzilla-OtherBinaries=mate-panel-screenshot
+
+[/usr/share/applications/mate-search-tool.desktop]
+Exec=mate-search-tool
+Icon=system-search
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Utility;Core;
+Keywords=MATE;search;files;locate;documents;folders;computer;name;content;find;tool;
+OnlyShowIn=MATE;
+X-MATE-DocPath=mate-search-tool/mate-search-tool.xml
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-utils
+X-MATE-Bugzilla-Component=gsearchtool
+Name=Ferramenta de Busca
+Comment=Localizar documentos e pastas neste computador por nome ou conteúdo
+
+[/usr/share/applications/mate-session-properties.desktop]
+Name=Aplicativos de sessão
+Comment=Escolha quais os aplicativos que irão iniciar quando você logar-se
+Exec=mate-session-properties
+Icon=mate-session-properties
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;X-MATE-PersonalSettings;
+Keywords=MATE;session;properties;applications;login;start;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-settings-mouse.desktop]
+Name=Mouse
+Comment=Defina suas preferências de mouse
+Exec=mate-mouse-properties
+Icon=input-mouse
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;HardwareSettings;
+Keywords=mate-control-center;MATE;mouse;preferences;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-system-log.desktop]
+Name=Visualizador de arquivos de log
+Comment=Ver ou monitorar arquivos de log do sistema
+Exec=mate-system-log
+Icon=mate-system-log
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;System;Monitor;
+Keywords=MATE;monitor;view;system;log;files;logviewer;
+OnlyShowIn=MATE;
+X-MATE-DocPath=mate-system-log/mate-system-log.xml
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-utils
+X-MATE-Bugzilla-Component=logview
+X-MATE-Bugzilla-Version=1.22.2
+
+[/usr/share/applications/mate-system-monitor.desktop]
+TryExec=mate-system-monitor
+Exec=mate-system-monitor
+Icon=utilities-system-monitor
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;System;Monitor;
+Keywords=MATE;system;monitor;process;list;view;current;resources;
+OnlyShowIn=MATE;
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=system-monitor
+X-MATE-Bugzilla-Component=general
+X-MATE-Bugzilla-Version=1.22.2
+Name=Monitor do sistema
+Comment=Veja os processos atuais e monitore o estado do sistema
+
+[/usr/share/applications/mate-terminal.desktop]
+TryExec=mate-terminal
+Exec=mate-terminal
+Icon=utilities-terminal
+Type=Application
+X-MATE-DocPath=mate-terminal/index.html
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-terminal
+X-MATE-Bugzilla-Component=BugBuddyBugs
+X-MATE-Bugzilla-Version=1.22.0
+Categories=System;GTK;Utility;TerminalEmulator;
+StartupNotify=true
+Name=Terminal
+Comment=Usar a linha de comando
+
+[/usr/share/applications/mate-theme-installer.desktop]
+Name=Instalador de temas
+Comment=Instala pacotes de temas para várias partes da área de trabalho
+Exec=mate-appearance-properties -i %u
+Icon=preferences-desktop-theme
+Terminal=false
+Type=Application
+MimeType=application/x-mate-theme-package;
+StartupNotify=true
+Categories=GTK;Settings;
+Keywords=mate-control-center;MATE;install;desktop;themes;
+NoDisplay=true
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-user-guide.desktop]
+Type=Application
+Name=Ajuda
+Comment=Obter ajuda com o MATE
+Keywords=documentation;information;manual;
+Icon=help-browser
+Exec=yelp help:mate-user-guide
+StartupNotify=true
+Terminal=false
+Categories=GTK;Core;Documentation;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/mate-volume-control.desktop]
+Name=Som
+Comment=Alterar volume do áudio e sons de eventos
+Exec=mate-volume-control
+Icon=multimedia-volume-control
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=AudioVideo;Mixer;Settings;HardwareSettings;
+Keywords=MATE;volume;control;mixer;settings;sound;events;
+OnlyShowIn=MATE;
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-media
+X-MATE-Bugzilla-Component=mate-volume-control
+X-MATE-Bugzilla-Version=1.22.0
+
+[/usr/share/applications/mate-window-properties.desktop]
+Name=Janelas
+Comment=Defina suas propriedades de janela
+Exec=mate-window-properties
+Icon=preferences-system-windows
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Settings;DesktopSettings;
+Keywords=mate-control-center;MATE;window;manager;properties;marco;preferences;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/matecc.desktop]
+Name=Centro de Controle
+GenericName=Ferramenta de Configuração do MATE
+Comment=Configurar o MATE
+Icon=preferences-desktop
+Exec=mate-control-center
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=GTK;Settings;
+Keywords=MATE;control;center;configuration;tool;destop;preferences;
+OnlyShowIn=MATE;
+
+[/usr/share/applications/metacity.desktop]
+Type=Application
+Name=Metacity
+Exec=metacity
+Icon=preferences-system-windows
+NoDisplay=true
+X-GNOME-Autostart-Phase=WindowManager
+X-GNOME-Provides=windowmanager
+X-GNOME-Autostart-Notify=true
+X-Ubuntu-Gettext-Domain=metacity
+
+[/usr/share/applications/mint-window-manager.desktop]
+Type=Application
+Name=Mint Window Manager
+Exec=window-manager-launcher
+NoDisplay=true
+X-MATE-WMSettingsModule=marco
+X-MATE-WMName=Marco
+X-MateWMSettingsLibrary=marco
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=marco
+X-MATE-Bugzilla-Component=general
+X-MATE-Autostart-Phase=WindowManager
+X-MATE-Provides=windowmanager
+X-MATE-Autostart-Notify=true
+
+[/usr/share/applications/mintbackup.desktop]
+Name=Ferramenta para cópia de segurança
+Comment=Faça uma cópia de segurança da sua pasta pessoal
+Exec=mintbackup
+Icon=mintbackup
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings
+NotShowIn=KDE;
+
+[/usr/share/applications/mintdesktop.desktop]
+Name=Configurações da área de trabalho
+Comment=Configurações avançadas do Desktop
+Exec=mintdesktop
+Icon=user-desktop
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=GNOME;GTK;Settings;DesktopSettings;XFCE;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
+StartupNotify=false
+OnlyShowIn=MATE;XFCE;
+
+[/usr/share/applications/mintdrivers.desktop]
+Name=Gerenciador de Drivers
+Comment=Gerencie os drives dos seus dispositivos
+Exec=pkexec driver-manager
+Icon=mintdrivers
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;X-GNOME-SystemSettings;X-GNOME-Settings-Panel;XFCE;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+X-GNOME-Settings-Panel=driver-manager
+X-KDE-SubstituteUID=true
+NotShowIn=KDE;
+
+[/usr/share/applications/mintinstall-fp-handler.desktop]
+Name=Software Manager
+Comment=Mime handler for mintinstall
+Exec=mintinstall-fp-handler %u
+Icon=mintinstall
+Terminal=false
+Type=Application
+Encoding=UTF-8
+NoDisplay=true
+MimeType=application/vnd.flatpak.ref;application/vnd.flatpak.repo
+
+[/usr/share/applications/mintinstall-kde.desktop]
+Name=Gerenciador de Aplicativos
+Comment=Instalar novos aplicativos
+GenericName=Instalar novos aplicativos
+Exec=mintinstall
+Icon=software-properties-mint
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=System;
+OnlyShowIn=KDE;
+
+[/usr/share/applications/mintinstall.desktop]
+Name=Gerenciador de Aplicativos
+Comment=Instalar novos aplicativos
+Exec=mintinstall
+Icon=mintinstall
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings;XFCE;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+NotShowIn=KDE;
+
+[/usr/share/applications/mintlocale-im.desktop]
+Name=Método de entrada
+Comment=Configurações de idioma
+Exec=mintlocale-im
+Icon=mintlocale-im
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=GNOME;GTK;Settings;DesktopSettings;XFCE;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+StartupNotify=false
+
+[/usr/share/applications/mintlocale.desktop]
+Name=Idiomas
+Comment=Configurações de idioma
+Exec=mintlocale
+Icon=preferences-desktop-locale
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=GNOME;GTK;Settings;DesktopSettings;XFCE;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+StartupNotify=false
+
+[/usr/share/applications/mintreport-tray.desktop]
+Name=Relatórios do Sistema
+Comment=Solução de problemas
+Exec=mintreport-tray
+Icon=mintreport
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings;
+StartupNotify=false
+NoDisplay=true
+
+[/usr/share/applications/mintreport.desktop]
+Name=Relatórios do Sistema
+Comment=Solução de problemas
+Exec=mintreport
+Icon=mintreport
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings;
+StartupNotify=false
+NotShowIn=KDE;
+
+[/usr/share/applications/mintsources.desktop]
+Name=Fontes de Aplicativos
+Comment=Configura as fontes de instalação e atualização de aplicativos
+Exec=pkexec mintsources
+Icon=mintsources
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;X-GNOME-SystemSettings;X-GNOME-Settings-Panel;XFCE;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+X-GNOME-Settings-Panel=software-properties
+MimeType=text/x-apt-sources-list;
+
+[/usr/share/applications/mintstick-format-kde.desktop]
+Version=1.0
+Type=Application
+Terminal=false
+Icon=system-run
+Exec=mintstick -m format
+Categories=System;
+OnlyShowIn=KDE;
+Name=Formatador de dispositivos USB
+Comment=Formate um dispositivo USB
+GenericName=Formate um dispositivo USB
+
+[/usr/share/applications/mintstick-format.desktop]
+Version=1.0
+Type=Application
+Terminal=false
+Icon=mintstick
+Exec=mintstick -m format
+Categories=GNOME;GTK;Utility;
+NotShowIn=KDE;
+Name=Formatador de dispositivos USB
+Comment=Formate um dispositivo USB
+
+[/usr/share/applications/mintstick-kde.desktop]
+Version=1.0
+Type=Application
+Terminal=false
+Icon=system-run
+Exec=mintstick -m iso
+Categories=System;
+OnlyShowIn=KDE;
+Name=Gravador de Imagem USB
+Comment=Crie um dispositivo USB inicializável
+GenericName=Crie um dispositivo USB inicializável
+
+[/usr/share/applications/mintstick.desktop]
+Version=1.0
+Type=Application
+Terminal=false
+Icon=mintstick
+Exec=mintstick -m iso
+Categories=GNOME;GTK;Utility;
+NotShowIn=KDE;
+Name=Gravador de Imagem USB
+Comment=Crie um dispositivo USB inicializável
+
+[/usr/share/applications/mintupdate-kde.desktop]
+Name=Gerenciador de Atualizações
+Comment=Exibir e instalar as atualizações disponíveis
+GenericName=Exibir e instalar as atualizações disponíveis
+Exec=mintupdate
+Icon=mintupdate
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=System;
+StartupNotify=false
+OnlyShowIn=KDE;
+
+[/usr/share/applications/mintupdate.desktop]
+Name=Gerenciador de Atualizações
+Comment=Exibir e instalar as atualizações disponíveis
+Exec=mintupdate
+Icon=mintupdate
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings;XFCE;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+StartupNotify=false
+NotShowIn=KDE;
+
+[/usr/share/applications/mintwelcome.desktop]
+Exec=mintwelcome
+Icon=mintwelcome
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=GNOME;GTK;Settings;DesktopSettings;
+NotShowIn=KDE;
+StartupNotify=false
+Name=Tela de Boas Vindas
+Comment=Introdução ao Linux Mint
+
+[/usr/share/applications/mono-runtime-common.desktop]
+Name=Mono Runtime
+Exec=mono
+Terminal=false
+Type=Application
+Icon=mono-runtime-common
+MimeType=application/x-ms-dos-executable;
+NoDisplay=true
+
+[/usr/share/applications/mono-runtime-terminal.desktop]
+Name=Mono Runtime (Terminal)
+Exec=mono
+Terminal=true
+Type=Application
+Icon=mono-runtime-common
+MimeType=application/x-ms-dos-executable;
+NoDisplay=true
+
+[/usr/share/applications/mozo.desktop]
+Name=Menu Principal
+Comment=Altere quais aplicativos são mostrados no menu principal
+Exec=mozo
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Settings;DesktopSettings;
+Keywords=application;main;menu;editor;customize;MATE;
+OnlyShowIn=MATE;
+Icon=mozo
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mozo
+X-MATE-Bugzilla-Component=general
+X-MATE-Bugzilla-Version=1.22.2
+
+[/usr/share/applications/network.desktop]
+Version=1.0
+Name=Network
+Comment=Configure network devices and connections
+Exec=network-admin
+Icon=preferences-system-network
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;X-GNOME-NetworkSettings;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-system-tools
+X-GNOME-Bugzilla-Component=network-admin
+X-GNOME-Bugzilla-Version=3.0.0
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=gnome-system-tools
+
+[/usr/share/applications/nm-applet.desktop]
+Name=Rede
+Comment=Controle suas conexões de rede
+Icon=nm-device-wireless
+Exec=nm-applet
+Terminal=false
+Type=Application
+NoDisplay=true
+NotShowIn=KDE;GNOME;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=NetworkManager
+X-GNOME-Bugzilla-Component=nm-applet
+X-GNOME-UsesNotifications=true
+
+[/usr/share/applications/nm-applet_mate.desktop]
+Name=Network
+Comment=Manage your network connections
+Icon=nm-device-wireless
+Exec=nm-applet
+Terminal=false
+Type=Application
+NoDisplay=true
+OnlyShowIn=MATE;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=NetworkManager
+X-GNOME-Bugzilla-Component=nm-applet
+X-GNOME-Autostart-enabled=true
+X-GNOME-UsesNotifications=true
+X-Ubuntu-Gettext-Domain=nm-applet
+
+[/usr/share/applications/nm-connection-editor.desktop]
+Name=Conexões de rede
+Comment=Gerencie e altere suas configurações de conexão de rede
+Icon=preferences-system-network
+Exec=nm-connection-editor
+Terminal=false
+StartupNotify=true
+Type=Application
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=NetworkManager
+X-GNOME-Bugzilla-Component=nm-connection-editor
+Categories=GNOME;GTK;Settings;X-GNOME-NetworkSettings;
+NotShowIn=KDE;GNOME;
+
+[/usr/share/applications/onboard-settings.desktop]
+Name=Configurações do Onboard
+GenericName=Configurações do teclado de tela Onboard
+Comment=Alterar configurações do Onboard
+Exec=onboard-settings
+Terminal=false
+Type=Application
+Categories=Settings;Accessibility;
+Keywords=onscreen;keyboard;accessibility;utility;settings;configuration;
+Icon=onboard
+NoDisplay=true
+X-Ubuntu-Gettext-Domain=onboard
+
+[/usr/share/applications/onboard.desktop]
+Name=Onboard
+GenericName=Teclado virtual Onboard
+Comment=Teclado no ecrã flexível
+Exec=onboard
+Terminal=false
+Type=Application
+Categories=Utility;Accessories;
+Keywords=onscreen;keyboard;accessibility;utility;
+Icon=onboard
+X-Ubuntu-Gettext-Domain=onboard
+
+[/usr/share/applications/openjdk-11-java.desktop]
+Name=OpenJDK Java 11 Runtime
+Comment=OpenJDK Java 11 Runtime
+Keywords=java;runtime
+Exec=cautious-launcher %f /usr/bin/java -jar
+Terminal=false
+Type=Application
+Icon=openjdk-11
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
+NoDisplay=true
+
+[/usr/share/applications/org.gnome.Calculator.desktop]
+Name=Calculator
+Comment=Perform arithmetic, scientific or financial calculations
+Keywords=calculation;arithmetic;scientific;financial;
+Exec=gnome-calculator
+Icon=gnome-calculator
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;Calculator;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-calculator
+X-GNOME-Bugzilla-Component=general
+X-Ubuntu-Gettext-Domain=gnome-calculator
+
+[/usr/share/applications/org.gnome.DiskUtility.desktop]
+Name=Disks
+Comment=Manage Drives and Media
+Keywords=disk;drive;volume;harddisk;hdd;disc;cdrom;dvd;partition;iso;image;backup;restore;benchmark;raid;luks;encryption;S.M.A.R.T.;smart;
+Exec=gnome-disks
+Icon=gnome-disks
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;X-GNOME-Utilities;Settings;HardwareSettings;
+DBusActivatable=true
+X-Ubuntu-Gettext-Domain=gnome-disk-utility
+
+[/usr/share/applications/pix-import.desktop]
+Name=Importar com Pix
+GenericName=Ferramenta de importação de imagens
+X-GNOME-FullName=Ferramenta de importação de imagens do Pix
+Comment=Importa fotos do cartão da sua câmera
+Categories=GNOME;GTK;Graphics;Viewer;RasterGraphics;2DGraphics;Photography;
+Exec=pix --import-photos %U
+Icon=pix
+MimeType=x-content/image-dcf;x-content/image-picturecd;
+NoDisplay=true
+StartupNotify=true
+Terminal=false
+Type=Application
+
+[/usr/share/applications/pix.desktop]
+Name=Pix
+GenericName=Visualizador de imagens
+X-GNOME-FullName=Visualizador de imagens Pix
+Comment=Veja e organize as suas imagens
+Categories=GNOME;GTK;Graphics;Viewer;RasterGraphics;2DGraphics;Photography;
+Exec=pix %U
+Icon=pix
+MimeType=image/bmp;image/jpeg;image/gif;image/png;image/tiff;image/x-bmp;image/x-ico;image/x-png;image/x-pcx;image/x-tga;image/xpm;image/svg+xml;
+StartupNotify=true
+Terminal=false
+Type=Application
+
+[/usr/share/applications/plank.desktop]
+Name=Plank
+GenericName=Dock
+Comment=Estupidamente simples.
+Categories=Utility;
+Type=Application
+Exec=plank
+Icon=plank
+Terminal=false
+NoDisplay=false
+
+[/usr/share/applications/python2.7.desktop]
+Name=Python (v2.7)
+Comment=Python Interpreter (v2.7)
+Exec=/usr/bin/python2.7
+Icon=/usr/share/pixmaps/python2.7.xpm
+Terminal=true
+Type=Application
+Categories=Development;
+StartupNotify=true
+NoDisplay=true
+
+[/usr/share/applications/python3.6.desktop]
+Name=Python (v3.6)
+Comment=Python Interpreter (v3.6)
+Exec=/usr/bin/python3.6
+Icon=/usr/share/pixmaps/python3.6.xpm
+Terminal=true
+Type=Application
+Categories=Development;
+StartupNotify=true
+NoDisplay=true
+
+[/usr/share/applications/qt5ct.desktop]
+X-Desktop-File-Install-Version=0.11
+Name=Qt5 Settings
+Comment=Qt5 Configuration Tool
+Exec=qt5ct
+Icon=preferences-desktop-theme
+Terminal=false
+Type=Application
+Categories=Settings;DesktopSettings;Qt;
+Keywords=settings;desktop;qt;qtsettings;qt5;
+
+[/usr/share/applications/redshift-gtk.desktop]
+Version=1.0
+Name=Redshift
+GenericName=Color temperature adjustment
+Comment=Color temperature adjustment tool
+Exec=redshift-gtk
+Icon=redshift
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
+
+[/usr/share/applications/redshift.desktop]
+Version=1.0
+Name=Redshift
+GenericName=Color temperature adjustment
+Comment=Color temperature adjustment tool
+Exec=redshift
+Icon=redshift
+Terminal=true
+Type=Application
+Categories=Utility;
+NoDisplay=true
+
+[/usr/share/applications/rhythmbox-device.desktop]
+Name=Rhythmbox
+GenericName=Music Player
+X-GNOME-FullName=Rhythmbox Music Player
+Comment=Play and organize your music collection
+Exec=rhythmbox-client --select-source %U
+Terminal=false
+NoDisplay=true
+Type=Application
+Icon=rhythmbox
+X-GNOME-DocPath=rhythmbox/rhythmbox.xml
+Categories=GNOME;GTK;AudioVideo;
+MimeType=x-content/audio-player;x-content/audio-cdda;
+StartupNotify=false
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=rhythmbox
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-OtherBinaries=rhythmbox;rhythmbox-metadata;
+X-GNOME-Bugzilla-Version=3.4.2
+X-Ubuntu-Gettext-Domain=rhythmbox
+
+[/usr/share/applications/rhythmbox.desktop]
+Name=Rhythmbox
+GenericName=Music Player
+X-GNOME-FullName=Rhythmbox Music Player
+Comment=Play and organize your music collection
+Keywords=Audio;Song;MP3;CD;Podcast;MTP;iPod;Playlist;Last.fm;UPnP;DLNA;Radio;
+Exec=rhythmbox %U
+Terminal=false
+Type=Application
+Icon=rhythmbox
+X-GNOME-DocPath=rhythmbox/rhythmbox.xml
+Categories=GNOME;GTK;AudioVideo;Audio;Player;
+MimeType=application/x-ogg;application/ogg;audio/x-vorbis+ogg;audio/vorbis;audio/x-vorbis;audio/x-scpls;audio/x-mp3;audio/x-mpeg;audio/mpeg;audio/x-mpegurl;audio/x-flac;audio/mp4;audio/x-it;audio/x-mod;audio/x-s3m;audio/x-stm;audio/x-xm;
+StartupNotify=true
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=rhythmbox
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-OtherBinaries=rhythmbox-client;rhythmbox-metadata;
+X-GNOME-Bugzilla-Version=3.4.2
+X-GNOME-UsesNotifications=true
+Actions=PlayPause;Next;Previous;StopQuit;
+X-Ubuntu-Gettext-Domain=rhythmbox
+
+[/usr/share/applications/shares.desktop]
+Version=1.0
+Name=Shared Folders
+Comment=Configure which folders are available for your network neighborhood
+Exec=shares-admin
+Icon=folder-remote
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;X-GNOME-NetworkSettings;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-system-tools
+X-GNOME-Bugzilla-Component=shares-admin
+X-GNOME-Bugzilla-Version=3.0.0
+StartupNotify=true
+NoDisplay=true
+X-Ubuntu-Gettext-Domain=gnome-system-tools
+
+[/usr/share/applications/simple-scan.desktop]
+Name=Digitalização
+GenericName=Scanner de documentos
+Comment=Digitalizar documentos
+Keywords=scan;scanner;flatbed;adf;
+Exec=simple-scan
+Icon=scanner
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Graphics;Scanning;
+
+[/usr/share/applications/synaptic.desktop]
+Name=Gerenciador de pacotes Synaptic
+GenericName=Gerenciador de pacotes
+Comment=Instalar, remover e atualizar pacotes de software
+Exec=synaptic-pkexec
+Icon=synaptic
+Terminal=false
+Type=Application
+Categories=PackageManager;GTK;System;Settings;
+X-Ubuntu-Gettext-Domain=synaptic
+
+[/usr/share/applications/system-config-printer.desktop]
+Name=Printers
+GenericName=Printers
+X-GNOME-FullName=Printers
+Comment=Configure printers
+Exec=system-config-printer
+Terminal=false
+Type=Application
+Icon=printer
+StartupNotify=true
+NotShowIn=KDE;GNOME;
+X-Ubuntu-Gettext-Domain=system-config-printer
+Categories=GNOME;GTK;Settings;HardwareSettings;X-GNOME-Settings-Panel;X-Unity-Settings-Panel;System;Printing;
+X-GNOME-Settings-Panel=printing
+X-Unity-Settings-Panel=printing
+Keywords=Printer;Queue;Print;Paper;Ink;Toner;
+X-Desktop-File-Install-Version=0.23
+
+[/usr/share/applications/thunderbird.desktop]
+Encoding=UTF-8
+Name=Cliente de E-mail Thunderbird
+Comment=Leia e escreva suas mensagens
+GenericName=Cliente de E-mail
+Keywords=Email;E-mail;Newsgroup;Feed;RSS
+Exec=thunderbird %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=thunderbird
+Categories=Application;Network;Email;
+MimeType=x-scheme-handler/mailto;application/x-xpinstall;
+StartupNotify=true
+Actions=Compose;Contacts
+
+[/usr/share/applications/time.desktop]
+Version=1.0
+Name=Time and Date
+Comment=Change system time, date, and timezone
+Exec=time-admin
+Icon=time-admin
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-system-tools
+X-GNOME-Bugzilla-Component=time-admin
+X-GNOME-Bugzilla-Version=3.0.0
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=gnome-system-tools
+
+[/usr/share/applications/timeshift-gtk.desktop]
+Name=Timeshift
+Exec=pkexec timeshift-gtk
+Type=Application
+GenericName=System Restore Utility
+Terminal=false
+Icon=timeshift
+Comment=System Restore Utility
+X-KDE-StartupNotify=false
+Categories=System;
+X-GNOME-UsesNotifications=true
+
+[/usr/share/applications/tomboy.desktop]
+Name=Tomboy Notas
+Comment=Tome notas, vincule ideias e fique organizado
+GenericName=Tomador de notas
+Exec=tomboy --search
+Icon=tomboy
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=tomboy
+X-GNOME-Bugzilla-Component=General
+
+[/usr/share/applications/transmission-gtk.desktop]
+Name=Transmission
+GenericName=BitTorrent Client
+X-GNOME-FullName=Cliente BitTorrent Transmission
+Comment=Download and share files over BitTorrent
+Exec=transmission-gtk %U
+Icon=transmission
+Terminal=false
+TryExec=transmission-gtk
+Type=Application
+StartupNotify=true
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+Categories=Network;FileTransfer;P2P;GTK;
+X-Ubuntu-Gettext-Domain=transmission
+X-AppInstall-Keywords=torrent
+Actions=Pause;Minimize;
+
+[/usr/share/applications/users.desktop]
+Version=1.0
+Name=Users and Groups
+Comment=Add or remove users and groups
+Exec=users-admin
+Icon=config-users
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-system-tools
+X-GNOME-Bugzilla-Component=users-admin
+X-GNOME-Bugzilla-Version=3.0.0
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=gnome-system-tools
+
+[/usr/share/applications/vim.desktop]
+Name=Vim
+GenericName=Text Editor
+Comment=Edite arquivos de texto
+TryExec=vim
+Exec=vim %F
+Terminal=true
+Type=Application
+Keywords=Text;editor;
+Icon=gvim
+Categories=Utility;TextEditor;
+StartupNotify=false
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
+
+[/usr/share/applications/virtualbox.desktop]
+Encoding=UTF-8
+Version=1.0
+Name=Oracle VM VirtualBox
+GenericName=Virtual Machine
+Type=Application
+Exec=VirtualBox %U
+TryExec=VirtualBox
+Keywords=virtualization;
+MimeType=application/x-virtualbox-vbox;application/x-virtualbox-vbox-extpack;application/x-virtualbox-ovf;application/x-virtualbox-ova;
+DocPath=file:///usr/share/doc/virtualbox-6.0/UserManual.pdf
+Icon=virtualbox
+Categories=Emulator;System;
+Actions=Manager;
+StartupWMClass=VirtualBox Manager
+Comment=Run several virtual systems on a single host computer
+
+[/usr/share/applications/vlc.desktop]
+Version=1.0
+Name=Reprodutor de Mídias VLC
+GenericName=Reprodutor de Mídias
+Comment=Reproduza, capture e transmita os seus fluxos multimídia
+Exec=/usr/bin/vlc --started-from-file %U
+TryExec=/usr/bin/vlc
+Icon=vlc
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;Recorder;
+MimeType=application/ogg;application/x-ogg;audio/ogg;audio/vorbis;audio/x-vorbis;audio/x-vorbis+ogg;video/ogg;video/x-ogm;video/x-ogm+ogg;video/x-theora+ogg;video/x-theora;audio/x-speex;audio/opus;application/x-flac;audio/flac;audio/x-flac;audio/x-ms-asf;audio/x-ms-asx;audio/x-ms-wax;audio/x-ms-wma;video/x-ms-asf;video/x-ms-asf-plugin;video/x-ms-asx;video/x-ms-wm;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvx;video/x-msvideo;audio/x-pn-windows-acm;video/divx;video/msvideo;video/vnd.divx;video/avi;video/x-avi;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/vnd.rn-realaudio;audio/x-pn-realaudio;audio/x-pn-realaudio-plugin;audio/x-real-audio;audio/x-realaudio;video/vnd.rn-realvideo;audio/mpeg;audio/mpg;audio/mp1;audio/mp2;audio/mp3;audio/x-mp1;audio/x-mp2;audio/x-mp3;audio/x-mpeg;audio/x-mpg;video/mp2t;video/mpeg;video/mpeg-system;video/x-mpeg;video/x-mpeg2;video/x-mpeg-system;application/mpeg4-iod;application/mpeg4-muxcodetable;application/x-extension-m4a;application/x-extension-mp4;audio/aac;audio/m4a;audio/mp4;audio/x-m4a;audio/x-aac;video/mp4;video/mp4v-es;video/x-m4v;application/x-quicktime-media-link;application/x-quicktimeplayer;video/quicktime;application/x-matroska;audio/x-matroska;video/x-matroska;video/webm;audio/webm;audio/3gpp;audio/3gpp2;audio/AMR;audio/AMR-WB;video/3gp;video/3gpp;video/3gpp2;x-scheme-handler/mms;x-scheme-handler/mmsh;x-scheme-handler/rtsp;x-scheme-handler/rtp;x-scheme-handler/rtmp;x-scheme-handler/icy;x-scheme-handler/icyx;application/x-cd-image;x-content/video-vcd;x-content/video-svcd;x-content/video-dvd;x-content/audio-cdda;x-content/audio-player;application/ram;application/xspf+xml;audio/mpegurl;audio/x-mpegurl;audio/scpls;audio/x-scpls;text/google-video-pointer;text/x-google-video-pointer;video/vnd.mpegurl;application/vnd.apple.mpegurl;application/vnd.ms-asf;application/vnd.ms-wpl;application/sdp;audio/dv;video/dv;audio/x-aiff;audio/x-pn-aiff;video/x-anim;video/x-nsv;video/fli;video/flv;video/x-flc;video/x-fli;video/x-flv;audio/wav;audio/x-pn-au;audio/x-pn-wav;audio/x-wav;audio/x-adpcm;audio/ac3;audio/eac3;audio/vnd.dts;audio/vnd.dts.hd;audio/vnd.dolby.heaac.1;audio/vnd.dolby.heaac.2;audio/vnd.dolby.mlp;audio/basic;audio/midi;audio/x-ape;audio/x-gsm;audio/x-musepack;audio/x-tta;audio/x-wavpack;audio/x-shorten;application/x-shockwave-flash;application/x-flash-video;misc/ultravox;image/vnd.rn-realpix;audio/x-it;audio/x-mod;audio/x-s3m;audio/x-xm;application/mxf;
+X-KDE-Protocols=ftp,http,https,mms,rtmp,rtsp,sftp,smb
+Keywords=Player;Capture;DVD;Audio;Video;Server;Broadcast;
+
+[/usr/share/applications/xdg-desktop-portal-gtk.desktop]
+Type=Application
+Name=Portal
+Icon=applications-system-symbolic
+Exec=/usr/libexec/xdg-desktop-portal-gtk
+NoDisplay=true
+
+[/usr/share/applications/xed.desktop]
+Name=Editor de texto
+Comment=Edite arquivos de texto
+Exec=xed %U
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=accessories-text-editor
+Categories=GTK;Utility;TextEditor;
+Keywords=text;editor;tabs;highlighting;code;multiple;files;pluggable;notepad;
+X-MATE-DocPath=xed/xed.xml
+
+[/usr/share/applications/xplayer.desktop]
+Name=Media Player
+Comment=Play movies
+Keywords=Video;Movie;Film;Clip;Series;Player;DVD;TV;Disc;
+Exec=xplayer %U
+Icon=xplayer
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;AudioVideo;Player;Video;
+MimeType=application/mxf;application/ogg;application/ram;application/sdp;application/smil;application/smil+xml;application/vnd.apple.mpegurl;application/vnd.ms-wpl;application/vnd.rn-realmedia;application/x-extension-m4a;application/x-extension-mp4;application/x-flac;application/x-flash-video;application/x-matroska;application/x-netshow-channel;application/x-ogg;application/x-quicktime-media-link;application/x-quicktimeplayer;application/x-shorten;application/x-smil;application/xspf+xml;audio/3gpp;audio/ac3;audio/AMR;audio/AMR-WB;audio/basic;audio/flac;audio/midi;audio/mp2;audio/mp4;audio/mpeg;audio/mpegurl;audio/ogg;audio/prs.sid;audio/vnd.rn-realaudio;audio/x-aiff;audio/x-ape;audio/x-flac;audio/x-gsm;audio/x-it;audio/x-m4a;audio/x-matroska;audio/x-mod;audio/x-mp3;audio/x-mpeg;audio/x-mpegurl;audio/x-ms-asf;audio/x-ms-asx;audio/x-ms-wax;audio/x-ms-wma;audio/x-musepack;audio/x-pn-aiff;audio/x-pn-au;audio/x-pn-realaudio;audio/x-pn-realaudio-plugin;audio/x-pn-wav;audio/x-pn-windows-acm;audio/x-realaudio;audio/x-real-audio;audio/x-s3m;audio/x-sbc;audio/x-scpls;audio/x-speex;audio/x-stm;audio/x-tta;audio/x-wav;audio/x-wavpack;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-xm;image/vnd.rn-realpix;image/x-pict;misc/ultravox;text/google-video-pointer;text/x-google-video-pointer;video/3gp;video/3gpp;video/dv;video/divx;video/fli;video/flv;video/mp2t;video/mp4;video/mp4v-es;video/mpeg;video/msvideo;video/ogg;video/quicktime;video/vivo;video/vnd.divx;video/vnd.mpegurl;video/vnd.rn-realvideo;video/vnd.vivo;video/webm;video/x-anim;video/x-avi;video/x-flc;video/x-fli;video/x-flic;video/x-flv;video/x-m4v;video/x-matroska;video/x-mpeg;video/x-mpeg2;video/x-ms-asf;video/x-ms-asx;video/x-msvideo;video/x-ms-wm;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvx;video/x-nsv;video/x-ogm+ogg;video/x-theora+ogg;video/x-xplayer-stream;x-content/video-dvd;x-content/video-vcd;x-content/video-svcd;x-scheme-handler/pnm;x-scheme-handler/mms;x-scheme-handler/net;x-scheme-handler/rtp;x-scheme-handler/rtmp;x-scheme-handler/rtsp;x-scheme-handler/mmsh;x-scheme-handler/uvox;x-scheme-handler/icy;x-scheme-handler/icyx;
+X-GNOME-DocPath=xplayer/xplayer.xml
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=xplayer
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-Version=2.2.5
+X-GNOME-Bugzilla-OtherBinaries=xplayer-video-thumbnailer;xplayer-audio-preview;
+X-GNOME-Bugzilla-ExtraInfoScript=/usr/lib/xplayer/xplayer/xplayer-bugreport.py
+StartupNotify=true
+Actions=Play;Next;Previous;Mute;Fullscreen;
+X-Ubuntu-Gettext-Domain=xplayer
+
+[/usr/share/applications/xreader.desktop]
+Name=Visualizador de documentos
+Comment=Visualize documentos de múltiplas páginas
+TryExec=xreader
+Exec=xreader %U
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=xreader
+Categories=GTK;Utility;Viewer;
+Keywords=document;viewer;pdf;dvi;ps;xps;tiff;djvu;comics;
+MimeType=application/pdf;application/x-bzpdf;application/x-gzpdf;application/x-xzpdf;application/postscript;application/x-bzpostscript;application/x-gzpostscript;image/x-eps;image/x-bzeps;image/x-gzeps;application/x-dvi;application/x-bzdvi;application/x-gzdvi;image/vnd.djvu;image/vnd.djvu+multipage;image/tiff;application/x-cbr;application/x-cbz;application/x-cb7;application/x-cbt;application/vnd.comicbook+zip;image/*;application/oxps;application/vnd.ms-xpsdocument;application/epub+zip;
+
+[/usr/share/applications/xviewer.desktop]
+Name=Image Viewer
+Comment=Browse and rotate images
+TryExec=xviewer
+Exec=xviewer %U
+Icon=xviewer
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;Viewer;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=XVIEWER
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-Version=2.4.3
+X-GNOME-DocPath=xviewer/xviewer.xml
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/x-bmp;image/x-gray;image/x-icb;image/x-ico;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;image/x-pcx;image/svg+xml;image/svg+xml-compressed;image/vnd.wap.wbmp;
+Keywords=Picture;Slideshow;Graphics;
+X-Ubuntu-Gettext-Domain=xviewer
+
+[/usr/share/applications/yelp.desktop]
+Name=Help
+Comment=Get help with GNOME
+Keywords=documentação;informação;informações;manual;ajuda;
+OnlyShowIn=GNOME;Unity;
+Exec=yelp %u
+Icon=help-browser
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Core;Documentation;Utility;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=Yelp
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-Version=3.26.0
+MimeType=x-scheme-handler/ghelp;x-scheme-handler/help;x-scheme-handler/info;x-scheme-handler/man;
+X-Ubuntu-Gettext-Domain=yelp
+NoDisplay=true
+
+[/usr/share/applications/snap-handle-link.desktop]
+Name=Handler for snap:// URIs
+Comment=Prompt the user to install gnome-software then pass control to it
+Exec=/usr/bin/snap handle-link %U
+MimeType=x-scheme-handler/snap;
+NoDisplay=true
+Type=Application
+
+[/usr/share/applications/google-chrome.desktop]
+Version=1.0
+Name=Google Chrome
+GenericName=Navegador da Internet
+Comment=Acessar a internet
+Exec=/usr/bin/google-chrome-stable %U
+StartupNotify=true
+Terminal=false
+Icon=google-chrome
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;
+Actions=new-window;new-private-window;
+
+[/usr/share/applications/unity-tweak-tool.desktop]
+Name=Ferramenta de ajuste do Unity
+Comment=Configuration frontend for the Unity desktop environment
+Categories=Settings;
+Exec=unity-tweak-tool %f
+Icon=unity-tweak-tool
+GenericName=Unity Tweak Tool
+OnlyShowIn=Unity;
+StartupNotify=true
+Terminal=false
+Type=Application
+Actions=Unity;WinMng;Appearance;System;
+X-Unity-IconBackgroundColor=#ff0025
+
+[/usr/share/applications/insomnia.desktop]
+Name=Insomnia
+Exec=/opt/Insomnia/insomnia %U
+Terminal=false
+Type=Application
+Icon=insomnia
+StartupWMClass=Insomnia
+Comment=The Collaborative API Design Tool
+MimeType=x-scheme-handler/insomnia;
+Categories=Development;
+
