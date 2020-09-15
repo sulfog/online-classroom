@@ -1,63 +1,3 @@
-docker-machine create --driver virtualbox new01
-sudo /sbin/rcvboxdrv setup
-sudo openssl req -new -x509 -newkey rsa:2048 -keyout vboxdrv.priv -outform DER -out vboxdrv.der -nodes -days 36500 -subj "/CN=MySelf/"
-sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./vboxdrv.priv ./vboxdrv.der $(modinfo -n vboxdrv) 
-tail $(modinfo -n vboxdrv) | grep "Module signature appended"
-sudo openssl req -new -x509 -newkey rsa:2048 -keyout vboxdrv.priv -outform DER -out vboxdrv.der -nodes -days 36500 -subj "/CN=MySelf/"
-sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./vboxdrv.priv ./vboxdrv.der $(modinfo -n vboxdrv)
-tail $(modinfo -n vboxdrv) | grep "Module signature appended"
-sudo mokutil --import vboxdrv.der
-cd dockerfiles/
-docker-machine ls
-docker-machine create --driver virtualbox newserver
-exit
-sudo hostnamectl
-sudo uname -s
-sudo uname -a
-sudo uname -m
-sudo uname -r
-sudo inxi -SCf
-sudo apt install cpu-checker libvirt-clients
-cd /opt/
-ls -la
-cd VirtualBox/
-ls -la
-sudo ./uninstall.sh
-pwd
-cd ..
-ls
-cd /home/sulfog/
-ls -la
-sudo apt update
-sudo apt clean
-sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list.d/virtualbox.list'
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -0- | sudo apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-sudo apt update
-sudo apt install virtualbox-6.0
-wget https://download.virtualbox.org/virtualbox/6.0.12/Oracle_VM_VirtualBox_Extension_Pack-6.0.12.vbox-extpack
-virtualbox Oracle_VM_VirtualBox_Extension_Pack-6.0.12.vbox-extpack
-docker-machine ls
-docker-machine create --driver virtualbox sulzamnew
-sudo /sbin/vboxconfig\\n\\n 
-mokutil --sb-state
-openssl req -new -x509 -newkey rsa:2048 -keyout vboxdrv.priv -outform DER -out vboxdrv.der -nodes -days 36500 -subj "/CN=MySelf/"
-sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./vboxdrv.priv ./vboxdrv.der $(modinfo -n vboxdrv)
-tail $(modinfo -n vboxdrv) | grep "Module signature appended"
-sudo mokutil --import vboxdrv.der
-docker info
-exit
-mokutil --test-key MOK.der
-sudo mokutil --import vboxdrv.der
-mokutil --test-key MOK.der
-sudo modprobe vboxdrv
-docker-machine create --driver virtualbox sulzamnew
-docker-machine ls
-docker-machine env sulzamnew
-eval $(docker-machine env sulzamnew)
-ip addr
-docker ps
 ps -ef
 docker-machine ls
 docker-machine ssh sulzamnew
@@ -1997,4 +1937,64 @@ react -v
 yarn add styled-components
 sudo apt-get purge nodejs && sudo apt-get autoremove && sudo apt-get autoclean
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
+exit
+ls -la
+code .
+yarn start
+cd ..
+ls -la
+cd ..
+cd Downloads/
+ls -la
+cd ..
+ls -la
+sudo rm algashopping -rf
+ls -la
+cd Downloads/
+ls -la
+mv algashopping-live-03 /..
+sudo mv algashopping-live-03 ../
+cd ..
+ls la
+ls -la
+cd algashopping-live-03/
+ls -la
+yarn start
+sudo yarn start
+npm start
+code .
+cd ..
+sudo rena algashopping-live-03 algashopping
+sudo rename algashopping-live-03 algashopping
+cd algashopping-live-03/
+yarn
+sudo yarn 
+yarn start
+exit
+cd Downloads/
+ls -la
+sudo chmod +x algashoppin-live-03.zip
+sudo chmod +x algashopping-live-03.zip
+ls -la
+sudo unzip algashopping-live-03.zip
+exit
+nvm list
+nvm ls-remote
+nvm ls-remote | tail -n9
+nvm install 14.10.1
+nvm use 14.10.1
+nvm alias default 14.10.1
+node -v
+npm install -g npm
+yarn global bin
+env | grep PATH
+npm i -g yarn
+yarn global add yarn
+npm rm -g yarn
+cd algashopping/
+yarn add styled-components
+exit
+cd algashopping/
+yarn start
+sudo yarn start
 exit
