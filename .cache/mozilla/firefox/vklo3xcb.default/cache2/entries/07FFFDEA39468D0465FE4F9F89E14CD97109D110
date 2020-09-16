@@ -1,0 +1,879 @@
+/*
+ * Gritter for jQuery
+ * http://www.boedesign.com/
+ *
+ * Copyright (c) 2012 Jordan Boesch
+ * Dual licensed under the MIT and GPL licenses.
+ *
+ * Date: February 24, 2012
+ * Version: 1.7.4
+ */
+
+(function($){
+ 	
+	/**
+	* Set it up as an object under the jQuery namespace
+	*/
+	$.gritter = {};
+	
+	/**
+	* Set up global options that the user can over-ride
+	*/
+	$.gritter.options = {
+		position: '',
+		class_name: '', // could be set to 'gritter-light' to use white notifications
+		fade_in_speed: 'medium', // how fast notifications fade in
+		fade_out_speed: 1000, // how fast the notices fade out
+		time: 6000 // hang on the screen for...
+	}
+	
+	/**
+	* Add a gritter notification to the screen
+	* @see Gritter#add();
+	*/
+	$.gritter.add = function(params){
+
+		try {
+			return Gritter.add(params || {});
+		} catch(e) {
+		
+			var err = 'Gritter Error: ' + e;
+			(typeof(console) != 'undefined' && console.error) ? 
+				console.error(err, params) : 
+				alert(err);
+				
+		}
+		
+	}
+	
+	/**
+	* Remove a gritter notification from the screen
+	* @see Gritter#removeSpecific();
+	*/
+	$.gritter.remove = function(id, params){
+		Gritter.removeSpecific(id, params || {});
+	}
+	
+	/**
+	* Remove all notifications
+	* @see Gritter#stop();
+	*/
+	$.gritter.removeAll = function(params){
+		Gritter.stop(params || {});
+	}
+	
+	/**
+	* Big fat Gritter object
+	* @constructor (not really since its object literal)
+	*/
+	var Gritter = {
+		
+		// Public - options to over-ride with $.gritter.options in "add"
+		position: '',
+		fade_in_speed: '',
+		fade_out_speed: '',
+		time: '',
+		
+		// Private - no touchy the private parts
+		_custom_timer: 0,
+		_item_count: 0,
+		_is_setup: 0,
+		_tpl_close: '<div class="gritter-close"></div>',
+		_tpl_title: '<span class="gritter-title">[[title]]</span>',
+		_tpl_item: '<div id="gritter-item-[[number]]" class="gritter-item-wrapper [[item_class]]" style="display:none"><div class="gritter-top"></div><div class="gritter-item">[[close]][[image]]<div class="[[class_name]]">[[title]]<p>[[text]]</p></div><div style="clear:both"></div></div><div class="gritter-bottom"></div></div>',
+		_tpl_wrap: '<div id="gritter-notice-wrapper"></div>',
+		
+		/**
+		* Add a gritter notification to the screen
+		* @param {Object} params The object that contains all the options for drawing the notification
+		* @return {Integer} The specific numeric id to that gritter notification
+		*/
+		add: function(params){
+			// Handle straight text
+			if(typeof(params) == 'string'){
+				params = {text:params};
+			}
+
+			// We might have some issues if we don't have a title or text!
+			if(!params.text){
+				throw 'You must supply "text" parameter.'; 
+			}
+			
+			// Check the options and set them once
+			if(!this._is_setup){
+				this._runSetup();
+			}
+			
+			// Basics
+			var title = params.title, 
+				text = params.text,
+				image = params.image || '',
+				sticky = params.sticky || false,
+				item_class = params.class_name || $.gritter.options.class_name,
+				position = $.gritter.options.position,
+				time_alive = params.time || '';
+
+			this._verifyWrapper();
+			
+			this._item_count++;
+			var number = this._item_count, 
+				tmp = this._tpl_item;
+			
+			// Assign callbacks
+			$(['before_open', 'after_open', 'before_close', 'after_close']).each(function(i, val){
+				Gritter['_' + val + '_' + number] = ($.isFunction(params[val])) ? params[val] : function(){}
+			});
+
+			// Reset
+			this._custom_timer = 0;
+			
+			// A custom fade time set
+			if(time_alive){
+				this._custom_timer = time_alive;
+			}
+			
+			var image_str = (image != '') ? '<img src="' + image + '" class="gritter-image" />' : '',
+				class_name = (image != '') ? 'gritter-with-image' : 'gritter-without-image';
+			
+			// String replacements on the template
+			if(title){
+				title = this._str_replace('[[title]]',title,this._tpl_title);
+			}else{
+				title = '';
+			}
+			
+			tmp = this._str_replace(
+				['[[title]]', '[[text]]', '[[close]]', '[[image]]', '[[number]]', '[[class_name]]', '[[item_class]]'],
+				[title, text, this._tpl_close, image_str, this._item_count, class_name, item_class], tmp
+			);
+
+			// If it's false, don't show another gritter message
+			if(this['_before_open_' + number]() === false){
+				return false;
+			}
+
+			$('#gritter-notice-wrapper').addClass(position).append(tmp);
+			
+			var item = $('#gritter-item-' + this._item_count);
+			
+			item.fadeIn(this.fade_in_speed, function(){
+				Gritter['_after_open_' + number]($(this));
+			});
+			
+			if(!sticky){
+				this._setFadeTimer(item, number);
+			}
+			
+			// Bind the hover/unhover states
+			$(item).bind('mouseenter mouseleave', function(event){
+				if(event.type == 'mouseenter'){
+					if(!sticky){ 
+						Gritter._restoreItemIfFading($(this), number);
+					}
+				}
+				else {
+					if(!sticky){
+						Gritter._setFadeTimer($(this), number);
+					}
+				}
+				Gritter._hoverState($(this), event.type);
+			});
+			
+			// Clicking (X) makes the perdy thing close
+			$(item).find('.gritter-close').click(function(){
+				Gritter.removeSpecific(number, {}, null, true);
+			});
+			
+			return number;
+		
+		},
+		
+		/**
+		* If we don't have any more gritter notifications, get rid of the wrapper using this check
+		* @private
+		* @param {Integer} unique_id The ID of the element that was just deleted, use it for a callback
+		* @param {Object} e The jQuery element that we're going to perform the remove() action on
+		* @param {Boolean} manual_close Did we close the gritter dialog with the (X) button
+		*/
+		_countRemoveWrapper: function(unique_id, e, manual_close){
+			
+			// Remove it then run the callback function
+			e.remove();
+			this['_after_close_' + unique_id](e, manual_close);
+			
+			// Check if the wrapper is empty, if it is.. remove the wrapper
+			if($('.gritter-item-wrapper').length == 0){
+				$('#gritter-notice-wrapper').remove();
+			}
+		
+		},
+		
+		/**
+		* Fade out an element after it's been on the screen for x amount of time
+		* @private
+		* @param {Object} e The jQuery element to get rid of
+		* @param {Integer} unique_id The id of the element to remove
+		* @param {Object} params An optional list of params to set fade speeds etc.
+		* @param {Boolean} unbind_events Unbind the mouseenter/mouseleave events if they click (X)
+		*/
+		_fade: function(e, unique_id, params, unbind_events){
+
+			var params = params || {},
+				fade = (typeof(params.fade) != 'undefined') ? params.fade : true,
+				fade_out_speed = params.speed || this.fade_out_speed,
+				manual_close = unbind_events;
+
+			this['_before_close_' + unique_id](e, manual_close);
+			
+			// If this is true, then we are coming from clicking the (X)
+			if(unbind_events){
+				e.unbind('mouseenter mouseleave');
+			}
+			
+			// Fade it out or remove it
+			if(fade){
+			
+				e.animate({
+					opacity: 0
+				}, fade_out_speed, function(){
+					e.animate({ height: 0 }, 300, function(){
+						Gritter._countRemoveWrapper(unique_id, e, manual_close);
+					})
+				})
+				
+			}
+			else {
+				
+				this._countRemoveWrapper(unique_id, e);
+				
+			}
+						
+		},
+		
+		/**
+		* Perform actions based on the type of bind (mouseenter, mouseleave) 
+		* @private
+		* @param {Object} e The jQuery element
+		* @param {String} type The type of action we're performing: mouseenter or mouseleave
+		*/
+		_hoverState: function(e, type){
+			
+			// Change the border styles and add the (X) close button when you hover
+			if(type == 'mouseenter'){
+				
+				e.addClass('hover');
+				
+				// Show close button
+				e.find('.gritter-close').show();
+						
+			}
+			// Remove the border styles and hide (X) close button when you mouse out
+			else {
+				
+				e.removeClass('hover');
+				
+				// Hide close button
+				e.find('.gritter-close').hide();
+				
+			}
+			
+		},
+		
+		/**
+		* Remove a specific notification based on an ID
+		* @param {Integer} unique_id The ID used to delete a specific notification
+		* @param {Object} params A set of options passed in to determine how to get rid of it
+		* @param {Object} e The jQuery element that we're "fading" then removing
+		* @param {Boolean} unbind_events If we clicked on the (X) we set this to true to unbind mouseenter/mouseleave
+		*/
+		removeSpecific: function(unique_id, params, e, unbind_events){
+			
+			if(!e){
+				var e = $('#gritter-item-' + unique_id);
+			}
+
+			// We set the fourth param to let the _fade function know to 
+			// unbind the "mouseleave" event.  Once you click (X) there's no going back!
+			this._fade(e, unique_id, params || {}, unbind_events);
+			
+		},
+		
+		/**
+		* If the item is fading out and we hover over it, restore it!
+		* @private
+		* @param {Object} e The HTML element to remove
+		* @param {Integer} unique_id The ID of the element
+		*/
+		_restoreItemIfFading: function(e, unique_id){
+			
+			clearTimeout(this['_int_id_' + unique_id]);
+			e.stop().css({ opacity: '', height: '' });
+			
+		},
+		
+		/**
+		* Setup the global options - only once
+		* @private
+		*/
+		_runSetup: function(){
+		
+			for(opt in $.gritter.options){
+				this[opt] = $.gritter.options[opt];
+			}
+			this._is_setup = 1;
+			
+		},
+		
+		/**
+		* Set the notification to fade out after a certain amount of time
+		* @private
+		* @param {Object} item The HTML element we're dealing with
+		* @param {Integer} unique_id The ID of the element
+		*/
+		_setFadeTimer: function(e, unique_id){
+			
+			var timer_str = (this._custom_timer) ? this._custom_timer : this.time;
+			this['_int_id_' + unique_id] = setTimeout(function(){ 
+				Gritter._fade(e, unique_id);
+			}, timer_str);
+		
+		},
+		
+		/**
+		* Bring everything to a halt
+		* @param {Object} params A list of callback functions to pass when all notifications are removed
+		*/  
+		stop: function(params){
+			
+			// callbacks (if passed)
+			var before_close = ($.isFunction(params.before_close)) ? params.before_close : function(){};
+			var after_close = ($.isFunction(params.after_close)) ? params.after_close : function(){};
+			
+			var wrap = $('#gritter-notice-wrapper');
+			before_close(wrap);
+			wrap.fadeOut(function(){
+				$(this).remove();
+				after_close();
+			});
+		
+		},
+		
+		/**
+		* An extremely handy PHP function ported to JS, works well for templating
+		* @private
+		* @param {String/Array} search A list of things to search for
+		* @param {String/Array} replace A list of things to replace the searches with
+		* @return {String} sa The output
+		*/  
+		_str_replace: function(search, replace, subject, count){
+		
+			var i = 0, j = 0, temp = '', repl = '', sl = 0, fl = 0,
+				f = [].concat(search),
+				r = [].concat(replace),
+				s = subject,
+				ra = r instanceof Array, sa = s instanceof Array;
+			s = [].concat(s);
+			
+			if(count){
+				this.window[count] = 0;
+			}
+		
+			for(i = 0, sl = s.length; i < sl; i++){
+				
+				if(s[i] === ''){
+					continue;
+				}
+				
+				for (j = 0, fl = f.length; j < fl; j++){
+					
+					temp = s[i] + '';
+					repl = ra ? (r[j] !== undefined ? r[j] : '') : r[0];
+					s[i] = (temp).split(f[j]).join(repl);
+					
+					if(count && s[i] !== temp){
+						this.window[count] += (temp.length-s[i].length) / f[j].length;
+					}
+					
+				}
+			}
+			
+			return sa ? s : s[0];
+			
+		},
+		
+		/**
+		* A check to make sure we have something to wrap our notices with
+		* @private
+		*/  
+		_verifyWrapper: function(){
+		  
+			if($('#gritter-notice-wrapper').length == 0){
+				$('body').append(this._tpl_wrap);
+			}
+		
+		}
+		
+	}
+	
+})(jQuery);
+        20200720193547.      $   Gritter   gritter   position   class_name   fade_in_speed   fade_out_speed	   time      medium   options   $.gritter.add   add!   $.gritter.remove   remove'   $.gritter.removeAll   removeAll   _custom_timer   _item_count   _is_setup   _tpl_close   _tpl_title   _tpl_item   _tpl_wrap'   _countRemoveWrapper   _fade   _hoverState   removeSpecific)   _restoreItemIfFading   _runSetup   _setFadeTimer	   stop   _str_replace   _verifyWrapperC   <div class="gritter-close"></div>Y   <span class="gritter-title">[[title]]</span>i  <div id="gritter-item-[[number]]" class="gritter-item-wrapper [[item_class]]" style="display:none"><div class="gritter-top"></div><div class="gritter-item">[[close]][[image]]<div class="[[class_name]]">[[title]]<p>[[text]]</p></div><div style="clear:both"></div></div><div class="gritter-bottom"></div></div>O   <div id="gritter-notice-wrapper"></div>   params   sticky   number   e   unique_id   manual_close   after_close   jQuery    ﬂ+      ﬂ+  ¿         ﬂ+  /*
+ * Gritter for jQuery
+ * http://www.boedesign.com/
+ *
+ * Copyright (c) 2012 Jordan Boesch
+ * Dual licensed under the MIT and GPL licenses.
+ *
+ * Date: February 24, 2012
+ * Version: 1.7.4
+ */
+
+(function($){
+ 	
+	/**
+	* Set it up as an object under the jQuery namespace
+	*/
+	$.gritter = {};
+	
+	/**
+	* Set up global options that the user can over-ride
+	*/
+	$.gritter.options = {
+		position: '',
+		class_name: '', // could be set to 'gritter-light' to use white notifications
+		fade_in_speed: 'medium', // how fast notifications fade in
+		fade_out_speed: 1000, // how fast the notices fade out
+		time: 6000 // hang on the screen for...
+	}
+	
+	/**
+	* Add a gritter notification to the screen
+	* @see Gritter#add();
+	*/
+	$.gritter.add = function(params){
+
+		try {
+			return Gritter.add(params || {});
+		} catch(e) {
+		
+			var err = 'Gritter Error: ' + e;
+			(typeof(console) != 'undefined' && console.error) ? 
+				console.error(err, params) : 
+				alert(err);
+				
+		}
+		
+	}
+	
+	/**
+	* Remove a gritter notification from the screen
+	* @see Gritter#removeSpecific();
+	*/
+	$.gritter.remove = function(id, params){
+		Gritter.removeSpecific(id, params || {});
+	}
+	
+	/**
+	* Remove all notifications
+	* @see Gritter#stop();
+	*/
+	$.gritter.removeAll = function(params){
+		Gritter.stop(params || {});
+	}
+	
+	/**
+	* Big fat Gritter object
+	* @constructor (not really since its object literal)
+	*/
+	var Gritter = {
+		
+		// Public - options to over-ride with $.gritter.options in "add"
+		position: '',
+		fade_in_speed: '',
+		fade_out_speed: '',
+		time: '',
+		
+		// Private - no touchy the private parts
+		_custom_timer: 0,
+		_item_count: 0,
+		_is_setup: 0,
+		_tpl_close: '<div class="gritter-close"></div>',
+		_tpl_title: '<span class="gritter-title">[[title]]</span>',
+		_tpl_item: '<div id="gritter-item-[[number]]" class="gritter-item-wrapper [[item_class]]" style="display:none"><div class="gritter-top"></div><div class="gritter-item">[[close]][[image]]<div class="[[class_name]]">[[title]]<p>[[text]]</p></div><div style="clear:both"></div></div><div class="gritter-bottom"></div></div>',
+		_tpl_wrap: '<div id="gritter-notice-wrapper"></div>',
+		
+		/**
+		* Add a gritter notification to the screen
+		* @param {Object} params The object that contains all the options for drawing the notification
+		* @return {Integer} The specific numeric id to that gritter notification
+		*/
+		add: function(params){
+			// Handle straight text
+			if(typeof(params) == 'string'){
+				params = {text:params};
+			}
+
+			// We might have some issues if we don't have a title or text!
+			if(!params.text){
+				throw 'You must supply "text" parameter.'; 
+			}
+			
+			// Check the options and set them once
+			if(!this._is_setup){
+				this._runSetup();
+			}
+			
+			// Basics
+			var title = params.title, 
+				text = params.text,
+				image = params.image || '',
+				sticky = params.sticky || false,
+				item_class = params.class_name || $.gritter.options.class_name,
+				position = $.gritter.options.position,
+				time_alive = params.time || '';
+
+			this._verifyWrapper();
+			
+			this._item_count++;
+			var number = this._item_count, 
+				tmp = this._tpl_item;
+			
+			// Assign callbacks
+			$(['before_open', 'after_open', 'before_close', 'after_close']).each(function(i, val){
+				Gritter['_' + val + '_' + number] = ($.isFunction(params[val])) ? params[val] : function(){}
+			});
+
+			// Reset
+			this._custom_timer = 0;
+			
+			// A custom fade time set
+			if(time_alive){
+				this._custom_timer = time_alive;
+			}
+			
+			var image_str = (image != '') ? '<img src="' + image + '" class="gritter-image" />' : '',
+				class_name = (image != '') ? 'gritter-with-image' : 'gritter-without-image';
+			
+			// String replacements on the template
+			if(title){
+				title = this._str_replace('[[title]]',title,this._tpl_title);
+			}else{
+				title = '';
+			}
+			
+			tmp = this._str_replace(
+				['[[title]]', '[[text]]', '[[close]]', '[[image]]', '[[number]]', '[[class_name]]', '[[item_class]]'],
+				[title, text, this._tpl_close, image_str, this._item_count, class_name, item_class], tmp
+			);
+
+			// If it's false, don't show another gritter message
+			if(this['_before_open_' + number]() === false){
+				return false;
+			}
+
+			$('#gritter-notice-wrapper').addClass(position).append(tmp);
+			
+			var item = $('#gritter-item-' + this._item_count);
+			
+			item.fadeIn(this.fade_in_speed, function(){
+				Gritter['_after_open_' + number]($(this));
+			});
+			
+			if(!sticky){
+				this._setFadeTimer(item, number);
+			}
+			
+			// Bind the hover/unhover states
+			$(item).bind('mouseenter mouseleave', function(event){
+				if(event.type == 'mouseenter'){
+					if(!sticky){ 
+						Gritter._restoreItemIfFading($(this), number);
+					}
+				}
+				else {
+					if(!sticky){
+						Gritter._setFadeTimer($(this), number);
+					}
+				}
+				Gritter._hoverState($(this), event.type);
+			});
+			
+			// Clicking (X) makes the perdy thing close
+			$(item).find('.gritter-close').click(function(){
+				Gritter.removeSpecific(number, {}, null, true);
+			});
+			
+			return number;
+		
+		},
+		
+		/**
+		* If we don't have any more gritter notifications, get rid of the wrapper using this check
+		* @private
+		* @param {Integer} unique_id The ID of the element that was just deleted, use it for a callback
+		* @param {Object} e The jQuery element that we're going to perform the remove() action on
+		* @param {Boolean} manual_close Did we close the gritter dialog with the (X) button
+		*/
+		_countRemoveWrapper: function(unique_id, e, manual_close){
+			
+			// Remove it then run the callback function
+			e.remove();
+			this['_after_close_' + unique_id](e, manual_close);
+			
+			// Check if the wrapper is empty, if it is.. remove the wrapper
+			if($('.gritter-item-wrapper').length == 0){
+				$('#gritter-notice-wrapper').remove();
+			}
+		
+		},
+		
+		/**
+		* Fade out an element after it's been on the screen for x amount of time
+		* @private
+		* @param {Object} e The jQuery element to get rid of
+		* @param {Integer} unique_id The id of the element to remove
+		* @param {Object} params An optional list of params to set fade speeds etc.
+		* @param {Boolean} unbind_events Unbind the mouseenter/mouseleave events if they click (X)
+		*/
+		_fade: function(e, unique_id, params, unbind_events){
+
+			var params = params || {},
+				fade = (typeof(params.fade) != 'undefined') ? params.fade : true,
+				fade_out_speed = params.speed || this.fade_out_speed,
+				manual_close = unbind_events;
+
+			this['_before_close_' + unique_id](e, manual_close);
+			
+			// If this is true, then we are coming from clicking the (X)
+			if(unbind_events){
+				e.unbind('mouseenter mouseleave');
+			}
+			
+			// Fade it out or remove it
+			if(fade){
+			
+				e.animate({
+					opacity: 0
+				}, fade_out_speed, function(){
+					e.animate({ height: 0 }, 300, function(){
+						Gritter._countRemoveWrapper(unique_id, e, manual_close);
+					})
+				})
+				
+			}
+			else {
+				
+				this._countRemoveWrapper(unique_id, e);
+				
+			}
+						
+		},
+		
+		/**
+		* Perform actions based on the type of bind (mouseenter, mouseleave) 
+		* @private
+		* @param {Object} e The jQuery element
+		* @param {String} type The type of action we're performing: mouseenter or mouseleave
+		*/
+		_hoverState: function(e, type){
+			
+			// Change the border styles and add the (X) close button when you hover
+			if(type == 'mouseenter'){
+				
+				e.addClass('hover');
+				
+				// Show close button
+				e.find('.gritter-close').show();
+						
+			}
+			// Remove the border styles and hide (X) close button when you mouse out
+			else {
+				
+				e.removeClass('hover');
+				
+				// Hide close button
+				e.find('.gritter-close').hide();
+				
+			}
+			
+		},
+		
+		/**
+		* Remove a specific notification based on an ID
+		* @param {Integer} unique_id The ID used to delete a specific notification
+		* @param {Object} params A set of options passed in to determine how to get rid of it
+		* @param {Object} e The jQuery element that we're "fading" then removing
+		* @param {Boolean} unbind_events If we clicked on the (X) we set this to true to unbind mouseenter/mouseleave
+		*/
+		removeSpecific: function(unique_id, params, e, unbind_events){
+			
+			if(!e){
+				var e = $('#gritter-item-' + unique_id);
+			}
+
+			// We set the fourth param to let the _fade function know to 
+			// unbind the "mouseleave" event.  Once you click (X) there's no going back!
+			this._fade(e, unique_id, params || {}, unbind_events);
+			
+		},
+		
+		/**
+		* If the item is fading out and we hover over it, restore it!
+		* @private
+		* @param {Object} e The HTML element to remove
+		* @param {Integer} unique_id The ID of the element
+		*/
+		_restoreItemIfFading: function(e, unique_id){
+			
+			clearTimeout(this['_int_id_' + unique_id]);
+			e.stop().css({ opacity: '', height: '' });
+			
+		},
+		
+		/**
+		* Setup the global options - only once
+		* @private
+		*/
+		_runSetup: function(){
+		
+			for(opt in $.gritter.options){
+				this[opt] = $.gritter.options[opt];
+			}
+			this._is_setup = 1;
+			
+		},
+		
+		/**
+		* Set the notification to fade out after a certain amount of time
+		* @private
+		* @param {Object} item The HTML element we're dealing with
+		* @param {Integer} unique_id The ID of the element
+		*/
+		_setFadeTimer: function(e, unique_id){
+			
+			var timer_str = (this._custom_timer) ? this._custom_timer : this.time;
+			this['_int_id_' + unique_id] = setTimeout(function(){ 
+				Gritter._fade(e, unique_id);
+			}, timer_str);
+		
+		},
+		
+		/**
+		* Bring everything to a halt
+		* @param {Object} params A list of callback functions to pass when all notifications are removed
+		*/  
+		stop: function(params){
+			
+			// callbacks (if passed)
+			var before_close = ($.isFunction(params.before_close)) ? params.before_close : function(){};
+			var after_close = ($.isFunction(params.after_close)) ? params.after_close : function(){};
+			
+			var wrap = $('#gritter-notice-wrapper');
+			before_close(wrap);
+			wrap.fadeOut(function(){
+				$(this).remove();
+				after_close();
+			});
+		
+		},
+		
+		/**
+		* An extremely handy PHP function ported to JS, works well for templating
+		* @private
+		* @param {String/Array} search A list of things to search for
+		* @param {String/Array} replace A list of things to replace the searches with
+		* @return {String} sa The output
+		*/  
+		_str_replace: function(search, replace, subject, count){
+		
+			var i = 0, j = 0, temp = '', repl = '', sl = 0, fl = 0,
+				f = [].concat(search),
+				r = [].concat(replace),
+				s = subject,
+				ra = r instanceof Array, sa = s instanceof Array;
+			s = [].concat(s);
+			
+			if(count){
+				this.window[count] = 0;
+			}
+		
+			for(i = 0, sl = s.length; i < sl; i++){
+				
+				if(s[i] === ''){
+					continue;
+				}
+				
+				for (j = 0, fl = f.length; j < fl; j++){
+					
+					temp = s[i] + '';
+					repl = ra ? (r[j] !== undefined ? r[j] : '') : r[0];
+					s[i] = (temp).split(f[j]).join(repl);
+					
+					if(count && s[i] !== temp){
+						this.window[count] += (temp.length-s[i].length) / f[j].length;
+					}
+					
+				}
+			}
+			
+			return sa ? s : s[0];
+			
+		},
+		
+		/**
+		* A check to make sure we have something to wrap our notices with
+		* @private
+		*/  
+		_verifyWrapper: function(){
+		  
+			if($('#gritter-notice-wrapper').length == 0){
+				$('body').append(this._tpl_wrap);
+			}
+		
+		}
+		
+	}
+	
+})(jQuery);
+  U   https://clienteonline.samisistemas.com.br/assets/plugins/gritter/js/jquery.gritter.js   ≥!´!á!´!ˇˇˇˇ            å!´!ç!´!     † Ã   ‘+  ƒ   ‘+  Ñ@   	   3   ≥!´!å!´!ˇˇˇˇ                 å!´!é!´!            é!´!   å!´!é!´!       é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!    é!´!   é!´!   é!´!   é!´!	   é!´!   é!´!   é!´!   é!´!
+   å!´!ç!´!     †   ‰     ‹     "             5ûé!´!   å!´!ç!´!     †   E  Å  =  Å  5             5ûé!´!   å!´!ç!´!     †   ‡  
+  ÿ  
+  =             5ûé!´!   å!´!é!´!       é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!   ã!´!é!´!    ã!´!é!´!!   ã!´!    é!´!   é!´!   é!´!   é!´!"   é!´!   é!´!#   é!´!   é!´!$   é!´!   é!´!%   é!´!   å!´!ç!´!     †
+   L	  °  D	  °  [      B   å!´! ††    ò    {   P       å!´!  †  
+  ˛  
+  |   \          5û 5ûå!´!  †  9  ˙  9  ü   +         5ûå!´! †‘  ‡  Ã  ‡  ®   1         5ûå!´!  †F  Ç  >  Ç  ∑   0          5ûä!´!ä!´!ä!´!ä!´!ä!´!ä!´!ä!´!ä!´!é!´!&   é!´!'   é!´!(    5ûå!´!ç!´!     †
+   N  ë  F  ë  ∆            5ûé!´!   å!´!ç!´!     †
+   +    #    €      B   å!´!  †E  ƒ  =  ƒ  Ó          å!´!  †t  Ω  l  Ω  Ô   +          5û 5ûä!´!ä!´!ä!´!é!´!)   é!´!*   é!´!+    5ûé!´!   å!´!ç!´!     †
+                         5ûé!´!   å!´!ç!´!     †
+   Ü  ¡   ~  ¡   !           5ûé!´!   å!´!ç!´!     †
+   §!  "  ú!  "  3            5ûé!´!   å!´!ç!´!      †
+   w"  Î"  o"  Î"  >           5ûé!´!   å!´!ç!´!     †
+   ◊#  ®$  œ#  ®$  M     B   å!´!  †j$  î$  b$  î$  P  5          5ûé!´!)   é!´!*    5ûé!´!   å!´!ç!´!     †
+   L%  Ã&  D%  Ã&  Z     @   å!´!  †–%  ‘%  »%  ‘%  ]  Z          5ûå!´!  †-&  1&  %&  1&  ^  W          5ûå!´!  †í&  √&  ä&  √&  b           5ûé!´!,    5ûé!´!   å!´!ç!´!     †
+    (  ‚*  ˙'  ‚*  p           5ûé!´!    å!´!ç!´!      †
+!   _+   +  W+   +  ò           5ûé!´!!   öò;¯n  ≠                              .    	 º   5   K   ‹º   F   5      9      9      9   Ë9	   p9
+   K   ‹º   F   j   K   ‹º   F   j   K   ‹º   F   j   K   ‹5      9      9      9	      9
+   9   9   9      9      9      9      9   j   9   j   9    j!   9"   j#   9$   j%   9&   j'   9(   j)   9*   j+   9,   j-   9.   j/   90   j1   92   »   ‹£@ `Pê@ `P? : : : 8 N" `Pï@5 `Pï@= `Pï@E `PEH : : : JN 6 6 6 : : : J[ JÄ  ∆ JÄ  € JÄ  JÄ ! JÄ 3 JÄ > JÄ M JÄ Z JÄ p JÄ ò ê@Ä ¢P   5ûé!´!-   öò;¯                                       j    π   w ‹£@ `PFÄ ¢%P4P   Z√ŒÓ<'      	_:≥*_:≥*BÏ#_CÎΩ   V    :https://clienteonline.samisistemas.com.br/assets/plugins/gritter/js/jquery.gritter.js necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Mon, 17 Aug 2020 16:33:01 GMT
+Content-Type: application/javascript
+Content-Length: 11231
+Last-Modified: Mon, 27 Nov 2017 11:53:04 GMT
+ETag: "5a1bfca0-2bdf"
+Strict-Transport-Security: max-age=63072000
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Expect-CT: max-age=0
+Accept-Ranges: bytes
+ original-response-headers Server: nginx/1.18.0 (Ubuntu)
+Date: Mon, 17 Aug 2020 16:33:01 GMT
+Content-Type: application/javascript
+Content-Length: 11231
+Last-Modified: Mon, 27 Nov 2017 11:53:04 GMT
+Connection: keep-alive
+ETag: "5a1bfca0-2bdf"
+Strict-Transport-Security: max-age=63072000
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Expect-CT: max-age=0
+Accept-Ranges: bytes
+ ctid 2 uncompressed-len 0 net-response-time-onstart 699 net-response-time-onstop 700 alt-data 1;11231,javascript/moz-bytecode-20200720193547 alt-data-from-child 1   gf

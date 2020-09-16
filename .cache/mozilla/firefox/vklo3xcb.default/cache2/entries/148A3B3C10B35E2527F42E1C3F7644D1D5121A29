@@ -1,0 +1,2704 @@
+/**
+Core script to handle the entire theme and core functions
+**/
+var App = function () {
+
+    // IE mode
+    var isRTL = false;
+    var isIE8 = false;
+    var isIE9 = false;
+    var isIE10 = false;
+
+    var sidebarWidth = 225;
+    var sidebarCollapsedWidth = 35;
+
+    var responsiveHandlers = [];
+
+    // theme layout color set
+    var layoutColorCodes = {
+        'blue': '#4b8df8',
+        'red': '#FF6E00',
+        'green': '#35aa47',
+        'purple': '#852b99',
+        'grey': '#555555',
+        'light-grey': '#fafafa',
+        'yellow': '#ffb848'
+    };
+
+    // To get the correct viewport width based on  http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/
+    var _getViewPort = function () {
+        var e = window, a = 'inner';
+        if (!('innerWidth' in window)) {
+            a = 'client';
+            e = document.documentElement || document.body;
+        }
+        return {
+            width: e[a + 'Width'],
+            height: e[a + 'Height']
+        }
+    }
+
+    // initializes main settings
+    var handleInit = function () {
+
+        if ($('body').css('direction') === 'rtl') {
+            isRTL = true;
+        }
+
+        isIE8 = !! navigator.userAgent.match(/MSIE 8.0/);
+        isIE9 = !! navigator.userAgent.match(/MSIE 9.0/);
+        isIE10 = !! navigator.userAgent.match(/MSIE 10.0/);
+
+        if (isIE10) {
+            jQuery('html').addClass('ie10'); // detect IE10 version
+        }
+        
+        if (isIE10 || isIE9 || isIE8) {
+            jQuery('html').addClass('ie'); // detect IE10 version
+        }
+
+        /*
+          Virtual keyboards:
+          Also, note that if you're using inputs in your modal ‚Äì iOS has a rendering bug which doesn't 
+          update the position of fixed elements when the virtual keyboard is triggered  
+        */
+        var deviceAgent = navigator.userAgent.toLowerCase();
+        if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
+            $(document).on('focus', 'input, textarea', function () {
+                $('.page-header').hide();
+                $('.page-footer').hide();
+            });
+            $(document).on('blur', 'input, textarea', function () {
+                $('.page-header').show();
+                $('.page-footer').show();
+            });
+        }
+    }
+
+    var handleSidebarState = function () {
+        // remove sidebar toggler if window width smaller than 992(for tablet and phone mode)
+        var viewport = _getViewPort();
+        if (viewport.width < 992) {
+            $('body').removeClass("page-sidebar-closed");
+        }
+    }
+
+    // runs callback functions set by App.addResponsiveHandler().
+    var runResponsiveHandlers = function () {
+        // reinitialize other subscribed elements
+        for (var i = 0; i < responsiveHandlers.length; i++) {
+            var each = responsiveHandlers[i];
+            each.call();
+        }
+    }
+
+    // reinitialize the laypot on window resize
+    var handleResponsive = function () {
+        handleSidebarState();
+        handleSidebarAndContentHeight();
+        handleFixedSidebar();
+        runResponsiveHandlers();
+    }
+
+    // initialize the layout on page load
+    var handleResponsiveOnInit = function () {
+        handleSidebarState();
+        handleSidebarAndContentHeight();
+    }
+
+    // handle the layout reinitialization on window resize
+    var handleResponsiveOnResize = function () {
+        var resize;
+        if (isIE8) {
+            var currheight;
+            $(window).resize(function () {
+                if (currheight == document.documentElement.clientHeight) {
+                    return; //quite event since only body resized not window.
+                }
+                if (resize) {
+                    clearTimeout(resize);
+                }
+                resize = setTimeout(function () {
+                    handleResponsive();
+                }, 50); // wait 50ms until window resize finishes.                
+                currheight = document.documentElement.clientHeight; // store last body client height
+            });
+        } else {
+            $(window).resize(function () {
+                if (resize) {
+                    clearTimeout(resize);
+                }
+                resize = setTimeout(function () {
+                    handleResponsive();
+                }, 50); // wait 50ms until window resize finishes.
+            });
+        }
+    }
+
+    //* BEGIN:CORE HANDLERS *//
+    // this function handles responsive layout on screen size resize or mobile device rotate.
+
+    // Set proper height for sidebar and content. The content and sidebar height must be synced always.
+    var handleSidebarAndContentHeight = function () {
+        var content = $('.page-content');
+        var sidebar = $('.page-sidebar');
+        var body = $('body');
+        var height;
+
+        if (body.hasClass("page-footer-fixed") === true && body.hasClass("page-sidebar-fixed") === false) {
+            var available_height = $(window).height() - $('.footer').outerHeight() - $('.header').outerHeight();
+            if (content.height() < available_height) {
+                content.attr('style', 'min-height:' + available_height + 'px !important');
+            }
+        } else {
+            if (body.hasClass('page-sidebar-fixed')) {
+                height = _calculateFixedSidebarViewportHeight();
+            } else {
+                height = sidebar.height() + 20;
+                var headerHeight = $('.header').outerHeight();
+                var footerHeight = $('.footer').outerHeight();                
+                if ($(window).width() > 1024 && (height + headerHeight + footerHeight)  < $(window).height()) {
+                    height = $(window).height() - headerHeight - footerHeight;
+                }
+            }            
+            if (height >= content.height()) {
+                content.attr('style', 'min-height:' + height + 'px !important');
+            }
+        }
+    }
+
+    // Handle sidebar menu
+    var handleSidebarMenu = function () {
+        jQuery('.page-sidebar').on('click', 'li > a', function (e) {
+            if ($(this).next().hasClass('sub-menu') == false) {
+                if ($('.btn-navbar').hasClass('collapsed') == false) {
+                    $('.btn-navbar').click();
+                }
+                return;
+            }
+
+            if ($(this).next().hasClass('sub-menu always-open')) {
+                return;
+            }
+
+            var parent = $(this).parent().parent();
+            var the = $(this);
+            var menu = $('.page-sidebar-menu');
+            var sub = jQuery(this).next();
+
+            var autoScroll = menu.data("auto-scroll") ? menu.data("auto-scroll") : true;
+            var slideSpeed = menu.data("slide-speed") ? parseInt(menu.data("slide-speed")) : 200;
+
+            parent.children('li.open').children('a').children('.arrow').removeClass('open');
+            parent.children('li.open').children('.sub-menu:not(.always-open)').slideUp(200);
+            parent.children('li.open').removeClass('open');
+            
+            var slideOffeset = -200;
+
+            if (sub.is(":visible")) {
+                jQuery('.arrow', jQuery(this)).removeClass("open");
+                jQuery(this).parent().removeClass("open");
+                sub.slideUp(slideSpeed, function () {
+                    if (autoScroll == true && $('body').hasClass('page-sidebar-closed') == false) {
+                        if ($('body').hasClass('page-sidebar-fixed')) {
+                            menu.slimScroll({'scrollTo': (the.position()).top});
+                        } else {
+                            App.scrollTo(the, slideOffeset);
+                        }
+                    }
+                    handleSidebarAndContentHeight();
+                });
+            } else {
+                jQuery('.arrow', jQuery(this)).addClass("open");
+                jQuery(this).parent().addClass("open");
+                sub.slideDown(slideSpeed, function () {
+                    if (autoScroll == true && $('body').hasClass('page-sidebar-closed') == false) {
+                        if ($('body').hasClass('page-sidebar-fixed')) {
+                            menu.slimScroll({'scrollTo': (the.position()).top});
+                        } else {
+                            App.scrollTo(the, slideOffeset);
+                        }
+                    }
+                    handleSidebarAndContentHeight();
+                });
+            }
+
+            e.preventDefault();
+        });
+
+        // handle ajax links within sidebar menu
+        jQuery('.page-sidebar').on('click', ' li > a.ajaxify', function (e) {
+            e.preventDefault();
+            App.scrollTop();
+
+            var url = $(this).attr("href");
+            var menuContainer = jQuery('.page-sidebar ul');
+            var pageContent = $('.page-content');
+            var pageContentBody = $('.page-content .page-content-body');
+
+            menuContainer.children('li.active').removeClass('active');
+            menuContainer.children('arrow.open').removeClass('open');
+
+            $(this).parents('li').each(function () {
+                $(this).addClass('active');
+                $(this).children('a > span.arrow').addClass('open');
+            });
+            $(this).parents('li').addClass('active');
+
+            App.startPageLoading();
+            
+            if ($(window).width() <= 991 && $('.page-sidebar').hasClass("in")) {
+                $('.navbar-toggle').click();
+            }
+
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: url,
+                dataType: "html",
+                success: function (res) {
+                    App.stopPageLoading();
+                    pageContentBody.html(res);
+                    App.fixContentHeight(); // fix content height
+                    App.initAjax(); // initialize core stuff
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    pageContentBody.html('<h4>Could not load the requested content.</h4>');
+                    App.stopPageLoading();
+                }
+            });
+        });
+
+        // handle ajax link within main content
+        jQuery('.page-content').on('click', '.ajaxify', function (e) {
+            e.preventDefault();
+            App.scrollTop();
+
+            var url = $(this).attr("href");
+            var pageContent = $('.page-content');
+            var pageContentBody = $('.page-content .page-content-body');
+
+            App.startPageLoading();
+            
+            if ($(window).width() <= 991 && $('.page-sidebar').hasClass("in")) {
+                $('.navbar-toggle').click();
+            }
+
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: url,
+                dataType: "html",
+                success: function (res) {
+                    App.stopPageLoading();
+                    pageContentBody.html(res);
+                    App.fixContentHeight(); // fix content height
+                    App.initAjax(); // initialize core stuff
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    pageContentBody.html('<h4>Could not load the requested content.</h4>');
+                    App.stopPageLoading();
+                }
+            });
+        });
+    }
+
+    // Helper function to calculate sidebar height for fixed sidebar layout.
+    var _calculateFixedSidebarViewportHeight = function () {
+        var sidebarHeight = $(window).height() - $('.header').height() + 1;
+        if ($('body').hasClass("page-footer-fixed")) {
+            sidebarHeight = sidebarHeight - $('.footer').outerHeight();
+        }
+
+        return sidebarHeight;
+    }
+
+    // Handles fixed sidebar
+    var handleFixedSidebar = function () {
+        var menu = $('.page-sidebar-menu');
+
+        if (menu.parent('.slimScrollDiv').size() === 1) { // destroy existing instance before updating the height
+            menu.slimScroll({
+                destroy: true
+            });
+            menu.removeAttr('style');
+            $('.page-sidebar').removeAttr('style');
+        }
+
+        if ($('.page-sidebar-fixed').size() === 0) {
+            handleSidebarAndContentHeight();
+            return;
+        }
+
+        var viewport = _getViewPort();
+        if (viewport.width >= 992) {
+            var sidebarHeight = _calculateFixedSidebarViewportHeight();
+
+            menu.slimScroll({
+                size: '7px',
+                color: '#a1b2bd',
+                opacity: .3,
+                position: isRTL ? 'left' : 'right',
+                height: sidebarHeight,
+                allowPageScroll: false,
+                disableFadeOut: false
+            });
+            handleSidebarAndContentHeight();
+        }
+    }
+
+    // Handles the sidebar menu hover effect for fixed sidebar.
+    var handleFixedSidebarHoverable = function () {
+        if ($('body').hasClass('page-sidebar-fixed') === false) {
+            return;
+        }
+
+        $('.page-sidebar').off('mouseenter').on('mouseenter', function () {
+            var body = $('body');
+
+            if ((body.hasClass('page-sidebar-closed') === false || body.hasClass('page-sidebar-fixed') === false) || $(this).hasClass('page-sidebar-hovering')) {
+                return;
+            }
+
+            body.removeClass('page-sidebar-closed').addClass('page-sidebar-hover-on');
+
+            if (body.hasClass("page-sidebar-reversed")) {
+                $(this).width(sidebarWidth);
+            } else {
+                $(this).addClass('page-sidebar-hovering');
+                $(this).animate({
+                    width: sidebarWidth
+                }, 400, '', function () {
+                    $(this).removeClass('page-sidebar-hovering');
+                });
+            }
+        });
+
+        $('.page-sidebar').off('mouseleave').on('mouseleave', function () {
+            var body = $('body');
+
+            if ((body.hasClass('page-sidebar-hover-on') === false || body.hasClass('page-sidebar-fixed') === false) || $(this).hasClass('page-sidebar-hovering')) {
+                return;
+            }
+
+            if (body.hasClass("page-sidebar-reversed")) {
+                $('body').addClass('page-sidebar-closed').removeClass('page-sidebar-hover-on');
+                $(this).width(sidebarCollapsedWidth);
+            } else {
+                $(this).addClass('page-sidebar-hovering');
+                $(this).animate({
+                    width: sidebarCollapsedWidth
+                }, 400, '', function () {
+                    $('body').addClass('page-sidebar-closed').removeClass('page-sidebar-hover-on');
+                    $(this).removeClass('page-sidebar-hovering');
+                });
+            }
+        });
+    }
+
+    // Handles sidebar toggler to close/hide the sidebar.
+    var handleSidebarToggler = function () {
+        var viewport = _getViewPort();
+        if ($.cookie && $.cookie('sidebar_closed') === '1' && viewport.width >= 992) {
+            $('body').addClass('page-sidebar-closed');
+        }
+
+        // handle sidebar show/hide
+        $('.page-sidebar, .header').on('click', '.sidebar-toggler', function (e) {
+            var body = $('body');
+            var sidebar = $('.page-sidebar');
+
+            if ((body.hasClass("page-sidebar-hover-on") && body.hasClass('page-sidebar-fixed')) || sidebar.hasClass('page-sidebar-hovering')) {
+                body.removeClass('page-sidebar-hover-on');
+                sidebar.css('width', '').hide().show();
+                handleSidebarAndContentHeight(); //fix content & sidebar height
+                if ($.cookie) {
+                    $.cookie('sidebar_closed', '0');
+                }
+                e.stopPropagation();
+                runResponsiveHandlers();
+                return;
+            }
+
+            $(".sidebar-search", sidebar).removeClass("open");
+
+            if (body.hasClass("page-sidebar-closed")) {
+                body.removeClass("page-sidebar-closed");
+                if (body.hasClass('page-sidebar-fixed')) {
+                    sidebar.css('width', '');
+                }
+                if ($.cookie) {
+                    $.cookie('sidebar_closed', '0');
+                }
+            } else {
+                body.addClass("page-sidebar-closed");
+                if ($.cookie) {
+                    $.cookie('sidebar_closed', '1');
+                }
+            }
+            handleSidebarAndContentHeight(); //fix content & sidebar height
+            runResponsiveHandlers();
+        });
+
+        // handle the search bar close
+        $('.page-sidebar').on('click', '.sidebar-search .remove', function (e) {
+            e.preventDefault();
+            $('.sidebar-search').removeClass("open");
+        });
+
+        // handle the search query submit on enter press
+        $('.page-sidebar .sidebar-search').on('keypress', 'input.form-control', function (e) {
+            if (e.which == 13) {
+                $('.sidebar-search').submit();
+                return false; //<---- Add this line
+            }
+        });
+
+        // handle the search submit(for sidebar search and responsive mode of the header search)
+        $('.sidebar-search .submit').on('click', function (e) {
+            e.preventDefault();
+            if ($('body').hasClass("page-sidebar-closed")) {
+                if ($('.sidebar-search').hasClass('open') == false) {
+                    if ($('.page-sidebar-fixed').size() === 1) {
+                        $('.page-sidebar .sidebar-toggler').click(); //trigger sidebar toggle button
+                    }
+                    $('.sidebar-search').addClass("open");
+                } else {
+                    $('.sidebar-search').submit();
+                }
+            } else {
+                $('.sidebar-search').submit();
+            }
+        });
+
+        // header search box:
+
+        // handle the search query submit on enter press
+        $('.header .search-form').on('keypress', 'input.form-control', function (e) {
+            if (e.which == 13) {
+                $('.sidebar-search').submit();
+                return false; //<---- Add this line
+            }
+        });
+
+        //handle header search button click
+        $('.header .search-form .submit').on('click', function (e) {
+            e.preventDefault();
+            $('.header .search-form').submit();
+        });
+    }
+
+    // Handles the horizontal menu
+    var handleHorizontalMenu = function () {
+        //handle hor menu search form toggler click
+        $('.header').on('click', '.hor-menu .hor-menu-search-form-toggler', function (e) {
+            if ($(this).hasClass('off')) {
+                $(this).removeClass('off');
+                $('.header .hor-menu .search-form').hide();
+            } else {
+                $(this).addClass('off');
+                $('.header .hor-menu .search-form').show();
+            }
+            e.preventDefault();
+        });
+
+        //handle tab click
+        $('.header').on('click', '.hor-menu a[data-toggle="tab"]', function (e) {     
+            e.preventDefault();
+            var nav = $(".hor-menu .nav");
+            var active_link = nav.find('li.current');
+            $('li.active', active_link).removeClass("active");
+            $('.selected', active_link).remove();
+            var new_link = $(this).parents('li').last();
+            new_link.addClass("current");
+            new_link.find("a:first").append('<span class="selected"></span>');
+        });
+
+        //handle hor menu search button click
+        $('.header').on('click', '.hor-menu .search-form .btn', function (e) {
+            $('.form-search').submit();
+            e.preventDefault();
+        });
+
+        //handle hor menu search form on enter press
+        $('.header').on('keypress', '.hor-menu .search-form input', function (e) {
+            if (e.which == 13) {
+                $('.form-search').submit();
+                return false;
+            }
+        });
+    }
+
+    // Handles the go to top button at the footer
+    var handleGoTop = function () {
+        /* set variables locally for increased performance */
+        jQuery('.footer').on('click', '.go-top', function (e) {
+            App.scrollTo();
+            e.preventDefault();
+        });
+    }
+
+    // Handles portlet tools & actions
+    var handlePortletTools = function () {
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > a.remove', function (e) {
+            e.preventDefault();
+            jQuery(this).closest(".portlet").remove();
+        });
+
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > a.reload', function (e) {
+            e.preventDefault();
+            var el = jQuery(this).closest(".portlet").children(".portlet-body");
+            var url = jQuery(this).attr("data-url");
+            var error = $(this).attr("data-error-display");
+            if (url) {
+                App.blockUI({target: el, iconOnly: true});
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: url,
+                    dataType: "html",
+                    success: function(res) 
+                    {                        
+                        App.unblockUI(el);
+                        el.html(res);
+                    },
+                    error: function(xhr, ajaxOptions, thrownError)
+                    {
+                        App.unblockUI(el);
+                        var msg = 'Error on reloading the content. Please check your connection and try again.';
+                        if (error == "toastr" && toastr) {
+                            toastr.error(msg);
+                        } else if (error == "notific8" && $.notific8) {
+                            $.notific8('zindex', 11500);
+                            $.notific8(msg, {theme: 'ruby', life: 3000});
+                        } else {
+                            alert(msg);
+                        }
+                    }
+                });
+            } else {
+                // for demo purpose
+                App.blockUI({target: el, iconOnly: true});
+                window.setTimeout(function () {
+                    App.unblockUI(el);
+                }, 1000);
+            }            
+        });
+
+        // load ajax data on page init
+        $('.portlet .portlet-title a.reload[data-load="true"]').click();
+
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > .collapse, .portlet .portlet-title > .tools > .expand', function (e) {
+            e.preventDefault();
+            var el = jQuery(this).closest(".portlet").children(".portlet-body");
+            if (jQuery(this).hasClass("collapse")) {
+                jQuery(this).removeClass("collapse").addClass("expand");
+                el.slideUp(200);
+            } else {
+                jQuery(this).removeClass("expand").addClass("collapse");
+                el.slideDown(200);
+            }
+        });
+    }
+
+    // Handles custom checkboxes & radios using jQuery Uniform plugin
+    var handleUniform = function () {
+        if (!jQuery().uniform) {
+            return;
+        }
+        var test = $("input[type=checkbox]:not(.toggle, .make-switch), input[type=radio]:not(.toggle, .star, .make-switch)");
+        if (test.size() > 0) {
+            test.each(function () {
+                if ($(this).parents(".checker").size() == 0) {
+                    $(this).show();
+                    $(this).uniform();
+                }
+            });
+        }
+    }
+
+    var handleBootstrapSwitch = function () {
+        if (!jQuery().bootstrapSwitch) {
+            return;
+        }
+        $('.make-switch').bootstrapSwitch();
+    }
+
+    // Handles Bootstrap Accordions.
+    var handleAccordions = function () {
+        jQuery('body').on('shown.bs.collapse', '.accordion.scrollable', function (e) {
+            App.scrollTo($(e.target));
+        });
+    }
+
+    // Handles Bootstrap Tabs.
+    var handleTabs = function () {
+        // fix content height on tab click
+        $('body').on('shown.bs.tab', '.nav.nav-tabs', function () {
+            handleSidebarAndContentHeight();
+        });
+
+        //activate tab if tab id provided in the URL
+        if (location.hash) {
+            var tabid = location.hash.substr(1);
+            $('a[href="#' + tabid + '"]').parents('.tab-pane:hidden').each(function(){
+                var tabid = $(this).attr("id");
+                $('a[href="#' + tabid + '"]').click();    
+            });            
+            $('a[href="#' + tabid + '"]').click();
+        }
+    }
+
+    // Handles Bootstrap Modals.
+    var handleModals = function () {
+        // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class. 
+        $('body').on('hide.bs.modal', function () {
+           if ($('.modal:visible').size() > 1 && $('html').hasClass('modal-open') == false) {
+              $('html').addClass('modal-open');
+           } else if ($('.modal:visible').size() <= 1) {
+              $('html').removeClass('modal-open');
+           }
+        });
+            
+        $('body').on('show.bs.modal', '.modal', function () {
+            if ($(this).hasClass("modal-scroll")) {
+                $('body').addClass("modal-open-noscroll");
+            } 
+        });
+
+        $('body').on('hide.bs.modal', '.modal', function () {
+            $('body').removeClass("modal-open-noscroll");
+        });
+    }
+
+    // Handles Bootstrap Tooltips.
+    var handleTooltips = function () {
+       jQuery('.tooltips').tooltip();
+    }
+
+    // Handles Bootstrap Dropdowns
+    var handleDropdowns = function () {
+        /*
+          Hold dropdown on click  
+        */
+        $('body').on('click', '.dropdown-menu.hold-on-click', function (e) {
+            e.stopPropagation();
+        });
+    }
+
+    // Handle Hower Dropdowns
+    var handleDropdownHover = function () {
+        $('[data-hover="dropdown"]').dropdownHover();
+    }
+
+    var handleAlerts = function () {
+        $('body').on('click', '[data-close="alert"]', function(e){
+            $(this).parent('.alert').hide();
+            e.preventDefault();
+        });
+    }
+
+    // Handles Bootstrap Popovers
+
+    // last popep popover
+    var lastPopedPopover;
+
+    var handlePopovers = function () {
+        jQuery('.popovers').popover();
+
+        // close last poped popover
+
+        $(document).on('click.bs.popover.data-api', function (e) {
+            if (lastPopedPopover) {
+                lastPopedPopover.popover('hide');
+            }
+        });
+    }
+
+    // Handles scrollable contents using jQuery SlimScroll plugin.
+    var handleScrollers = function () {
+        $('.scroller').each(function () {
+            var height;
+            if ($(this).attr("data-height")) {
+                height = $(this).attr("data-height");
+            } else {
+                height = $(this).css('height');
+            }
+            $(this).slimScroll({
+                allowPageScroll: true, // allow page scroll when the element scroll is ended
+                size: '7px',
+                color: ($(this).attr("data-handle-color")  ? $(this).attr("data-handle-color") : '#bbb'),
+                railColor: ($(this).attr("data-rail-color")  ? $(this).attr("data-rail-color") : '#eaeaea'),
+                position: isRTL ? 'left' : 'right',
+                height: height,
+                alwaysVisible: ($(this).attr("data-always-visible") == "1" ? true : false),
+                railVisible: ($(this).attr("data-rail-visible") == "1" ? true : false),
+                disableFadeOut: true
+            });
+        });
+    }
+
+    // Handles Image Preview using jQuery Fancybox plugin
+    var handleFancybox = function () {
+        if (!jQuery.fancybox) {
+            return;
+        }
+
+        if (jQuery(".fancybox-button").size() > 0) {
+            jQuery(".fancybox-button").fancybox({
+                groupAttr: 'data-rel',
+                prevEffect: 'none',
+                nextEffect: 'none',
+                closeBtn: true,
+                helpers: {
+                    title: {
+                        type: 'inside'
+                    }
+                }
+            });
+        }
+    }
+
+    // Fix input placeholder issue for IE8 and IE9
+    var handleFixInputPlaceholderForIE = function () {
+        //fix html5 placeholder attribute for ie7 & ie8
+        if (isIE8 || isIE9) { // ie8 & ie9
+            // this is html5 placeholder fix for inputs, inputs with placeholder-no-fix class will be skipped(e.g: we need this for password fields)
+            jQuery('input[placeholder]:not(.placeholder-no-fix), textarea[placeholder]:not(.placeholder-no-fix)').each(function () {
+
+                var input = jQuery(this);
+
+                if (input.val() == '' && input.attr("placeholder") != '') {
+                    input.addClass("placeholder").val(input.attr('placeholder'));
+                }
+
+                input.focus(function () {
+                    if (input.val() == input.attr('placeholder')) {
+                        input.val('');
+                    }
+                });
+
+                input.blur(function () {
+                    if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                        input.val(input.attr('placeholder'));
+                    }
+                });
+            });
+        }
+    }
+
+    // Handle full screen mode toggle
+    var handleFullScreenMode = function() {
+        // mozfullscreenerror event handler
+       
+        // toggle full screen
+        function toggleFullScreen() {
+          if (!document.fullscreenElement &&    // alternative standard method
+              !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
+            if (document.documentElement.requestFullscreen) {
+              document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+              document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+              document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+          } else {
+            if (document.cancelFullScreen) {
+              document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+              document.webkitCancelFullScreen();
+            }
+          }
+        }
+
+        $('#trigger_fullscreen').click(function() {
+            toggleFullScreen();
+        });
+    }
+
+    // Handle Select2 Dropdowns
+    var handleSelect2 = function() {
+        if (jQuery().select2) {
+            $('.select2me').select2({
+                placeholder: "Select",
+                allowClear: true
+            });
+        }
+    }
+
+    // Handle Theme Settings
+    var handleTheme = function () {
+
+        var panel = $('.theme-panel');
+
+        if ($('body').hasClass('page-boxed') == false) {
+            $('.layout-option', panel).val("fluid");
+        }
+
+        $('.sidebar-option', panel).val("default");
+        $('.header-option', panel).val("fixed");
+        $('.footer-option', panel).val("default");
+        if ( $('.sidebar-pos-option').attr("disabled") === false) {
+            $('.sidebar-pos-option', panel).val(App.isRTL() ? 'right' : 'left');
+        }
+        
+        //handle theme layout
+        var resetLayout = function () {
+            $("body").
+            removeClass("page-boxed").
+            removeClass("page-footer-fixed").
+            removeClass("page-sidebar-fixed").
+            removeClass("page-header-fixed").
+            removeClass("page-sidebar-reversed");
+
+            $('.header > .header-inner').removeClass("container");
+
+            if ($('.page-container').parent(".container").size() === 1) {
+                $('.page-container').insertAfter('body > .clearfix');
+            }
+
+            if ($('.footer > .container').size() === 1) {
+                $('.footer').html($('.footer > .container').html());
+            } else if ($('.footer').parent(".container").size() === 1) {
+                $('.footer').insertAfter('.page-container');
+            }
+
+            $('body > .container').remove();
+        }
+
+        var lastSelectedLayout = '';
+
+        var setLayout = function () {
+
+            var layoutOption = $('.layout-option', panel).val();
+            var sidebarOption = $('.sidebar-option', panel).val();
+            var headerOption = $('.header-option', panel).val();
+            var footerOption = $('.footer-option', panel).val();
+            var sidebarPosOption = $('.sidebar-pos-option', panel).val();
+
+            if (sidebarOption == "fixed" && headerOption == "default") {
+                alert('Default Header with Fixed Sidebar option is not supported. Proceed with Fixed Header with Fixed Sidebar.');
+                $('.header-option', panel).val("fixed");
+                $('.sidebar-option', panel).val("fixed");
+                sidebarOption = 'fixed';
+                headerOption = 'fixed';
+            }
+
+            resetLayout(); // reset layout to default state
+
+            if (layoutOption === "boxed") {
+                $("body").addClass("page-boxed");
+
+                // set header
+                $('.header > .header-inner').addClass("container");
+                var cont = $('body > .clearfix').after('<div class="container"></div>');
+
+                // set content
+                $('.page-container').appendTo('body > .container');
+
+                // set footer
+                if (footerOption === 'fixed') {
+                    $('.footer').html('<div class="container">' + $('.footer').html() + '</div>');
+                } else {
+                    $('.footer').appendTo('body > .container');
+                }
+            }
+
+            if (lastSelectedLayout != layoutOption) {
+                //layout changed, run responsive handler:
+                runResponsiveHandlers();
+            }
+            lastSelectedLayout = layoutOption;
+
+            //header
+            if (headerOption === 'fixed') {
+                $("body").addClass("page-header-fixed");
+                $(".header").removeClass("navbar-static-top").addClass("navbar-fixed-top");
+            } else {
+                $("body").removeClass("page-header-fixed");
+                $(".header").removeClass("navbar-fixed-top").addClass("navbar-static-top");
+            }
+
+            //sidebar
+            if ($('body').hasClass('page-full-width') === false) {
+                if (sidebarOption === 'fixed') {
+                    $("body").addClass("page-sidebar-fixed");
+                } else {
+                    $("body").removeClass("page-sidebar-fixed");
+                }
+            }
+
+            //footer 
+            if (footerOption === 'fixed') {
+                $("body").addClass("page-footer-fixed");
+            } else {
+                $("body").removeClass("page-footer-fixed");
+            }
+
+            //sidebar position
+            if (App.isRTL()) {
+                if (sidebarPosOption === 'left') {
+                    $("body").addClass("page-sidebar-reversed");
+                    $('#frontend-link').tooltip('destroy').tooltip({placement: 'right'});
+                } else {
+                    $("body").removeClass("page-sidebar-reversed");
+                    $('#frontend-link').tooltip('destroy').tooltip({placement: 'left'});
+                }
+            } else {
+                if (sidebarPosOption === 'right') {
+                    $("body").addClass("page-sidebar-reversed");
+                    $('#frontend-link').tooltip('destroy').tooltip({placement: 'left'});
+                } else {
+                    $("body").removeClass("page-sidebar-reversed");
+                    $('#frontend-link').tooltip('destroy').tooltip({placement: 'right'});
+                }
+            }
+
+            handleSidebarAndContentHeight(); // fix content height            
+            handleFixedSidebar(); // reinitialize fixed sidebar
+            handleFixedSidebarHoverable(); // reinitialize fixed sidebar hover effect
+        }
+
+        // handle theme colors
+        var setColor = function (color) {
+            var color_ = (App.isRTL() ? color + '-rtl' : color);
+            $('#style_color').attr("href", "assets/css/themes/" + color_ + ".css");
+            if ($.cookie) {                
+                $.cookie('style_color', color);
+            }
+        }
+
+        $('.toggler', panel).click(function () {
+            $('.toggler').hide();
+            $('.toggler-close').show();
+            $('.theme-panel > .theme-options').show();
+        });
+
+        $('.toggler-close', panel).click(function () {
+            $('.toggler').show();
+            $('.toggler-close').hide();
+            $('.theme-panel > .theme-options').hide();
+        });
+
+        $('.theme-colors > ul > li', panel).click(function () {
+            var color = $(this).attr("data-style");
+            setColor(color);
+            $('ul > li', panel).removeClass("current");
+            $(this).addClass("current");
+        });
+
+        $('.layout-option, .header-option, .sidebar-option, .footer-option, .sidebar-pos-option', panel).change(setLayout);
+
+        if ($.cookie && $.cookie('style_color')) {
+            setColor($.cookie('style_color'));
+        }
+    }
+
+    //* END:CORE HANDLERS *//
+
+    return {
+
+        //main function to initiate the theme
+        init: function () {
+
+            //IMPORTANT!!!: Do not modify the core handlers call order.
+
+            //core handlers
+            handleInit(); // initialize core variables
+            //handleResponsiveOnResize(); // set and handle responsive    /*pi27 - fun√ß√£o causa erro scroll maluco*/
+            handleUniform(); // hanfle custom radio & checkboxes
+            handleBootstrapSwitch(); // handle bootstrap switch plugin
+            handleScrollers(); // handles slim scrolling contents 
+            handleResponsiveOnInit(); // handler responsive elements on page load
+            //
+            //layout handlers
+            handleFixedSidebar(); // handles fixed sidebar menu
+            handleFixedSidebarHoverable(); // handles fixed sidebar on hover effect 
+            handleSidebarMenu(); // handles main menu
+            handleHorizontalMenu(); // handles horizontal menu
+            handleSidebarToggler(); // handles sidebar hide/show            
+            handleFixInputPlaceholderForIE(); // fixes/enables html5 placeholder attribute for IE9, IE8
+            handleGoTop(); //handles scroll to top functionality in the footer
+            handleTheme(); // handles style customer tool
+            
+            //ui component handlers
+            handleFancybox() // handle fancy box
+            handleSelect2(); // handle custom Select2 dropdowns
+            handlePortletTools(); // handles portlet action bar functionality(refresh, configure, toggle, remove)
+            handleAlerts(); //handle closabled alerts
+            handleDropdowns(); // handle dropdowns
+            handleTabs(); // handle tabs
+            handleTooltips(); // handle bootstrap tooltips
+            handlePopovers(); // handles bootstrap popovers
+            handleAccordions(); //handles accordions 
+            handleModals(); // handle modals
+            handleFullScreenMode(); // handles full screen
+        },
+
+        //main function to initiate core javascript after ajax complete
+        initAjax: function () {
+            handleScrollers(); // handles slim scrolling contents 
+            handleSelect2(); // handle custom Select2 dropdowns
+            handleDropdowns(); // handle dropdowns
+            handleTooltips(); // handle bootstrap tooltips
+            handlePopovers(); // handles bootstrap popovers
+            handleAccordions(); //handles accordions 
+            handleUniform(); // hanfle custom radio & checkboxes     
+            handleBootstrapSwitch(); // handle bootstrap switch plugin
+            handleDropdownHover() // handles dropdown hover       
+        },
+
+        //public function to fix the sidebar and content height accordingly
+        fixContentHeight: function () {
+            handleSidebarAndContentHeight();
+        },
+
+        //public function to remember last opened popover that needs to be closed on click
+        setLastPopedPopover: function (el) {
+            lastPopedPopover = el;
+        },
+
+        //public function to add callback a function which will be called on window resize
+        addResponsiveHandler: function (func) {
+            responsiveHandlers.push(func);
+        },
+
+        // useful function to make equal height for contacts stand side by side
+        setEqualHeight: function (els) {
+            var tallestEl = 0;
+            els = jQuery(els);
+            els.each(function () {
+                var currentHeight = $(this).height();
+                if (currentHeight > tallestEl) {
+                    tallestColumn = currentHeight;
+                }
+            });
+            els.height(tallestEl);
+        },
+
+        // wrapper function to scroll(focus) to an element
+        scrollTo: function (el, offeset) {
+            var pos = (el && el.size() > 0) ? el.offset().top : 0;
+
+            if (el) {
+                if ($('body').hasClass('page-header-fixed')) {
+                    pos = pos - $('.header').height(); 
+                }            
+                pos = pos + (offeset ? offeset : -1 * el.height());
+            }
+
+            jQuery('html,body').animate({
+                scrollTop: pos
+            }, 'slow');
+        },
+
+        // function to scroll to the top
+        scrollTop: function () {
+            App.scrollTo();
+        },
+
+        // wrapper function to  block element(indicate loading)
+        blockUI: function (options) {
+            var options = $.extend(true, {}, options);
+            var html = '';
+            if (options.iconOnly) {
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><img style="" src="./assets/img/loading-spinner-grey.gif" align=""></div>';
+            } else if (options.textOnly) {
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><span>&nbsp;&nbsp;' + (options.message ? options.message : 'LOADING...') + '</span></div>';
+            } else {    
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><img style="" src="./assets/img/loading-spinner-grey.gif" align=""><span>&nbsp;&nbsp;' + (options.message ? options.message : 'LOADING...') + '</span></div>';
+            }
+
+            if (options.target) { // element blocking
+                var el = jQuery(options.target);
+                if (el.height() <= ($(window).height())) {
+                    options.cenrerY = true;
+                }            
+                el.block({
+                    message: html,
+                    baseZ: options.zIndex ? options.zIndex : 1000,
+                    centerY: options.cenrerY != undefined ? options.cenrerY : false,
+                    css: {
+                        top: '10%',
+                        border: '0',
+                        padding: '0',
+                        backgroundColor: 'none'
+                    },
+                    overlayCSS: {
+                        backgroundColor: options.overlayColor ? options.overlayColor : '#000',
+                        opacity: options.boxed ? 0.05 : 0.1, 
+                        cursor: 'wait'
+                    }
+                });
+            } else { // page blocking
+                $.blockUI({
+                    message: html,
+                    baseZ: options.zIndex ? options.zIndex : 1000,
+                    css: {
+                        border: '0',
+                        padding: '0',
+                        backgroundColor: 'none'
+                    },
+                    overlayCSS: {
+                        backgroundColor: options.overlayColor ? options.overlayColor : '#000',
+                        opacity: options.boxed ? 0.05 : 0.1,
+                        cursor: 'wait'
+                    }
+                });
+            }            
+        },
+
+        // wrapper function to  un-block element(finish loading)
+        unblockUI: function (target) {
+            if (target) {
+                jQuery(target).unblock({
+                    onUnblock: function () {
+                        jQuery(target).css('position', '');
+                        jQuery(target).css('zoom', '');
+                    }
+                });
+            } else {
+                $.unblockUI();
+            }
+        },
+
+        startPageLoading: function(message) {
+            $('.page-loading').remove();
+            $('body').append('<div class="page-loading"><img src="assets/img/loading-spinner-grey.gif"/>&nbsp;&nbsp;<span>' + (message ? message : 'Loading...') + '</span></div>');
+        },
+
+        stopPageLoading: function() {
+            $('.page-loading').remove();
+        },
+
+        // initializes uniform elements
+        initUniform: function (els) {
+            if (els) {
+                jQuery(els).each(function () {
+                    if ($(this).parents(".checker").size() == 0) {
+                        $(this).show();
+                        $(this).uniform();
+                    }
+                });
+            } else {
+                handleUniform();
+            }
+        },
+
+        //wrapper function to update/sync jquery uniform checkbox & radios
+        updateUniform: function (els) {
+            $.uniform.update(els); // update the uniform checkbox & radios UI after the actual input control state changed
+        },
+
+        //public function to initialize the fancybox plugin
+        initFancybox: function () {
+            handleFancybox();
+        },
+
+        //public helper function to get actual input value(used in IE9 and IE8 due to placeholder attribute not supported)
+        getActualVal: function (el) {
+            var el = jQuery(el);
+            if (el.val() === el.attr("placeholder")) {
+                return "";
+            }
+            return el.val();
+        },
+
+        //public function to get a paremeter by name from URL
+        getURLParameter: function (paramName) {
+            var searchString = window.location.search.substring(1),
+                i, val, params = searchString.split("&");
+
+            for (i = 0; i < params.length; i++) {
+                val = params[i].split("=");
+                if (val[0] == paramName) {
+                    return unescape(val[1]);
+                }
+            }
+            return null;
+        },
+
+        // check for device touch support
+        isTouchDevice: function () {
+            try {
+                document.createEvent("TouchEvent");
+                return true;
+            } catch (e) {
+                return false;
+            }
+        },
+
+        getUniqueID: function(prefix) {
+            return 'prefix_' + Math.floor(Math.random() * (new Date()).getTime());
+        },
+
+        alert: function(options) {
+
+            options = $.extend(true, {
+                container: "", // alerts parent container(by default placed after the page breadcrumbs)
+                place: "append", // append or prepent in container 
+                type: 'success',  // alert's type
+                message: "",  // alert's message
+                close: true, // make alert closable
+                reset: true, // close all previouse alerts first
+                focus: true, // auto scroll to the alert after shown
+                closeInSeconds: 0, // auto close after defined seconds
+                icon: "" // put icon before the message
+            }, options);
+
+            var id = App.getUniqueID("app_alert");
+
+            var html = '<div id="'+id+'" class="app-alerts alert alert-'+options.type+' fade in">' + (options.close ? '<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' : '' ) + (options.icon != "" ? '<i class="fa-lg fa fa-'+options.icon + '"></i>  ' : '') + options.message+'</div>'
+
+            if (options.reset) {0
+                $('.app-alerts').remove();
+            }
+
+            if (!options.container) {
+                $('.page-breadcrumb').after(html);
+            } else {
+                if (options.place == "append") {
+                    $(options.container).append(html);
+                } else {
+                    $(options.container).prepend(html);
+                }
+            }
+
+            if (options.focus) {
+                App.scrollTo($('#' + id));
+            }
+
+            if (options.closeInSeconds > 0) {
+                setTimeout(function(){
+                    $('#' + id).remove();
+                }, options.closeInSeconds * 1000);
+            }
+        },
+
+        // check IE8 mode
+        isIE8: function () {
+            return isIE8;
+        },
+
+        // check IE9 mode
+        isIE9: function () {
+            return isIE9;
+        },
+
+        //check RTL mode
+        isRTL: function () {
+            return isRTL;
+        },
+
+        // get layout color code by color name
+        getLayoutColorCode: function (name) {
+            if (layoutColorCodes[name]) {
+                return layoutColorCodes[name];
+            } else {
+                return '';
+            }
+        }
+
+    };
+
+}();        20200720193547      App	   App<   resize   currheight   the	   menu   autoScroll   slideOffeset   pageContentBody   el   error   input!   toggleFullScreen   panel   resetLayout%   lastSelectedLayout   setColor   tallestEl   target   id   handleDropdowns   handlePopovers   handleFancybox   handleGoTop%   handlePortletTools   isRTL   handleUniform!   layoutColorCodes   handleTooltips   isIE8   handleTabs   sidebarWidth   handleSelect2%   handleFixedSidebar   isIE10   isIE9)   handleHorizontalMenu   handleScrollers#   handleSidebarMenu+   runResponsiveHandlers%   handleSidebarState=   handleFixInputPlaceholderForIE   handleTheme+   sidebarCollapsedWidth   handleModals)   handleFullScreenMode7   handleFixedSidebarHoverable   handleInit!   lastPopedPopover   handleAlerts+   handleBootstrapSwitch!   handleResponsive)   handleSidebarToggler'   handleDropdownHover;   handleSidebarAndContentHeight!   handleAccordions%   responsiveHandlers   _getViewPortI   _calculateFixedSidebarViewportHeight-   handleResponsiveOnInit1   handleResponsiveOnResize	   blue   red   green   purple	   grey   light-grey   yellow   #4b8df8   #FF6E00   #35aa47   #852b99   #555555   #fafafa   #ffb848	   init   initAjax!   fixContentHeight'   setLastPopedPopover)   addResponsiveHandler   setEqualHeight   scrollTo   scrollTop   blockUI   unblockUI!   startPageLoading   stopPageLoading   initUniform   updateUniform   initFancybox   getActualVal   getURLParameter   isTouchDevice   getUniqueID   alert%   getLayoutColorCode   deviceAgent   $	   body   css   direction   rtl   navigator   userAgent   match   MSIE 8.0   MSIE 9.0   MSIE 10.0   jQuery	   html   addClass	   ie10   ie   toLowerCase%   (iphone|ipod|ipad)   document   on   focus   input, textarea   handleInit/<	   blur	   test   uniform…   input[type=checkbox]:not(.toggle, .make-switch), input[type=radio]:not(.toggle, .star, .make-switch)	   size	   each   handleUniform/<    ¡      ¡  ¿         ¡  /**
+Core script to handle the entire theme and core functions
+**/
+var App = function () {
+
+    // IE mode
+    var isRTL = false;
+    var isIE8 = false;
+    var isIE9 = false;
+    var isIE10 = false;
+
+    var sidebarWidth = 225;
+    var sidebarCollapsedWidth = 35;
+
+    var responsiveHandlers = [];
+
+    // theme layout color set
+    var layoutColorCodes = {
+        'blue': '#4b8df8',
+        'red': '#FF6E00',
+        'green': '#35aa47',
+        'purple': '#852b99',
+        'grey': '#555555',
+        'light-grey': '#fafafa',
+        'yellow': '#ffb848'
+    };
+
+    // To get the correct viewport width based on  http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/
+    var _getViewPort = function () {
+        var e = window, a = 'inner';
+        if (!('innerWidth' in window)) {
+            a = 'client';
+            e = document.documentElement || document.body;
+        }
+        return {
+            width: e[a + 'Width'],
+            height: e[a + 'Height']
+        }
+    }
+
+    // initializes main settings
+    var handleInit = function () {
+
+        if ($('body').css('direction') === 'rtl') {
+            isRTL = true;
+        }
+
+        isIE8 = !! navigator.userAgent.match(/MSIE 8.0/);
+        isIE9 = !! navigator.userAgent.match(/MSIE 9.0/);
+        isIE10 = !! navigator.userAgent.match(/MSIE 10.0/);
+
+        if (isIE10) {
+            jQuery('html').addClass('ie10'); // detect IE10 version
+        }
+        
+        if (isIE10 || isIE9 || isIE8) {
+            jQuery('html').addClass('ie'); // detect IE10 version
+        }
+
+        /*
+          Virtual keyboards:
+          Also, note that if you're using inputs in your modal ‚Äì iOS has a rendering bug which doesn't 
+          update the position of fixed elements when the virtual keyboard is triggered  
+        */
+        var deviceAgent = navigator.userAgent.toLowerCase();
+        if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
+            $(document).on('focus', 'input, textarea', function () {
+                $('.page-header').hide();
+                $('.page-footer').hide();
+            });
+            $(document).on('blur', 'input, textarea', function () {
+                $('.page-header').show();
+                $('.page-footer').show();
+            });
+        }
+    }
+
+    var handleSidebarState = function () {
+        // remove sidebar toggler if window width smaller than 992(for tablet and phone mode)
+        var viewport = _getViewPort();
+        if (viewport.width < 992) {
+            $('body').removeClass("page-sidebar-closed");
+        }
+    }
+
+    // runs callback functions set by App.addResponsiveHandler().
+    var runResponsiveHandlers = function () {
+        // reinitialize other subscribed elements
+        for (var i = 0; i < responsiveHandlers.length; i++) {
+            var each = responsiveHandlers[i];
+            each.call();
+        }
+    }
+
+    // reinitialize the laypot on window resize
+    var handleResponsive = function () {
+        handleSidebarState();
+        handleSidebarAndContentHeight();
+        handleFixedSidebar();
+        runResponsiveHandlers();
+    }
+
+    // initialize the layout on page load
+    var handleResponsiveOnInit = function () {
+        handleSidebarState();
+        handleSidebarAndContentHeight();
+    }
+
+    // handle the layout reinitialization on window resize
+    var handleResponsiveOnResize = function () {
+        var resize;
+        if (isIE8) {
+            var currheight;
+            $(window).resize(function () {
+                if (currheight == document.documentElement.clientHeight) {
+                    return; //quite event since only body resized not window.
+                }
+                if (resize) {
+                    clearTimeout(resize);
+                }
+                resize = setTimeout(function () {
+                    handleResponsive();
+                }, 50); // wait 50ms until window resize finishes.                
+                currheight = document.documentElement.clientHeight; // store last body client height
+            });
+        } else {
+            $(window).resize(function () {
+                if (resize) {
+                    clearTimeout(resize);
+                }
+                resize = setTimeout(function () {
+                    handleResponsive();
+                }, 50); // wait 50ms until window resize finishes.
+            });
+        }
+    }
+
+    //* BEGIN:CORE HANDLERS *//
+    // this function handles responsive layout on screen size resize or mobile device rotate.
+
+    // Set proper height for sidebar and content. The content and sidebar height must be synced always.
+    var handleSidebarAndContentHeight = function () {
+        var content = $('.page-content');
+        var sidebar = $('.page-sidebar');
+        var body = $('body');
+        var height;
+
+        if (body.hasClass("page-footer-fixed") === true && body.hasClass("page-sidebar-fixed") === false) {
+            var available_height = $(window).height() - $('.footer').outerHeight() - $('.header').outerHeight();
+            if (content.height() < available_height) {
+                content.attr('style', 'min-height:' + available_height + 'px !important');
+            }
+        } else {
+            if (body.hasClass('page-sidebar-fixed')) {
+                height = _calculateFixedSidebarViewportHeight();
+            } else {
+                height = sidebar.height() + 20;
+                var headerHeight = $('.header').outerHeight();
+                var footerHeight = $('.footer').outerHeight();                
+                if ($(window).width() > 1024 && (height + headerHeight + footerHeight)  < $(window).height()) {
+                    height = $(window).height() - headerHeight - footerHeight;
+                }
+            }            
+            if (height >= content.height()) {
+                content.attr('style', 'min-height:' + height + 'px !important');
+            }
+        }
+    }
+
+    // Handle sidebar menu
+    var handleSidebarMenu = function () {
+        jQuery('.page-sidebar').on('click', 'li > a', function (e) {
+            if ($(this).next().hasClass('sub-menu') == false) {
+                if ($('.btn-navbar').hasClass('collapsed') == false) {
+                    $('.btn-navbar').click();
+                }
+                return;
+            }
+
+            if ($(this).next().hasClass('sub-menu always-open')) {
+                return;
+            }
+
+            var parent = $(this).parent().parent();
+            var the = $(this);
+            var menu = $('.page-sidebar-menu');
+            var sub = jQuery(this).next();
+
+            var autoScroll = menu.data("auto-scroll") ? menu.data("auto-scroll") : true;
+            var slideSpeed = menu.data("slide-speed") ? parseInt(menu.data("slide-speed")) : 200;
+
+            parent.children('li.open').children('a').children('.arrow').removeClass('open');
+            parent.children('li.open').children('.sub-menu:not(.always-open)').slideUp(200);
+            parent.children('li.open').removeClass('open');
+            
+            var slideOffeset = -200;
+
+            if (sub.is(":visible")) {
+                jQuery('.arrow', jQuery(this)).removeClass("open");
+                jQuery(this).parent().removeClass("open");
+                sub.slideUp(slideSpeed, function () {
+                    if (autoScroll == true && $('body').hasClass('page-sidebar-closed') == false) {
+                        if ($('body').hasClass('page-sidebar-fixed')) {
+                            menu.slimScroll({'scrollTo': (the.position()).top});
+                        } else {
+                            App.scrollTo(the, slideOffeset);
+                        }
+                    }
+                    handleSidebarAndContentHeight();
+                });
+            } else {
+                jQuery('.arrow', jQuery(this)).addClass("open");
+                jQuery(this).parent().addClass("open");
+                sub.slideDown(slideSpeed, function () {
+                    if (autoScroll == true && $('body').hasClass('page-sidebar-closed') == false) {
+                        if ($('body').hasClass('page-sidebar-fixed')) {
+                            menu.slimScroll({'scrollTo': (the.position()).top});
+                        } else {
+                            App.scrollTo(the, slideOffeset);
+                        }
+                    }
+                    handleSidebarAndContentHeight();
+                });
+            }
+
+            e.preventDefault();
+        });
+
+        // handle ajax links within sidebar menu
+        jQuery('.page-sidebar').on('click', ' li > a.ajaxify', function (e) {
+            e.preventDefault();
+            App.scrollTop();
+
+            var url = $(this).attr("href");
+            var menuContainer = jQuery('.page-sidebar ul');
+            var pageContent = $('.page-content');
+            var pageContentBody = $('.page-content .page-content-body');
+
+            menuContainer.children('li.active').removeClass('active');
+            menuContainer.children('arrow.open').removeClass('open');
+
+            $(this).parents('li').each(function () {
+                $(this).addClass('active');
+                $(this).children('a > span.arrow').addClass('open');
+            });
+            $(this).parents('li').addClass('active');
+
+            App.startPageLoading();
+            
+            if ($(window).width() <= 991 && $('.page-sidebar').hasClass("in")) {
+                $('.navbar-toggle').click();
+            }
+
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: url,
+                dataType: "html",
+                success: function (res) {
+                    App.stopPageLoading();
+                    pageContentBody.html(res);
+                    App.fixContentHeight(); // fix content height
+                    App.initAjax(); // initialize core stuff
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    pageContentBody.html('<h4>Could not load the requested content.</h4>');
+                    App.stopPageLoading();
+                }
+            });
+        });
+
+        // handle ajax link within main content
+        jQuery('.page-content').on('click', '.ajaxify', function (e) {
+            e.preventDefault();
+            App.scrollTop();
+
+            var url = $(this).attr("href");
+            var pageContent = $('.page-content');
+            var pageContentBody = $('.page-content .page-content-body');
+
+            App.startPageLoading();
+            
+            if ($(window).width() <= 991 && $('.page-sidebar').hasClass("in")) {
+                $('.navbar-toggle').click();
+            }
+
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: url,
+                dataType: "html",
+                success: function (res) {
+                    App.stopPageLoading();
+                    pageContentBody.html(res);
+                    App.fixContentHeight(); // fix content height
+                    App.initAjax(); // initialize core stuff
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    pageContentBody.html('<h4>Could not load the requested content.</h4>');
+                    App.stopPageLoading();
+                }
+            });
+        });
+    }
+
+    // Helper function to calculate sidebar height for fixed sidebar layout.
+    var _calculateFixedSidebarViewportHeight = function () {
+        var sidebarHeight = $(window).height() - $('.header').height() + 1;
+        if ($('body').hasClass("page-footer-fixed")) {
+            sidebarHeight = sidebarHeight - $('.footer').outerHeight();
+        }
+
+        return sidebarHeight;
+    }
+
+    // Handles fixed sidebar
+    var handleFixedSidebar = function () {
+        var menu = $('.page-sidebar-menu');
+
+        if (menu.parent('.slimScrollDiv').size() === 1) { // destroy existing instance before updating the height
+            menu.slimScroll({
+                destroy: true
+            });
+            menu.removeAttr('style');
+            $('.page-sidebar').removeAttr('style');
+        }
+
+        if ($('.page-sidebar-fixed').size() === 0) {
+            handleSidebarAndContentHeight();
+            return;
+        }
+
+        var viewport = _getViewPort();
+        if (viewport.width >= 992) {
+            var sidebarHeight = _calculateFixedSidebarViewportHeight();
+
+            menu.slimScroll({
+                size: '7px',
+                color: '#a1b2bd',
+                opacity: .3,
+                position: isRTL ? 'left' : 'right',
+                height: sidebarHeight,
+                allowPageScroll: false,
+                disableFadeOut: false
+            });
+            handleSidebarAndContentHeight();
+        }
+    }
+
+    // Handles the sidebar menu hover effect for fixed sidebar.
+    var handleFixedSidebarHoverable = function () {
+        if ($('body').hasClass('page-sidebar-fixed') === false) {
+            return;
+        }
+
+        $('.page-sidebar').off('mouseenter').on('mouseenter', function () {
+            var body = $('body');
+
+            if ((body.hasClass('page-sidebar-closed') === false || body.hasClass('page-sidebar-fixed') === false) || $(this).hasClass('page-sidebar-hovering')) {
+                return;
+            }
+
+            body.removeClass('page-sidebar-closed').addClass('page-sidebar-hover-on');
+
+            if (body.hasClass("page-sidebar-reversed")) {
+                $(this).width(sidebarWidth);
+            } else {
+                $(this).addClass('page-sidebar-hovering');
+                $(this).animate({
+                    width: sidebarWidth
+                }, 400, '', function () {
+                    $(this).removeClass('page-sidebar-hovering');
+                });
+            }
+        });
+
+        $('.page-sidebar').off('mouseleave').on('mouseleave', function () {
+            var body = $('body');
+
+            if ((body.hasClass('page-sidebar-hover-on') === false || body.hasClass('page-sidebar-fixed') === false) || $(this).hasClass('page-sidebar-hovering')) {
+                return;
+            }
+
+            if (body.hasClass("page-sidebar-reversed")) {
+                $('body').addClass('page-sidebar-closed').removeClass('page-sidebar-hover-on');
+                $(this).width(sidebarCollapsedWidth);
+            } else {
+                $(this).addClass('page-sidebar-hovering');
+                $(this).animate({
+                    width: sidebarCollapsedWidth
+                }, 400, '', function () {
+                    $('body').addClass('page-sidebar-closed').removeClass('page-sidebar-hover-on');
+                    $(this).removeClass('page-sidebar-hovering');
+                });
+            }
+        });
+    }
+
+    // Handles sidebar toggler to close/hide the sidebar.
+    var handleSidebarToggler = function () {
+        var viewport = _getViewPort();
+        if ($.cookie && $.cookie('sidebar_closed') === '1' && viewport.width >= 992) {
+            $('body').addClass('page-sidebar-closed');
+        }
+
+        // handle sidebar show/hide
+        $('.page-sidebar, .header').on('click', '.sidebar-toggler', function (e) {
+            var body = $('body');
+            var sidebar = $('.page-sidebar');
+
+            if ((body.hasClass("page-sidebar-hover-on") && body.hasClass('page-sidebar-fixed')) || sidebar.hasClass('page-sidebar-hovering')) {
+                body.removeClass('page-sidebar-hover-on');
+                sidebar.css('width', '').hide().show();
+                handleSidebarAndContentHeight(); //fix content & sidebar height
+                if ($.cookie) {
+                    $.cookie('sidebar_closed', '0');
+                }
+                e.stopPropagation();
+                runResponsiveHandlers();
+                return;
+            }
+
+            $(".sidebar-search", sidebar).removeClass("open");
+
+            if (body.hasClass("page-sidebar-closed")) {
+                body.removeClass("page-sidebar-closed");
+                if (body.hasClass('page-sidebar-fixed')) {
+                    sidebar.css('width', '');
+                }
+                if ($.cookie) {
+                    $.cookie('sidebar_closed', '0');
+                }
+            } else {
+                body.addClass("page-sidebar-closed");
+                if ($.cookie) {
+                    $.cookie('sidebar_closed', '1');
+                }
+            }
+            handleSidebarAndContentHeight(); //fix content & sidebar height
+            runResponsiveHandlers();
+        });
+
+        // handle the search bar close
+        $('.page-sidebar').on('click', '.sidebar-search .remove', function (e) {
+            e.preventDefault();
+            $('.sidebar-search').removeClass("open");
+        });
+
+        // handle the search query submit on enter press
+        $('.page-sidebar .sidebar-search').on('keypress', 'input.form-control', function (e) {
+            if (e.which == 13) {
+                $('.sidebar-search').submit();
+                return false; //<---- Add this line
+            }
+        });
+
+        // handle the search submit(for sidebar search and responsive mode of the header search)
+        $('.sidebar-search .submit').on('click', function (e) {
+            e.preventDefault();
+            if ($('body').hasClass("page-sidebar-closed")) {
+                if ($('.sidebar-search').hasClass('open') == false) {
+                    if ($('.page-sidebar-fixed').size() === 1) {
+                        $('.page-sidebar .sidebar-toggler').click(); //trigger sidebar toggle button
+                    }
+                    $('.sidebar-search').addClass("open");
+                } else {
+                    $('.sidebar-search').submit();
+                }
+            } else {
+                $('.sidebar-search').submit();
+            }
+        });
+
+        // header search box:
+
+        // handle the search query submit on enter press
+        $('.header .search-form').on('keypress', 'input.form-control', function (e) {
+            if (e.which == 13) {
+                $('.sidebar-search').submit();
+                return false; //<---- Add this line
+            }
+        });
+
+        //handle header search button click
+        $('.header .search-form .submit').on('click', function (e) {
+            e.preventDefault();
+            $('.header .search-form').submit();
+        });
+    }
+
+    // Handles the horizontal menu
+    var handleHorizontalMenu = function () {
+        //handle hor menu search form toggler click
+        $('.header').on('click', '.hor-menu .hor-menu-search-form-toggler', function (e) {
+            if ($(this).hasClass('off')) {
+                $(this).removeClass('off');
+                $('.header .hor-menu .search-form').hide();
+            } else {
+                $(this).addClass('off');
+                $('.header .hor-menu .search-form').show();
+            }
+            e.preventDefault();
+        });
+
+        //handle tab click
+        $('.header').on('click', '.hor-menu a[data-toggle="tab"]', function (e) {     
+            e.preventDefault();
+            var nav = $(".hor-menu .nav");
+            var active_link = nav.find('li.current');
+            $('li.active', active_link).removeClass("active");
+            $('.selected', active_link).remove();
+            var new_link = $(this).parents('li').last();
+            new_link.addClass("current");
+            new_link.find("a:first").append('<span class="selected"></span>');
+        });
+
+        //handle hor menu search button click
+        $('.header').on('click', '.hor-menu .search-form .btn', function (e) {
+            $('.form-search').submit();
+            e.preventDefault();
+        });
+
+        //handle hor menu search form on enter press
+        $('.header').on('keypress', '.hor-menu .search-form input', function (e) {
+            if (e.which == 13) {
+                $('.form-search').submit();
+                return false;
+            }
+        });
+    }
+
+    // Handles the go to top button at the footer
+    var handleGoTop = function () {
+        /* set variables locally for increased performance */
+        jQuery('.footer').on('click', '.go-top', function (e) {
+            App.scrollTo();
+            e.preventDefault();
+        });
+    }
+
+    // Handles portlet tools & actions
+    var handlePortletTools = function () {
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > a.remove', function (e) {
+            e.preventDefault();
+            jQuery(this).closest(".portlet").remove();
+        });
+
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > a.reload', function (e) {
+            e.preventDefault();
+            var el = jQuery(this).closest(".portlet").children(".portlet-body");
+            var url = jQuery(this).attr("data-url");
+            var error = $(this).attr("data-error-display");
+            if (url) {
+                App.blockUI({target: el, iconOnly: true});
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: url,
+                    dataType: "html",
+                    success: function(res) 
+                    {                        
+                        App.unblockUI(el);
+                        el.html(res);
+                    },
+                    error: function(xhr, ajaxOptions, thrownError)
+                    {
+                        App.unblockUI(el);
+                        var msg = 'Error on reloading the content. Please check your connection and try again.';
+                        if (error == "toastr" && toastr) {
+                            toastr.error(msg);
+                        } else if (error == "notific8" && $.notific8) {
+                            $.notific8('zindex', 11500);
+                            $.notific8(msg, {theme: 'ruby', life: 3000});
+                        } else {
+                            alert(msg);
+                        }
+                    }
+                });
+            } else {
+                // for demo purpose
+                App.blockUI({target: el, iconOnly: true});
+                window.setTimeout(function () {
+                    App.unblockUI(el);
+                }, 1000);
+            }            
+        });
+
+        // load ajax data on page init
+        $('.portlet .portlet-title a.reload[data-load="true"]').click();
+
+        jQuery('body').on('click', '.portlet > .portlet-title > .tools > .collapse, .portlet .portlet-title > .tools > .expand', function (e) {
+            e.preventDefault();
+            var el = jQuery(this).closest(".portlet").children(".portlet-body");
+            if (jQuery(this).hasClass("collapse")) {
+                jQuery(this).removeClass("collapse").addClass("expand");
+                el.slideUp(200);
+            } else {
+                jQuery(this).removeClass("expand").addClass("collapse");
+                el.slideDown(200);
+            }
+        });
+    }
+
+    // Handles custom checkboxes & radios using jQuery Uniform plugin
+    var handleUniform = function () {
+        if (!jQuery().uniform) {
+            return;
+        }
+        var test = $("input[type=checkbox]:not(.toggle, .make-switch), input[type=radio]:not(.toggle, .star, .make-switch)");
+        if (test.size() > 0) {
+            test.each(function () {
+                if ($(this).parents(".checker").size() == 0) {
+                    $(this).show();
+                    $(this).uniform();
+                }
+            });
+        }
+    }
+
+    var handleBootstrapSwitch = function () {
+        if (!jQuery().bootstrapSwitch) {
+            return;
+        }
+        $('.make-switch').bootstrapSwitch();
+    }
+
+    // Handles Bootstrap Accordions.
+    var handleAccordions = function () {
+        jQuery('body').on('shown.bs.collapse', '.accordion.scrollable', function (e) {
+            App.scrollTo($(e.target));
+        });
+    }
+
+    // Handles Bootstrap Tabs.
+    var handleTabs = function () {
+        // fix content height on tab click
+        $('body').on('shown.bs.tab', '.nav.nav-tabs', function () {
+            handleSidebarAndContentHeight();
+        });
+
+        //activate tab if tab id provided in the URL
+        if (location.hash) {
+            var tabid = location.hash.substr(1);
+            $('a[href="#' + tabid + '"]').parents('.tab-pane:hidden').each(function(){
+                var tabid = $(this).attr("id");
+                $('a[href="#' + tabid + '"]').click();    
+            });            
+            $('a[href="#' + tabid + '"]').click();
+        }
+    }
+
+    // Handles Bootstrap Modals.
+    var handleModals = function () {
+        // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class. 
+        $('body').on('hide.bs.modal', function () {
+           if ($('.modal:visible').size() > 1 && $('html').hasClass('modal-open') == false) {
+              $('html').addClass('modal-open');
+           } else if ($('.modal:visible').size() <= 1) {
+              $('html').removeClass('modal-open');
+           }
+        });
+            
+        $('body').on('show.bs.modal', '.modal', function () {
+            if ($(this).hasClass("modal-scroll")) {
+                $('body').addClass("modal-open-noscroll");
+            } 
+        });
+
+        $('body').on('hide.bs.modal', '.modal', function () {
+            $('body').removeClass("modal-open-noscroll");
+        });
+    }
+
+    // Handles Bootstrap Tooltips.
+    var handleTooltips = function () {
+       jQuery('.tooltips').tooltip();
+    }
+
+    // Handles Bootstrap Dropdowns
+    var handleDropdowns = function () {
+        /*
+          Hold dropdown on click  
+        */
+        $('body').on('click', '.dropdown-menu.hold-on-click', function (e) {
+            e.stopPropagation();
+        });
+    }
+
+    // Handle Hower Dropdowns
+    var handleDropdownHover = function () {
+        $('[data-hover="dropdown"]').dropdownHover();
+    }
+
+    var handleAlerts = function () {
+        $('body').on('click', '[data-close="alert"]', function(e){
+            $(this).parent('.alert').hide();
+            e.preventDefault();
+        });
+    }
+
+    // Handles Bootstrap Popovers
+
+    // last popep popover
+    var lastPopedPopover;
+
+    var handlePopovers = function () {
+        jQuery('.popovers').popover();
+
+        // close last poped popover
+
+        $(document).on('click.bs.popover.data-api', function (e) {
+            if (lastPopedPopover) {
+                lastPopedPopover.popover('hide');
+            }
+        });
+    }
+
+    // Handles scrollable contents using jQuery SlimScroll plugin.
+    var handleScrollers = function () {
+        $('.scroller').each(function () {
+            var height;
+            if ($(this).attr("data-height")) {
+                height = $(this).attr("data-height");
+            } else {
+                height = $(this).css('height');
+            }
+            $(this).slimScroll({
+                allowPageScroll: true, // allow page scroll when the element scroll is ended
+                size: '7px',
+                color: ($(this).attr("data-handle-color")  ? $(this).attr("data-handle-color") : '#bbb'),
+                railColor: ($(this).attr("data-rail-color")  ? $(this).attr("data-rail-color") : '#eaeaea'),
+                position: isRTL ? 'left' : 'right',
+                height: height,
+                alwaysVisible: ($(this).attr("data-always-visible") == "1" ? true : false),
+                railVisible: ($(this).attr("data-rail-visible") == "1" ? true : false),
+                disableFadeOut: true
+            });
+        });
+    }
+
+    // Handles Image Preview using jQuery Fancybox plugin
+    var handleFancybox = function () {
+        if (!jQuery.fancybox) {
+            return;
+        }
+
+        if (jQuery(".fancybox-button").size() > 0) {
+            jQuery(".fancybox-button").fancybox({
+                groupAttr: 'data-rel',
+                prevEffect: 'none',
+                nextEffect: 'none',
+                closeBtn: true,
+                helpers: {
+                    title: {
+                        type: 'inside'
+                    }
+                }
+            });
+        }
+    }
+
+    // Fix input placeholder issue for IE8 and IE9
+    var handleFixInputPlaceholderForIE = function () {
+        //fix html5 placeholder attribute for ie7 & ie8
+        if (isIE8 || isIE9) { // ie8 & ie9
+            // this is html5 placeholder fix for inputs, inputs with placeholder-no-fix class will be skipped(e.g: we need this for password fields)
+            jQuery('input[placeholder]:not(.placeholder-no-fix), textarea[placeholder]:not(.placeholder-no-fix)').each(function () {
+
+                var input = jQuery(this);
+
+                if (input.val() == '' && input.attr("placeholder") != '') {
+                    input.addClass("placeholder").val(input.attr('placeholder'));
+                }
+
+                input.focus(function () {
+                    if (input.val() == input.attr('placeholder')) {
+                        input.val('');
+                    }
+                });
+
+                input.blur(function () {
+                    if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                        input.val(input.attr('placeholder'));
+                    }
+                });
+            });
+        }
+    }
+
+    // Handle full screen mode toggle
+    var handleFullScreenMode = function() {
+        // mozfullscreenerror event handler
+       
+        // toggle full screen
+        function toggleFullScreen() {
+          if (!document.fullscreenElement &&    // alternative standard method
+              !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
+            if (document.documentElement.requestFullscreen) {
+              document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+              document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+              document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+          } else {
+            if (document.cancelFullScreen) {
+              document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+              document.webkitCancelFullScreen();
+            }
+          }
+        }
+
+        $('#trigger_fullscreen').click(function() {
+            toggleFullScreen();
+        });
+    }
+
+    // Handle Select2 Dropdowns
+    var handleSelect2 = function() {
+        if (jQuery().select2) {
+            $('.select2me').select2({
+                placeholder: "Select",
+                allowClear: true
+            });
+        }
+    }
+
+    // Handle Theme Settings
+    var handleTheme = function () {
+
+        var panel = $('.theme-panel');
+
+        if ($('body').hasClass('page-boxed') == false) {
+            $('.layout-option', panel).val("fluid");
+        }
+
+        $('.sidebar-option', panel).val("default");
+        $('.header-option', panel).val("fixed");
+        $('.footer-option', panel).val("default");
+        if ( $('.sidebar-pos-option').attr("disabled") === false) {
+            $('.sidebar-pos-option', panel).val(App.isRTL() ? 'right' : 'left');
+        }
+        
+        //handle theme layout
+        var resetLayout = function () {
+            $("body").
+            removeClass("page-boxed").
+            removeClass("page-footer-fixed").
+            removeClass("page-sidebar-fixed").
+            removeClass("page-header-fixed").
+            removeClass("page-sidebar-reversed");
+
+            $('.header > .header-inner').removeClass("container");
+
+            if ($('.page-container').parent(".container").size() === 1) {
+                $('.page-container').insertAfter('body > .clearfix');
+            }
+
+            if ($('.footer > .container').size() === 1) {
+                $('.footer').html($('.footer > .container').html());
+            } else if ($('.footer').parent(".container").size() === 1) {
+                $('.footer').insertAfter('.page-container');
+            }
+
+            $('body > .container').remove();
+        }
+
+        var lastSelectedLayout = '';
+
+        var setLayout = function () {
+
+            var layoutOption = $('.layout-option', panel).val();
+            var sidebarOption = $('.sidebar-option', panel).val();
+            var headerOption = $('.header-option', panel).val();
+            var footerOption = $('.footer-option', panel).val();
+            var sidebarPosOption = $('.sidebar-pos-option', panel).val();
+
+            if (sidebarOption == "fixed" && headerOption == "default") {
+                alert('Default Header with Fixed Sidebar option is not supported. Proceed with Fixed Header with Fixed Sidebar.');
+                $('.header-option', panel).val("fixed");
+                $('.sidebar-option', panel).val("fixed");
+                sidebarOption = 'fixed';
+                headerOption = 'fixed';
+            }
+
+            resetLayout(); // reset layout to default state
+
+            if (layoutOption === "boxed") {
+                $("body").addClass("page-boxed");
+
+                // set header
+                $('.header > .header-inner').addClass("container");
+                var cont = $('body > .clearfix').after('<div class="container"></div>');
+
+                // set content
+                $('.page-container').appendTo('body > .container');
+
+                // set footer
+                if (footerOption === 'fixed') {
+                    $('.footer').html('<div class="container">' + $('.footer').html() + '</div>');
+                } else {
+                    $('.footer').appendTo('body > .container');
+                }
+            }
+
+            if (lastSelectedLayout != layoutOption) {
+                //layout changed, run responsive handler:
+                runResponsiveHandlers();
+            }
+            lastSelectedLayout = layoutOption;
+
+            //header
+            if (headerOption === 'fixed') {
+                $("body").addClass("page-header-fixed");
+                $(".header").removeClass("navbar-static-top").addClass("navbar-fixed-top");
+            } else {
+                $("body").removeClass("page-header-fixed");
+                $(".header").removeClass("navbar-fixed-top").addClass("navbar-static-top");
+            }
+
+            //sidebar
+            if ($('body').hasClass('page-full-width') === false) {
+                if (sidebarOption === 'fixed') {
+                    $("body").addClass("page-sidebar-fixed");
+                } else {
+                    $("body").removeClass("page-sidebar-fixed");
+                }
+            }
+
+            //footer 
+            if (footerOption === 'fixed') {
+                $("body").addClass("page-footer-fixed");
+            } else {
+                $("body").removeClass("page-footer-fixed");
+            }
+
+            //sidebar position
+            if (App.isRTL()) {
+                if (sidebarPosOption === 'left') {
+                    $("body").addClass("page-sidebar-reversed");
+                    $('#frontend-link').tooltip('destroy').tooltip({placement: 'right'});
+                } else {
+                    $("body").removeClass("page-sidebar-reversed");
+                    $('#frontend-link').tooltip('destroy').tooltip({placement: 'left'});
+                }
+            } else {
+                if (sidebarPosOption === 'right') {
+                    $("body").addClass("page-sidebar-reversed");
+                    $('#frontend-link').tooltip('destroy').tooltip({placement: 'left'});
+                } else {
+                    $("body").removeClass("page-sidebar-reversed");
+                    $('#frontend-link').tooltip('destroy').tooltip({placement: 'right'});
+                }
+            }
+
+            handleSidebarAndContentHeight(); // fix content height            
+            handleFixedSidebar(); // reinitialize fixed sidebar
+            handleFixedSidebarHoverable(); // reinitialize fixed sidebar hover effect
+        }
+
+        // handle theme colors
+        var setColor = function (color) {
+            var color_ = (App.isRTL() ? color + '-rtl' : color);
+            $('#style_color').attr("href", "assets/css/themes/" + color_ + ".css");
+            if ($.cookie) {                
+                $.cookie('style_color', color);
+            }
+        }
+
+        $('.toggler', panel).click(function () {
+            $('.toggler').hide();
+            $('.toggler-close').show();
+            $('.theme-panel > .theme-options').show();
+        });
+
+        $('.toggler-close', panel).click(function () {
+            $('.toggler').show();
+            $('.toggler-close').hide();
+            $('.theme-panel > .theme-options').hide();
+        });
+
+        $('.theme-colors > ul > li', panel).click(function () {
+            var color = $(this).attr("data-style");
+            setColor(color);
+            $('ul > li', panel).removeClass("current");
+            $(this).addClass("current");
+        });
+
+        $('.layout-option, .header-option, .sidebar-option, .footer-option, .sidebar-pos-option', panel).change(setLayout);
+
+        if ($.cookie && $.cookie('style_color')) {
+            setColor($.cookie('style_color'));
+        }
+    }
+
+    //* END:CORE HANDLERS *//
+
+    return {
+
+        //main function to initiate the theme
+        init: function () {
+
+            //IMPORTANT!!!: Do not modify the core handlers call order.
+
+            //core handlers
+            handleInit(); // initialize core variables
+            //handleResponsiveOnResize(); // set and handle responsive    /*pi27 - fun√ß√£o causa erro scroll maluco*/
+            handleUniform(); // hanfle custom radio & checkboxes
+            handleBootstrapSwitch(); // handle bootstrap switch plugin
+            handleScrollers(); // handles slim scrolling contents 
+            handleResponsiveOnInit(); // handler responsive elements on page load
+            //
+            //layout handlers
+            handleFixedSidebar(); // handles fixed sidebar menu
+            handleFixedSidebarHoverable(); // handles fixed sidebar on hover effect 
+            handleSidebarMenu(); // handles main menu
+            handleHorizontalMenu(); // handles horizontal menu
+            handleSidebarToggler(); // handles sidebar hide/show            
+            handleFixInputPlaceholderForIE(); // fixes/enables html5 placeholder attribute for IE9, IE8
+            handleGoTop(); //handles scroll to top functionality in the footer
+            handleTheme(); // handles style customer tool
+            
+            //ui component handlers
+            handleFancybox() // handle fancy box
+            handleSelect2(); // handle custom Select2 dropdowns
+            handlePortletTools(); // handles portlet action bar functionality(refresh, configure, toggle, remove)
+            handleAlerts(); //handle closabled alerts
+            handleDropdowns(); // handle dropdowns
+            handleTabs(); // handle tabs
+            handleTooltips(); // handle bootstrap tooltips
+            handlePopovers(); // handles bootstrap popovers
+            handleAccordions(); //handles accordions 
+            handleModals(); // handle modals
+            handleFullScreenMode(); // handles full screen
+        },
+
+        //main function to initiate core javascript after ajax complete
+        initAjax: function () {
+            handleScrollers(); // handles slim scrolling contents 
+            handleSelect2(); // handle custom Select2 dropdowns
+            handleDropdowns(); // handle dropdowns
+            handleTooltips(); // handle bootstrap tooltips
+            handlePopovers(); // handles bootstrap popovers
+            handleAccordions(); //handles accordions 
+            handleUniform(); // hanfle custom radio & checkboxes     
+            handleBootstrapSwitch(); // handle bootstrap switch plugin
+            handleDropdownHover() // handles dropdown hover       
+        },
+
+        //public function to fix the sidebar and content height accordingly
+        fixContentHeight: function () {
+            handleSidebarAndContentHeight();
+        },
+
+        //public function to remember last opened popover that needs to be closed on click
+        setLastPopedPopover: function (el) {
+            lastPopedPopover = el;
+        },
+
+        //public function to add callback a function which will be called on window resize
+        addResponsiveHandler: function (func) {
+            responsiveHandlers.push(func);
+        },
+
+        // useful function to make equal height for contacts stand side by side
+        setEqualHeight: function (els) {
+            var tallestEl = 0;
+            els = jQuery(els);
+            els.each(function () {
+                var currentHeight = $(this).height();
+                if (currentHeight > tallestEl) {
+                    tallestColumn = currentHeight;
+                }
+            });
+            els.height(tallestEl);
+        },
+
+        // wrapper function to scroll(focus) to an element
+        scrollTo: function (el, offeset) {
+            var pos = (el && el.size() > 0) ? el.offset().top : 0;
+
+            if (el) {
+                if ($('body').hasClass('page-header-fixed')) {
+                    pos = pos - $('.header').height(); 
+                }            
+                pos = pos + (offeset ? offeset : -1 * el.height());
+            }
+
+            jQuery('html,body').animate({
+                scrollTop: pos
+            }, 'slow');
+        },
+
+        // function to scroll to the top
+        scrollTop: function () {
+            App.scrollTo();
+        },
+
+        // wrapper function to  block element(indicate loading)
+        blockUI: function (options) {
+            var options = $.extend(true, {}, options);
+            var html = '';
+            if (options.iconOnly) {
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><img style="" src="./assets/img/loading-spinner-grey.gif" align=""></div>';
+            } else if (options.textOnly) {
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><span>&nbsp;&nbsp;' + (options.message ? options.message : 'LOADING...') + '</span></div>';
+            } else {    
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '')+'"><img style="" src="./assets/img/loading-spinner-grey.gif" align=""><span>&nbsp;&nbsp;' + (options.message ? options.message : 'LOADING...') + '</span></div>';
+            }
+
+            if (options.target) { // element blocking
+                var el = jQuery(options.target);
+                if (el.height() <= ($(window).height())) {
+                    options.cenrerY = true;
+                }            
+                el.block({
+                    message: html,
+                    baseZ: options.zIndex ? options.zIndex : 1000,
+                    centerY: options.cenrerY != undefined ? options.cenrerY : false,
+                    css: {
+                        top: '10%',
+                        border: '0',
+                        padding: '0',
+                        backgroundColor: 'none'
+                    },
+                    overlayCSS: {
+                        backgroundColor: options.overlayColor ? options.overlayColor : '#000',
+                        opacity: options.boxed ? 0.05 : 0.1, 
+                        cursor: 'wait'
+                    }
+                });
+            } else { // page blocking
+                $.blockUI({
+                    message: html,
+                    baseZ: options.zIndex ? options.zIndex : 1000,
+                    css: {
+                        border: '0',
+                        padding: '0',
+                        backgroundColor: 'none'
+                    },
+                    overlayCSS: {
+                        backgroundColor: options.overlayColor ? options.overlayColor : '#000',
+                        opacity: options.boxed ? 0.05 : 0.1,
+                        cursor: 'wait'
+                    }
+                });
+            }            
+        },
+
+        // wrapper function to  un-block element(finish loading)
+        unblockUI: function (target) {
+            if (target) {
+                jQuery(target).unblock({
+                    onUnblock: function () {
+                        jQuery(target).css('position', '');
+                        jQuery(target).css('zoom', '');
+                    }
+                });
+            } else {
+                $.unblockUI();
+            }
+        },
+
+        startPageLoading: function(message) {
+            $('.page-loading').remove();
+            $('body').append('<div class="page-loading"><img src="assets/img/loading-spinner-grey.gif"/>&nbsp;&nbsp;<span>' + (message ? message : 'Loading...') + '</span></div>');
+        },
+
+        stopPageLoading: function() {
+            $('.page-loading').remove();
+        },
+
+        // initializes uniform elements
+        initUniform: function (els) {
+            if (els) {
+                jQuery(els).each(function () {
+                    if ($(this).parents(".checker").size() == 0) {
+                        $(this).show();
+                        $(this).uniform();
+                    }
+                });
+            } else {
+                handleUniform();
+            }
+        },
+
+        //wrapper function to update/sync jquery uniform checkbox & radios
+        updateUniform: function (els) {
+            $.uniform.update(els); // update the uniform checkbox & radios UI after the actual input control state changed
+        },
+
+        //public function to initialize the fancybox plugin
+        initFancybox: function () {
+            handleFancybox();
+        },
+
+        //public helper function to get actual input value(used in IE9 and IE8 due to placeholder attribute not supported)
+        getActualVal: function (el) {
+            var el = jQuery(el);
+            if (el.val() === el.attr("placeholder")) {
+                return "";
+            }
+            return el.val();
+        },
+
+        //public function to get a paremeter by name from URL
+        getURLParameter: function (paramName) {
+            var searchString = window.location.search.substring(1),
+                i, val, params = searchString.split("&");
+
+            for (i = 0; i < params.length; i++) {
+                val = params[i].split("=");
+                if (val[0] == paramName) {
+                    return unescape(val[1]);
+                }
+            }
+            return null;
+        },
+
+        // check for device touch support
+        isTouchDevice: function () {
+            try {
+                document.createEvent("TouchEvent");
+                return true;
+            } catch (e) {
+                return false;
+            }
+        },
+
+        getUniqueID: function(prefix) {
+            return 'prefix_' + Math.floor(Math.random() * (new Date()).getTime());
+        },
+
+        alert: function(options) {
+
+            options = $.extend(true, {
+                container: "", // alerts parent container(by default placed after the page breadcrumbs)
+                place: "append", // append or prepent in container 
+                type: 'success',  // alert's type
+                message: "",  // alert's message
+                close: true, // make alert closable
+                reset: true, // close all previouse alerts first
+                focus: true, // auto scroll to the alert after shown
+                closeInSeconds: 0, // auto close after defined seconds
+                icon: "" // put icon before the message
+            }, options);
+
+            var id = App.getUniqueID("app_alert");
+
+            var html = '<div id="'+id+'" class="app-alerts alert alert-'+options.type+' fade in">' + (options.close ? '<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' : '' ) + (options.icon != "" ? '<i class="fa-lg fa fa-'+options.icon + '"></i>  ' : '') + options.message+'</div>'
+
+            if (options.reset) {0
+                $('.app-alerts').remove();
+            }
+
+            if (!options.container) {
+                $('.page-breadcrumb').after(html);
+            } else {
+                if (options.place == "append") {
+                    $(options.container).append(html);
+                } else {
+                    $(options.container).prepend(html);
+                }
+            }
+
+            if (options.focus) {
+                App.scrollTo($('#' + id));
+            }
+
+            if (options.closeInSeconds > 0) {
+                setTimeout(function(){
+                    $('#' + id).remove();
+                }, options.closeInSeconds * 1000);
+            }
+        },
+
+        // check IE8 mode
+        isIE8: function () {
+            return isIE8;
+        },
+
+        // check IE9 mode
+        isIE9: function () {
+            return isIE9;
+        },
+
+        //check RTL mode
+        isRTL: function () {
+            return isRTL;
+        },
+
+        // get layout color code by color name
+        getLayoutColorCode: function (name) {
+            if (layoutColorCodes[name]) {
+                return layoutColorCodes[name];
+            } else {
+                return '';
+            }
+        }
+
+    };
+
+}();  D   https://clienteonline.samisistemas.com.br/assets/scripts/core/app.js   ≥!´!á!´!ˇˇˇˇ             é!´!    å!´!ç!´!      †    U   ¡  L   ¡  Ñ@      a   ≥!´!å!´!ˇˇˇˇ)         <                           !       "   #   $   %   &   '      (   )   *   +      -   .   /   0   1   2   3   4   5   6   ,   7   8   9   :   ;           å!´!é!´!       é!´!=   ã!´!é!´!>   ã!´!é!´!?   ã!´!é!´!@   ã!´!é!´!A   ã!´!é!´!B   ã!´!é!´!C   ã!´!    é!´!D   é!´!=   é!´!E   é!´!>   é!´!F   é!´!?   é!´!G   é!´!@   é!´!H   é!´!A   é!´!I   é!´!B   é!´!J   é!´!C   å!´!ç!´!      †
+9   “  Î  …  Î                5ûå!´!ç!´!      †
+/    ,  Ë  #  Ë   *         ≥!´!å!´!ˇˇˇˇ   `            é!´!a   é!´!b   é!´!c   é!´!d   é!´!e   é!´!f   é!´!g   é!´!h   å!´!å!´!i    å!´!å!´!j    å!´!å!´!k    é!´!l   é!´!m   é!´!n   é!´!o   é!´!p   é!´!q   å!´!å!´!r    é!´!s   é!´!t   é!´!u   é!´!v   å!´!ç!´!    	  †w   »  .  ø  .  C   @          5ûé!´!x   å!´!ç!´!    	  †w   p  ÷  g  ÷  G   ?          5ûöò;¯≈  í                             :     , π         s ﬁG   ·   s    ò   ï   »   ‹ï   π   F   ﬁG   ·i	   s » 	  ‹π   F   ﬁG   ·i
+   s »   ‹π   F   ﬁG   ·i   s »   ‹º   ò,   ï   π         s ﬁG   ·   w ‹ï   º   õ    ï!   ‹º   õ   ï#   ‹º 	  ï$   ò,   ï%   π         s ﬁG   ·   w ‹ï)   π   F   ﬁG   ·s  «   ‹ª   ﬁG   ·i   s òb   ï0   π      π   s ﬁG   ·      j   w ‹π      π   s ﬁG   ·      j   w ‹ï:   £@, `P/P/	Pì0 `PL0 `P  ñ P; `P  ñ P; `P 	 ñ PK4 `P? `P/P/	PI8 `P¥0 `P/P/	PIA `Pë P8 `Pê P= `P/Pô PDG `P/Pô PIL P     5ûå!´!ç!´!      †
+(   	  
+  	  
+  N   &          5ûå!´!ç!´!      †
+'   t
+  ?  k
+  ?  W   )          5ûå!´!ç!´!      †
+3   ï  %  å  %  `   $          5ûå!´!ç!´!      †
+;   {  Ã  r  Ã  h   *          5ûå!´!ç!´!      †
+<   5  #  ,  #  n   ,   @   å!´!  †•  Œ  ú  Œ  r   &       å!´!  †‹    ”    y   -          5û 5ûå!´!  †    ˇ       &       å!´!  †î  “  ã  “  É   -          5û 5ûä!´!ä!´!é!´!   é!´!    5ûå!´!ç!´!      †
+6   =  )  4  )  é   1          5ûå!´!ç!´!      †
+&   k  S,  b  S,  ´   %       å!´! †Ø  "!  ¶  "!  ¨   ?   B   å!´!  †w  M  n  M  …   1          5ûå!´!  †  Á     Á   ÷   3          5ûä!´!ä!´!ä!´!ä!´!ä!´!é!´!   é!´!   é!´!   é!´!    5ûå!´! †ü!  ñ'  ñ!  ñ'  Ê   H   B   å!´!  †Ö#  $  |#  $  Ú   0         5ûå!´! †Æ%  †&  •%  †&    "          5ûå!´! †¬&  |'  π&  |'  	             5ûä!´!é!´!    5ûå!´! †(  K,  (  K,    A   B   å!´! †c*  U+  Z*  U+  $  "          5ûå!´! †w+  1,  n+  1,  *             5ûä!´!é!´!    5û 5ûå!´!ç!´!      †
+:   ⁄,  ÿ-  —,  ÿ-  3  8          5ûå!´!ç!´!      †
+!   .  ˜1  .  ˜1  =  &          5ûå!´!ç!´!      †
+.   h2  ™9  _2  ™9  _  /       å!´!  †3  ˆ5  3  ˆ5  d  G      å!´!  †Ñ5  ‹5  {5  ‹5  s  %         5û 5ûå!´!  †A6  ¢9  86  ¢9  y  G      å!´!  †Ã8  à9  √8  à9  á  %         5û 5û 5ûå!´!ç!´!      †
+4   :  ƒG  :  ƒG  ê  (       å!´! †D;  ó@  ;;  ó@  ó  M          5ûå!´! †A  rA  A  rA  º  K          5ûå!´! †B  ©B  ˇA  ©B  ¬  Y          5ûå!´! †HC  °E  ?C  °E     :          5ûå!´! †MF  ÓF  DF  ÓF  ›  P          5ûå!´! †]G  ºG  TG  ºG  Â  ?          5û 5ûå!´!ç!´!      †
+$   H  ÙM  H  ÙM  Ï  (       å!´! †üH  ÈI  ñH  ÈI  Ó  U         5ûå!´! †TJ  L  KJ  L  ˙  L         5ûå!´! †áL  ﬁL  ~L  ﬁL    I          5ûå!´! †dM  ÏM  [M  ÏM    M          5û 5ûå!´!ç!´!      †
+   GN  O  >N  O           å!´! †ƒN  O  ªN  O    :          5û 5ûå!´!ç!´!      †
+   fO  üY  ]O  üY    &       å!´! †»O  .P  øO  .P    ]         5ûå!´! †èP  ÍV  ÜP  ÍV  $  ]   B   å!´! †éR  )S  ÜR  )S  0  %          5ûå!´! †NS  ÕU  FS  ÕU  5  #          5ûå!´!  †ÅV  æV  xV  æV  F  +          5ûä!´!ä!´!é!´!	   é!´!
+    5ûå!´! †ÈW  óY  ‡W  óY  O  ä         5û 5ûå!´!ç!´!      †
+    Z  »[  ˇY  »[   ]  !      ≥!´!å!´!ˇˇˇˇ   y            é!´!l   é!´!z   é!´!a   é!´!{   é!´!|   é!´!}   å!´!ç!´!    	  †~   [  ∂[  ˇZ  ∂[  c           5ûöò;¯o   <                                  	 π      s  F   ò   ï    †ï   π         s «   ‹ª   ﬁG   ·s  ò   ï   ª   ﬁG   ·j   w ‹ï   £0 `P*Pì0 `PAÄ j FÄ a `P/P8 `P+P? `Pê PIÄ j P   5ûå!´!ç!´!      †
+2   Û[  q\  Í[  q\  l  )          5ûå!´!ç!´!      †
+7   º\  P]  ≥\  P]  t  $       å!´! †]  H]  	]  H]  u  Q          5û 5ûå!´!ç!´!      †
+   è]  ‡_  Ü]  ‡_  {         å!´!  †˛]  9^  ı]  9^  }  ?          5ûå!´!  †_  è_  _  è_  Ñ  S         5û 5ûå!´!ç!´!      †
+,   #`  Gc  `  Gc  ç          å!´!  †–`  Âa  «`  Âa  è  /          5ûå!´!  †.b  ∫b  %b  ∫b  ó  9         5ûå!´!  †˜b  ?c  Ób  ?c  ù  9          5û 5ûå!´!ç!´!      †
+   éc  æc  Öc  æc  £  "          5ûå!´!ç!´!      †
+   d  √d  ˝c  √d  ®  #       å!´! †ãd  ªd  Çd  ªd  ¨  G          5û 5ûå!´!ç!´!      †
+5   
+e  Je  e  Je  ≤  '          5ûå!´!ç!´!      †
+1   le  f  ce  f  ∂          å!´! †Øe  
+f  ße  
+f  ∑  >         5û 5ûå!´!ç!´!      †
+   éf  òg  Öf  òg  ¬  "       å!´! †g  êg  g  êg  «  =          5û 5ûå!´!ç!´!      †
+%    h  øk  ˜g  øk  œ  #       å!´!  †*h  ∑k  !h  ∑k  –  %         5û 5ûå!´!ç!´!      †
+   l  ˝m  l  ˝m  Ê  "          5ûå!´!ç!´!      †
+)   dn  år  [n  år  ˚  2       å!´!  †·o  zr  ÿo  zr  ˇ  Ä   B   å!´!  †Ëp  q  ﬂp  q    %          5ûå!´!  †ßq  jr  ûq  jr    $          5ûä!´!é!´!    5û 5ûå!´!ç!´!      †
+-   €r  ïw  ”r  ïw    '   @   å!´!	  †    Ss  .w  :s  .w    !          5ûå!´!  †_w  çw  Ww  çw  0  /          5ûé!´!    5ûå!´!ç!´!      †
+    ◊w  âx  œw  âx  6             5ûå!´!ç!´!      †
+*   «x  í  æx  í  @     @   å!´!  †Ôz  ~  Êz  ~  P  #          5ûå!´!  †f~  Gç  ]~  Gç  i  !          5ûå!´! †àç  öé  ç  öé  ≈             5ûå!´!  †»é  Wè  øé  Wè  Õ  ,          5ûå!´!  †çè  ê  Ñè  ê  ”  2          5ûå!´!  †[ê  ë  Rê  ë  Ÿ  ;         5ûä!´!ä!´!ä!´!é!´!   é!´!   é!´!   é!´!    5ûå!´!é!´!       é!´!K   ã!´!é!´!L   ã!´!é!´!M   ã!´!é!´!N   ã!´!é!´!O   ã!´!é!´!P   ã!´!é!´!Q   ã!´!é!´!R   ã!´!é!´!S   ã!´!é!´!T   ã!´!é!´!U   ã!´!é!´!V   ã!´!é!´!W   ã!´!é!´!X   ã!´!é!´!Y   ã!´!é!´!Z   ã!´!é!´![   ã!´!é!´!\   ã!´!é!´!]   ã!´!é!´!^   ã!´!é!´!   ã!´!é!´!#   ã!´!é!´!   ã!´!é!´!_   ã!´!    å!´!ç!´!      †
+K   Åí  ô  xí  ô    Ï        ≥!´!å!´!ˇˇˇˇ              öò;¯Ò   Ü                              1     0 º    w  ‹º    w  ‹º    w  ‹º    w  ‹º )   w  ‹º    w  ‹º    w  ‹º    w  ‹º    w  ‹º !   w  ‹º    w  ‹º    w  ‹º    w  ‹º    w  ‹º    w  ‹º    w  ‹º    w  ‹º    w  ‹º 
+   w  ‹º    w  ‹º    w  ‹º %   w  ‹º $   w  ‹º    w  ‹£@Ä Ò `P:0 `P: `P: `P: `P:00 `P: `P: `P: `P: `P: `P: `P: `P:00 `P: `P: `P: `P: `P: `P: `P: `P: `P: `P: `P: P  5ûé!´!K   å!´!ç!´!      †
+L   Vö  óú  Mö  óú              5ûé!´!L   å!´!ç!´!      †
+M   	ù  Dù   ù  Dù    #          5ûé!´!M   å!´!ç!´!     †
+N   »ù  ˚ù  øù  ˚ù  #  &          5ûé!´!N   å!´!ç!´!     †
+O   Äû  Ωû  wû  Ωû  (  '          5ûé!´!O   å!´!ç!´!     †
+P   1ü  Ç†  (ü  Ç†  -  !   @   å!´!  †ïü  S†  åü  S†  0           5ûé!´!    5ûé!´!P   å!´!ç!´!     †
+Q   €†  ó¢  “†  ó¢  :            5ûé!´!Q   å!´!ç!´!      †
+R   ﬂ¢  	£  ÷¢  	£  J            5ûé!´!R   å!´!ç!´!     †
+S   f£  Í¨  ]£  Í¨  O            5ûé!´!S   å!´!ç!´!     †
+T   J≠  ÆÆ  A≠  ÆÆ  Ç     @   å!´!  †¿≠  NÆ  ∑≠  NÆ  Ö  (          5ûä!´!ä!´!é!´!    5ûé!´!T   å!´!ç!´!     †
+U   ”Æ  ∆Ø  ÀÆ  ∆Ø  è  "          5ûé!´!U   å!´!ç!´!      †
+V   ÍØ  !∞  ‚Ø  !∞  î  !          5ûé!´!V   å!´!ç!´!     †
+W   j∞  ≈±  a∞  ≈±  ô         å!´!  †≥∞  u±  ™∞  u±  õ  *         5û 5ûé!´!W   å!´!ç!´!     †
+X   3≤  ø≤  *≤  ø≤  ß             5ûé!´!X   å!´!ç!´!      †
+Y   ≥  I≥  ≥  I≥  ¨            5ûé!´!Y   å!´!ç!´!     †
+Z   Ê≥  î¥  ›≥  î¥  ±            5ûé!´!Z   å!´!ç!´!     †
+[   ˜¥  |∂  Ó¥  |∂  ∫  "          5ûé!´![   å!´!ç!´!      †
+\   …∂  Ä∑  ¿∂  Ä∑  »             5ûé!´!\   å!´!ç!´!     †
+]   †∑  ∏  ò∑  ∏  —            5ûé!´!]   å!´!ç!´!     †
+^   !∏  ıæ  ∏  ıæ  ’     @	   å!´!  †}æ  ºæ  uæ  ºæ  ˙  #          5ûä!´!ä!´!ä!´!ä!´!ä!´!ä!´!ä!´!é!´!    5ûé!´!^   å!´!ç!´!      †
+   *ø  Rø  !ø  Rø              5ûé!´!   å!´!ç!´!      †
+#   áø  Øø  ~ø  Øø              5ûé!´!#   å!´!ç!´!      †
+   „ø  ¿  ⁄ø  ¿              5ûé!´!   å!´!ç!´!     †
+_   b¿  ¡  Y¿  ¡    %          5ûé!´!_   öò;¯ﬂ                              #       »   ‹» 	  ‹»   ‹»   ‹· »   ‹#»   ‹d    » &  ‹5      9      9      9      9	   
+   9      9      9   »   ‹j   » '  ‹j   »   ‹j   »   ‹j   »   ‹j   »    ‹j   » )  ‹j   «   ‹j   » #  ‹j   »   ‹j   » (  ‹j   »   ‹j   »   ‹j   » !  ‹j   »   ‹j   »   ‹j   »   ‹j    »   ‹j!   »   ‹j"   » %  ‹j#   » 
+  ‹j$   » $  ‹j%   »   ‹j&   »   ‹j'   » "  ‹j(   »   ‹j)   »   ‹j*   »   ‹j+   »   ‹j,   »   ‹j-   »   ‹j.   »   ‹j/   »   ‹50   j1   92   j3   94   j5   96   j7   98   j9   9:   j;   9<   j=   9>   j?   9@   jA   9B   jC   9D   jE   9F   jG   9H   jI   9J   jK   9L   jM   9N   jO   9P   jQ   9R   jS   9T   jU   9V   jW   9X   jY   9Z   j[   9\   j]   9^   j_   9`   †£@ `P7 `P7 `P7 `PG `P9  `PH `PK `P5 : : : : : : ê@ `PK* `PKN `PKW  `PK` `PKh !`PKn #`PJÄ  é (`PKÄ  ´ `PKÄ 3 /`PKÄ = `PKÄ _ &`PKÄ ê `PKÄ Ï `PKÄ  `PKÄ  `PKÄ ] `PKÄ l  `PKÄ t `PKÄ { `PKÄ ç `PKÄ £ `PKÄ ® `PKÄ ≤ `P;000 `PKÄ ¿00 `PKÄ œ `PKÄ Ê `PKÄ ˚ )`PKÄ  `PKÄ 6 `PKÄ @ `PKÄ È `P500 JÄ  JÄ  JÄ # JÄ ( JÄ - JÄ : JÄ J JÄ O JÄ Ç JÄ è JÄ î JÄ ô JÄ ß JÄ ¨ JÄ ± JÄ ∫ JÄ » JÄ — :000 JÄ  JÄ  JÄ  JÄ  JÄ Q   5ûöò;¯                                      ◊”   ∂   j    s  ƒ   ‹£F%
+`PFÄ  P)P   À=À‚      _:≥9_:≥9B/ _CÎ]   E    :https://clienteonline.samisistemas.com.br/assets/scripts/core/app.js necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Mon, 17 Aug 2020 16:31:26 GMT
+Content-Type: application/javascript
+Content-Length: 49433
+Last-Modified: Mon, 27 Nov 2017 11:52:55 GMT
+ETag: "5a1bfc97-c119"
+Strict-Transport-Security: max-age=63072000
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Expect-CT: max-age=0
+Accept-Ranges: bytes
+ original-response-headers Server: nginx/1.18.0 (Ubuntu)
+Date: Mon, 17 Aug 2020 16:31:26 GMT
+Content-Type: application/javascript
+Content-Length: 49433
+Last-Modified: Mon, 27 Nov 2017 11:52:55 GMT
+Connection: keep-alive
+ETag: "5a1bfc97-c119"
+Strict-Transport-Security: max-age=63072000
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Expect-CT: max-age=0
+Accept-Ranges: bytes
+ ctid 2 uncompressed-len 0 net-response-time-onstart 350 net-response-time-onstop 396 alt-data 1;49433,javascript/moz-bytecode-20200720193547 alt-data-from-child 1  ≥
